@@ -1,138 +1,482 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de juegos | LevelUp Store</title>
-    <meta name="description" content="Explora el catálogo completo de videojuegos para PS5 y PC de LevelUp Store. Filtra por plataforma y busca por título.">
-    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Catálogo de juegos | LevelUp Store
+    </title>
+
+    <meta
+        name="description"
+        content="Explora el catálogo completo de videojuegos para PS5 y PC de LevelUp Store. Filtra por plataforma y busca por título.">
+
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css">
 </head>
 
 <body>
 
-    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+    <a
+        class="skip-link"
+        href="#contenido">
+        Saltar al contenido principal
+    </a>
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
     <header class="site-header">
+
         <div class="contenedor navbar">
-            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
 
-            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+            <a
+                href="index.html"
+                class="logo">
+                🎮 Level<span class="acento">Up</span> Store
+            </a>
 
-            <ul id="navLinks" class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="registro.html">Crear cuenta</a></li>
-                <li><a href="login.html">Iniciar sesión</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
+
+            <ul
+                id="navLinks"
+                class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="catalogo.html"
+                        class="activo">
+                        Catálogo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="carrito.html">
+                        Carrito
+                    </a>
+                </li>
+
+                <li>
+                    <a href="registro.html">
+                        Crear cuenta
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Iniciar sesión
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
+
             </ul>
 
             <div class="nav-acciones">
-                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
-                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+
+                <a
+                    href="carrito.html"
+                    class="carrito-link"
+                    aria-label="Ver carrito de compras">
+
+                    🛒
+
+                    <span
+                        id="carritoContador"
+                        class="carrito-badge"
+                        style="display:none;">
+                        0
+                    </span>
+
                 </a>
+
             </div>
+
         </div>
+
     </header>
 
 
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
     <main id="contenido">
 
+        <!-- TÍTULO -->
+
         <section class="page-hero">
+
             <div class="contenedor">
-                <p class="migas"><a href="index.html">Inicio</a> / Catálogo</p>
-                <h1>Catálogo de videojuegos</h1>
-                <p>Filtra por plataforma o busca directamente el título que estás buscando.</p>
+
+                <p class="migas">
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                    /
+                    Catálogo
+                </p>
+
+                <h1>
+                    Catálogo de videojuegos
+                </h1>
+
+                <p>
+                    Filtra por plataforma o busca directamente
+                    el título que estás buscando.
+                </p>
+
             </div>
+
         </section>
 
+
+        <!-- =====================================================
+             CATÁLOGO
+             ===================================================== -->
+
         <section class="seccion">
+
             <div class="contenedor">
 
-                <!-- Buscador con sugerencias (datalist = "sugerencias" nativas del navegador) -->
-                <form class="buscador" role="search" onsubmit="return false;">
-                    <label for="buscadorJuegos" class="oculto-visualmente">Buscar juego por título</label>
+
+                <!-- BUSCADOR -->
+
+                <form
+                    class="buscador"
+                    role="search"
+                    onsubmit="return false;">
+
+                    <label
+                        for="buscadorJuegos"
+                        class="oculto-visualmente">
+
+                        Buscar juego por título
+
+                    </label>
+
                     <input
                         type="search"
                         id="buscadorJuegos"
                         name="buscar"
-                        placeholder="Buscar por título... (ej: Zelda, Cyberpunk, FIFA)"
+                        placeholder="Buscar por título... (ej: Cyberpunk, Minecraft, God of War)"
                         list="sugerenciasJuegos"
                         autocomplete="off">
-                    <datalist id="sugerenciasJuegos"></datalist>
-                    <button type="button" id="btnLimpiarBusqueda" class="btn btn-secundario">Limpiar</button>
+
+                    <datalist id="sugerenciasJuegos">
+                    </datalist>
+
+                    <button
+                        type="button"
+                        id="btnLimpiarBusqueda"
+                        class="btn btn-secundario">
+
+                        Limpiar
+
+                    </button>
+
                 </form>
 
-                <!-- Filtros por plataforma (botones operativos) -->
-                <div class="filtros" role="group" aria-label="Filtrar por plataforma">
-                    <button type="button" class="filtro-btn" data-filtro="todos" aria-pressed="true">Todos</button>
-                    <button type="button" class="filtro-btn" data-filtro="ps5" aria-pressed="false">PlayStation 5</button>
-                    <button type="button" class="filtro-btn" data-filtro="pc" aria-pressed="false">PC</button>
-                    <button type="button" class="filtro-btn" data-filtro="oferta" aria-pressed="false">En oferta</button>
+
+                <!-- FILTROS -->
+
+                <div
+                    class="filtros"
+                    role="group"
+                    aria-label="Filtrar por plataforma">
+
+                    <button
+                        type="button"
+                        class="filtro-btn"
+                        data-filtro="todos"
+                        aria-pressed="true">
+
+                        Todos
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filtro-btn"
+                        data-filtro="ps5"
+                        aria-pressed="false">
+
+                        PlayStation 5
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filtro-btn"
+                        data-filtro="pc"
+                        aria-pressed="false">
+
+                        PC
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filtro-btn"
+                        data-filtro="oferta"
+                        aria-pressed="false">
+
+                        En oferta
+
+                    </button>
+
                 </div>
 
-                <p id="contadorResultados" class="ayuda" style="margin-bottom:16px;"></p>
 
-                <div id="grillaJuegos" class="grilla-juegos" aria-live="polite">
-                    <!-- Las tarjetas de juegos se generan dinámicamente con JavaScript
-                         a partir de assets/js/datos-juegos.js -->
+                <!-- CONTADOR -->
+
+                <p
+                    id="contadorResultados"
+                    class="ayuda"
+                    style="margin-bottom:16px;">
+                </p>
+
+
+                <!-- =================================================
+                     AQUÍ JAVASCRIPT INSERTA LOS JUEGOS
+                     ================================================= -->
+
+                <div
+                    id="grillaJuegos"
+                    class="grilla-juegos"
+                    aria-live="polite">
                 </div>
 
-                <p id="sinResultados" class="sin-resultados">
-                    😕 No encontramos juegos que coincidan con tu búsqueda. Intenta con otro término o quita los filtros.
+
+                <!-- SIN RESULTADOS -->
+
+                <p
+                    id="sinResultados"
+                    class="sin-resultados">
+
+                    😕 No encontramos juegos que coincidan
+                    con tu búsqueda.
+
+                    Intenta con otro término o quita los filtros.
+
                 </p>
 
             </div>
+
         </section>
 
     </main>
 
 
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
     <footer class="site-footer">
+
         <div class="contenedor footer-grid">
+
+
             <div class="footer-marca">
-                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
-                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
-                <div class="footer-social" aria-label="Redes sociales">
-                    <a href="#" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="X (Twitter)">X</a>
-                    <a href="#" aria-label="YouTube">YT</a>
+
+                <a
+                    href="index.html"
+                    class="logo">
+
+                    🎮 Level<span class="acento">Up</span> Store
+
+                </a>
+
+                <p>
+                    Tu tienda especializada en videojuegos para
+                    PS5 y PC. Envíos a todo Chile y códigos
+                    digitales al instante.
+                </p>
+
+                <div
+                    class="footer-social"
+                    aria-label="Redes sociales">
+
+                    <a
+                        href="#"
+                        aria-label="Instagram">
+                        IG
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="X Twitter">
+                        X
+                    </a>
+
+                    <a
+                        href="#"
+                        aria-label="YouTube">
+                        YT
+                    </a>
+
                 </div>
+
             </div>
+
+
             <div>
-                <h4>Tienda</h4>
+
+                <h4>
+                    Tienda
+                </h4>
+
                 <ul>
-                    <li><a href="catalogo.html">Catálogo completo</a></li>
-                    <li><a href="carrito.html">Mi carrito</a></li>
+
+                    <li>
+                        <a href="catalogo.html">
+                            Catálogo completo
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="carrito.html">
+                            Mi carrito
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
+
             <div>
-                <h4>Mi cuenta</h4>
+
+                <h4>
+                    Mi cuenta
+                </h4>
+
                 <ul>
-                    <li><a href="registro.html">Crear cuenta</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+
+                    <li>
+                        <a href="registro.html">
+                            Crear cuenta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            Iniciar sesión
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Ayuda y soporte
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
+
             <div>
-                <h4>Contacto</h4>
+
+                <h4>
+                    Contacto
+                </h4>
+
                 <ul>
-                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
-                    <li><a href="contacto.html">Formulario de contacto</a></li>
-                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
-                    <li>Lunes a sábado, 9:00–20:00</li>
+
+                    <li>
+                        <a href="mailto:contacto@levelupstore.cl">
+                            contacto@levelupstore.cl
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Formulario de contacto
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://wa.me/56900000000"
+                            target="_blank"
+                            rel="noopener">
+
+                            WhatsApp
+
+                        </a>
+                    </li>
+
+                    <li>
+                        Lunes a sábado, 9:00–20:00
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
+
+
         <div class="contenedor footer-legal">
-            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
-            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+
+            <span>
+                ©
+                <span id="anioActual">
+                    2026
+                </span>
+
+                LevelUp Store.
+                Proyecto académico DSY1104 —
+                Desarrollo Fullstack II.
+            </span>
+
+            <span>
+                Todas las marcas de consolas y videojuegos
+                son propiedad de sus respectivos dueños.
+            </span>
+
         </div>
+
     </footer>
 
+
+    <!-- =====================================================
+         JAVASCRIPT
+         IMPORTANTE: ESTE ORDEN SE DEBE MANTENER
+         ===================================================== -->
+
     <script src="assets/js/datos-juegos.js"></script>
+
     <script src="assets/js/main.js"></script>
+
     <script src="assets/js/catalogo.js"></script>
 
+
 </body>
+
 </html>
