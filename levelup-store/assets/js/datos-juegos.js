@@ -10,11 +10,12 @@
 const CATALOGO_JUEGOS = [
     {
         id: "gow-ragnarok",
+        imagen: "assets/img/juegos/gow-ragnarok.jpg",
         titulo: "God of War Ragnarök",
         plataforma: "ps5",
         genero: "accion",
         tema: "tema-accion",
-        icono: "⚔️",
+        icono: "",
         precio: 44990,
         precioAnterior: 54990,
         destacado: true,
@@ -29,11 +30,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "spiderman-2",
+        imagen: "assets/img/juegos/spiderman-2.jpg",
         titulo: "Marvel's Spider-Man 2",
         plataforma: "ps5",
         genero: "accion",
         tema: "tema-accion",
-        icono: "🕸️",
+        icono: "",
         precio: 42990,
         destacado: true,
         descripcion: "Peter Parker y Miles Morales se unen para proteger Nueva York en esta secuela exclusiva de PS5.",
@@ -47,11 +49,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "gt7",
+        imagen: "assets/img/juegos/gt7.jpg",
         titulo: "Gran Turismo 7",
         plataforma: "ps5",
         genero: "carreras",
         tema: "tema-carreras",
-        icono: "🏎️",
+        icono: "",
         precio: 34990,
         descripcion: "El simulador de carreras definitivo con soporte para volante y realismo fotográfico.",
         especificaciones: {
@@ -64,11 +67,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "cyberpunk",
+        imagen: "assets/img/juegos/cyberpunk.jpg",
         titulo: "Cyberpunk 2077: Edición Definitiva",
         plataforma: "ambas",
         genero: "rol",
         tema: "tema-rol",
-        icono: "🌆",
+        icono: "",
         precio: 29990,
         precioAnterior: 39990,
         destacado: true,
@@ -83,11 +87,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "elden-ring",
+        imagen: "assets/img/juegos/elden-ring.jpg",
         titulo: "Elden Ring",
         plataforma: "ambas",
         genero: "rol",
         tema: "tema-rol",
-        icono: "🗡️",
+        icono: "",
         precio: 37990,
         descripcion: "Un vasto mundo de fantasía oscura creado por FromSoftware y George R. R. Martin.",
         especificaciones: {
@@ -100,11 +105,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "bg3",
+        imagen: "assets/img/juegos/bg3.jpg",
         titulo: "Baldur's Gate 3",
         plataforma: "ambas",
         genero: "rol",
         tema: "tema-rol",
-        icono: "🎲",
+        icono: "",
         precio: 41990,
         descripcion: "Un RPG por turnos ambientado en el universo de Dungeons & Dragons con decisiones que cambian la historia.",
         especificaciones: {
@@ -117,11 +123,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "hogwarts",
+        imagen: "assets/img/juegos/hogwarts.jpg",
         titulo: "Hogwarts Legacy",
         plataforma: "ambas",
         genero: "mundo-abierto",
         tema: "tema-mundo",
-        icono: "🪄",
+        icono: "",
         precio: 32990,
         descripcion: "Vive tu propia historia de magia en un mundo abierto ambientado décadas antes de Harry Potter.",
         especificaciones: {
@@ -134,11 +141,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "horizon-fw",
+        imagen: "assets/img/juegos/horizon-fw.jpg",
         titulo: "Horizon Forbidden West",
         plataforma: "ps5",
         genero: "mundo-abierto",
         tema: "tema-mundo",
-        icono: "🏹",
+        icono: "",
         precio: 33990,
         descripcion: "Aloy explora tierras salvajes y peligrosas máquinas en esta exclusiva de mundo abierto.",
         especificaciones: {
@@ -151,11 +159,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "eafc25",
+        imagen: "assets/img/juegos/eafc25.jpg",
         titulo: "EA Sports FC 25",
         plataforma: "ambas",
         genero: "deporte",
         tema: "tema-deporte",
-        icono: "⚽",
+        icono: "",
         precio: 39990,
         destacado: true,
         descripcion: "El fútbol más realista con licencias oficiales de ligas y equipos de todo el mundo.",
@@ -169,11 +178,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "witcher3",
+        imagen: "assets/img/juegos/witcher3.jpg",
         titulo: "The Witcher 3: Wild Hunt",
         plataforma: "ambas",
         genero: "rol",
         tema: "tema-rol",
-        icono: "🐺",
+        icono: "",
         precio: 24990,
         descripcion: "Geralt de Rivia recorre un mundo de fantasía oscura en busca de su hija adoptiva, Ciri.",
         especificaciones: {
@@ -186,11 +196,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "minecraft",
+        imagen: "assets/img/juegos/minecraft.jpg",
         titulo: "Minecraft",
         plataforma: "pc",
         genero: "sandbox",
         tema: "tema-sandbox",
-        icono: "🧱",
+        icono: "",
         precio: 19990,
         descripcion: "Construye, explora y sobrevive en mundos generados de forma procedural, solo o con amigos.",
         especificaciones: {
@@ -203,11 +214,12 @@ const CATALOGO_JUEGOS = [
     },
     {
         id: "ratchet",
+        imagen: "assets/img/juegos/ratchet.jpg",
         titulo: "Ratchet & Clank: Rift Apart",
         plataforma: "ps5",
         genero: "accion",
         tema: "tema-accion",
-        icono: "🔧",
+        icono: "",
         precio: 31990,
         descripcion: "Salta entre dimensiones en esta aventura de plataformas que exprime el hardware de PS5.",
         especificaciones: {
