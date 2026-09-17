@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito y checkout | LevelUp Store</title>
+    <meta name="description" content="Revisa tu carrito de compras y finaliza tu pedido de videojuegos para PS5 y PC en LevelUp Store.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header">
+        <div class="contenedor navbar">
+            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+
+            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+
+            <ul id="navLinks" class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Crear cuenta</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <div class="nav-acciones">
+                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
+                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="contenido">
+
+        <section class="page-hero">
+            <div class="contenedor">
+                <p class="migas"><a href="index.html">Inicio</a> / Carrito</p>
+                <h1>Tu carrito de compras</h1>
+                <p>Revisa tus juegos seleccionados y completa tus datos para finalizar el pedido.</p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor">
+
+                <article id="bloqueCarritoVacio" style="display:none; text-align:center; padding:40px 0;">
+                    <p style="font-size:2rem; margin-bottom:10px;">🛒</p>
+                    <h2>Tu carrito está vacío</h2>
+                    <p class="subtitulo" style="margin:0 auto 20px;">Explora el catálogo y agrega tus juegos favoritos.</p>
+                    <a href="catalogo.html" class="btn btn-primario">Ir al catálogo</a>
+                </article>
+
+                <div id="bloqueCarritoConProductos" style="display:grid; grid-template-columns: 1.5fr 1fr; gap:30px;">
+
+                    <div>
+                        <article class="tarjeta-form">
+                            <h2 style="font-size:1.2rem;">Productos en tu carrito</h2>
+
+                            <table class="tabla-carrito" aria-describedby="descripcionTablaCarrito">
+                                <caption id="descripcionTablaCarrito" class="oculto-visualmente">Lista de videojuegos en el carrito de compras</caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Juego</th>
+                                        <th scope="col">Precio</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col"><span class="oculto-visualmente">Acciones</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cuerpoTablaCarrito"></tbody>
+                            </table>
+
+                            <button type="button" id="btnVaciarCarrito" class="btn btn-secundario">Vaciar carrito</button>
+                        </article>
+
+                        <!-- =====================================================
+                             FORMULARIO DE CHECKOUT — múltiples tipos de <input>
+                             ===================================================== -->
+                        <article class="tarjeta-form" style="margin-top:24px;">
+                            <h2 style="font-size:1.2rem;">Finalizar compra</h2>
+
+                            <form id="formCheckout" novalidate>
+
+                                <input type="hidden" id="idPedido" name="idPedido" value="">
+
+                                <div class="form-fila">
+                                    <div class="grupo-campo">
+                                        <label for="nombreCheckout">Nombre completo <span class="requerido">*</span></label>
+                                        <input type="text" id="nombreCheckout" name="nombre" autocomplete="name" aria-describedby="errorNombreCheckout">
+                                        <p id="errorNombreCheckout" class="mensaje-error" aria-live="polite"></p>
+                                    </div>
+
+                                    <div class="grupo-campo">
+                                        <label for="emailCheckout">Correo electrónico <span class="requerido">*</span></label>
+                                        <input type="email" id="emailCheckout" name="email" autocomplete="email" aria-describedby="errorEmailCheckout">
+                                        <p id="errorEmailCheckout" class="mensaje-error" aria-live="polite"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-fila">
+                                    <div class="grupo-campo">
+                                        <label for="telefonoCheckout">Teléfono <span class="requerido">*</span></label>
+                                        <input type="tel" id="telefonoCheckout" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678" aria-describedby="errorTelefonoCheckout">
+                                        <p id="errorTelefonoCheckout" class="mensaje-error" aria-live="polite"></p>
+                                    </div>
+
+                                    <div class="grupo-campo">
+                                        <label for="fechaEntrega">Fecha de entrega deseada <span class="requerido">*</span></label>
+                                        <input type="date" id="fechaEntrega" name="fechaEntrega" aria-describedby="errorFechaEntrega">
+                                        <p id="errorFechaEntrega" class="mensaje-error" aria-live="polite"></p>
+                                    </div>
+                                </div>
+
+                                <div class="grupo-campo">
+                                    <label for="direccionCheckout">Dirección de despacho <span class="requerido">*</span></label>
+                                    <input type="text" id="direccionCheckout" name="direccion" autocomplete="street-address" placeholder="Calle, número, depto." aria-describedby="errorDireccionCheckout">
+                                    <p id="errorDireccionCheckout" class="mensaje-error" aria-live="polite"></p>
+                                </div>
+
+                                <div class="grupo-campo">
+                                    <label for="comunaCheckout">Región / Comuna <span class="requerido">*</span></label>
+                                    <select id="comunaCheckout" name="comuna" aria-describedby="errorComunaCheckout">
+                                        <option value="">Selecciona tu comuna</option>
+                                        <option value="santiago">Santiago Centro</option>
+                                        <option value="providencia">Providencia</option>
+                                        <option value="lascondes">Las Condes</option>
+                                        <option value="valparaiso">Valparaíso</option>
+                                        <option value="concepcion">Concepción</option>
+                                        <option value="otra">Otra</option>
+                                    </select>
+                                    <p id="errorComunaCheckout" class="mensaje-error" aria-live="polite"></p>
+                                </div>
+
+                                <div class="grupo-campo">
+                                    <label>Método de envío <span class="requerido">*</span></label>
+                                    <div class="opciones-inline">
+                                        <label><input type="radio" name="envio" value="domicilio" checked> Despacho a domicilio</label>
+                                        <label><input type="radio" name="envio" value="tienda"> Retiro en tienda</label>
+                                    </div>
+                                </div>
+
+                                <div class="grupo-campo">
+                                    <label for="pagoCheckout">Método de pago <span class="requerido">*</span></label>
+                                    <select id="pagoCheckout" name="pago" aria-describedby="errorPagoCheckout">
+                                        <option value="">Selecciona un método de pago</option>
+                                        <option value="tarjeta">Tarjeta de crédito / débito</option>
+                                        <option value="transferencia">Transferencia bancaria</option>
+                                        <option value="efectivo">Efectivo al retirar</option>
+                                    </select>
+                                    <p id="errorPagoCheckout" class="mensaje-error" aria-live="polite"></p>
+                                </div>
+
+                                <div class="grupo-campo" id="grupoComprobante" style="display:none;">
+                                    <label for="comprobanteCheckout">Comprobante de transferencia (imagen o PDF)</label>
+                                    <input type="file" id="comprobanteCheckout" name="comprobante" accept="image/*,.pdf">
+                                </div>
+
+                                <div class="form-fila">
+                                    <div class="grupo-campo">
+                                        <label for="colorConsola">Color de funda / skin (opcional)</label>
+                                        <input type="color" id="colorConsola" name="colorConsola" value="#8b5cf6">
+                                    </div>
+
+                                    <div class="grupo-campo">
+                                        <label for="ofertasMes">Ofertas por correo al mes (opcional): <span id="valorOfertasMes">4</span></label>
+                                        <input type="range" id="ofertasMes" name="ofertasMes" min="0" max="10" value="4">
+                                    </div>
+                                </div>
+
+                                <div class="grupo-campo">
+                                    <label for="notasCheckout">Notas para el despacho (opcional)</label>
+                                    <textarea id="notasCheckout" name="notas" rows="3" placeholder="Ej: dejar en conserjería, timbre no funciona, etc."></textarea>
+                                </div>
+
+                                <div class="grupo-campo check-linea">
+                                    <input type="checkbox" id="terminosCheckout" name="terminosCheckout" aria-describedby="errorTerminosCheckout">
+                                    <label for="terminosCheckout">Acepto los <a href="#" target="_blank">términos de compra y despacho</a>.</label>
+                                </div>
+                                <p id="errorTerminosCheckout" class="mensaje-error" aria-live="polite"></p>
+
+                                <button type="submit" class="btn btn-primario btn-ancho">Confirmar pedido</button>
+
+                                <div id="resultadoCheckout" class="mensaje-resultado" role="alert"></div>
+                            </form>
+                        </article>
+                    </div>
+
+                    <aside class="resumen-pedido" aria-labelledby="tituloResumen">
+                        <h2 id="tituloResumen" style="font-size:1.2rem;">Resumen del pedido</h2>
+                        <dl>
+                            <div style="display:flex; justify-content:space-between;">
+                                <dt>Subtotal</dt>
+                                <dd id="resumenSubtotal">$0</dd>
+                            </div>
+                            <div style="display:flex; justify-content:space-between;">
+                                <dt>Envío</dt>
+                                <dd id="resumenEnvio">$0</dd>
+                            </div>
+                        </dl>
+                        <dl class="total">
+                            <div style="display:flex; justify-content:space-between; width:100%;">
+                                <dt>Total</dt>
+                                <dd id="resumenTotal">$0</dd>
+                            </div>
+                        </dl>
+                        <p class="ayuda">El envío es gratis en compras sobre $30.000. Los códigos digitales no tienen costo de despacho.</p>
+                    </aside>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+            <div class="footer-marca">
+                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
+                <div class="footer-social" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="X (Twitter)">X</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div>
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="catalogo.html">Catálogo completo</a></li>
+                    <li><a href="carrito.html">Mi carrito</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Mi cuenta</h4>
+                <ul>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
+                    <li><a href="contacto.html">Formulario de contacto</a></li>
+                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li>Lunes a sábado, 9:00–20:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenedor footer-legal">
+            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
+            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/datos-juegos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/carrito.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto y soporte | LevelUp Store</title>
+    <meta name="description" content="Contáctanos por formulario, WhatsApp o pregúntale a nuestro asistente con inteligencia artificial sobre videojuegos.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header">
+        <div class="contenedor navbar">
+            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+
+            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+
+            <ul id="navLinks" class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Crear cuenta</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <div class="nav-acciones">
+                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
+                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="contenido">
+
+        <section class="page-hero">
+            <div class="contenedor">
+                <p class="migas"><a href="index.html">Inicio</a> / Contacto</p>
+                <h1>Contacto y soporte</h1>
+                <p>Escríbenos por formulario, contáctanos por WhatsApp o pregúntale a nuestro asistente gamer con IA.</p>
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor">
+                <div class="detalle-producto">
+
+                    <!-- =====================================================
+                         FORMULARIO DE CONTACTO (evento submit)
+                         ===================================================== -->
+                    <article class="tarjeta-form">
+                        <h2 style="font-size:1.3rem;">📩 Formulario de contacto</h2>
+                        <p class="ayuda" style="margin-bottom:20px;">Respondemos dentro de 24 horas hábiles.</p>
+
+                        <form id="formContacto" novalidate>
+
+                            <div class="grupo-campo">
+                                <label for="nombreContacto">Nombre <span class="requerido">*</span></label>
+                                <input type="text" id="nombreContacto" name="nombre" autocomplete="name" aria-describedby="errorNombreContacto">
+                                <p id="errorNombreContacto" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="emailContacto">Correo electrónico <span class="requerido">*</span></label>
+                                <input type="email" id="emailContacto" name="email" autocomplete="email" aria-describedby="errorEmailContacto">
+                                <p id="errorEmailContacto" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="asuntoContacto">Motivo de tu mensaje <span class="requerido">*</span></label>
+                                <select id="asuntoContacto" name="asunto" aria-describedby="errorAsuntoContacto">
+                                    <option value="">Selecciona un motivo</option>
+                                    <option value="consulta">Consulta sobre un producto</option>
+                                    <option value="pedido">Estado de un pedido</option>
+                                    <option value="soporte">Soporte técnico</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <p id="errorAsuntoContacto" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <div class="grupo-campo">
+                                <label for="mensajeContacto">Mensaje <span class="requerido">*</span></label>
+                                <textarea id="mensajeContacto" name="mensaje" rows="4" placeholder="Cuéntanos en qué te podemos ayudar..." aria-describedby="errorMensajeContacto"></textarea>
+                                <p id="errorMensajeContacto" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <button type="submit" class="btn btn-primario btn-ancho">Enviar mensaje</button>
+
+                            <div id="resultadoContacto" class="mensaje-resultado" role="alert"></div>
+                        </form>
+                    </article>
+
+                    <div style="display:flex; flex-direction:column; gap:24px;">
+
+                        <!-- =====================================================
+                             RF-01: CONTACTO POR WHATSAPP
+                             ===================================================== -->
+                        <article class="tarjeta-form tarjeta-whatsapp">
+                            <h2 style="font-size:1.3rem;">💬 ¿Prefieres WhatsApp?</h2>
+                            <p class="subtitulo" style="margin: 10px auto 20px;">
+                                Escríbenos directamente y te responderemos a la brevedad.
+                                Al presionar el botón se abrirá WhatsApp con un mensaje
+                                predeterminado para agilizar tu consulta.
+                            </p>
+                            <a
+                                id="botonWhatsapp"
+                                class="btn btn-whatsapp"
+                                href="https://wa.me/56900000000?text=Hola%20LevelUp%20Store%2C%20quiero%20hacer%20una%20consulta%20sobre%20sus%20videojuegos."
+                                target="_blank"
+                                rel="noopener">
+                                💬 Contactar por WhatsApp
+                            </a>
+                            <p class="ayuda" style="margin-top:14px;">
+                                * Número de demostración. Reemplázalo por el número real de la tienda antes de publicar el sitio.
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+            <div class="footer-marca">
+                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
+                <div class="footer-social" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="X (Twitter)">X</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div>
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="catalogo.html">Catálogo completo</a></li>
+                    <li><a href="carrito.html">Mi carrito</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Mi cuenta</h4>
+                <ul>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
+                    <li><a href="contacto.html">Formulario de contacto</a></li>
+                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li>Lunes a sábado, 9:00–20:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenedor footer-legal">
+            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
+            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/datos-juegos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/contacto.js"></script>
+    <script src="assets/js/asistente-ia.js"></script>
+
+</body>
+</html>

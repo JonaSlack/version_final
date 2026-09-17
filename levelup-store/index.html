@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LevelUp Store | Tienda de videojuegos para PS5 y PC</title>
+    <meta name="description" content="LevelUp Store: compra videojuegos originales para PlayStation 5 y PC. Envíos a todo Chile, códigos digitales al instante y soporte especializado.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <!-- =====================================================
+         HEADER + NAV (presente en todas las páginas)
+         ===================================================== -->
+    <header class="site-header">
+        <div class="contenedor navbar">
+
+            <a href="index.html" class="logo">
+                🎮 Level<span class="acento">Up</span> Store
+            </a>
+
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
+
+            <ul id="navLinks" class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Crear cuenta</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="asistente.html">🤖 Asistente IA</a></li>
+            </ul>
+
+            <div class="nav-acciones">
+                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
+                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main id="contenido">
+
+        <!-- =====================================================
+             HERO / INICIO
+             ===================================================== -->
+        <section id="inicio" class="hero">
+            <div class="contenedor hero-grid">
+
+                <div>
+                    <span class="badge badge-oferta">🔥 Hasta 30% de descuento esta semana</span>
+                    <h1>Los mejores videojuegos para <span class="acento">PS5</span> y <span class="acento">PC</span></h1>
+                    <p class="subtitulo">
+                        Catálogo curado, entrega inmediata de códigos digitales y despacho
+                        a todo Chile. Todo lo que necesitas para tu próxima maratón de
+                        juego, en un solo lugar.
+                    </p>
+
+                    <div class="hero-acciones">
+                        <a href="catalogo.html" class="btn btn-primario">Ver catálogo completo</a>
+                        <a href="registro.html" class="btn btn-secundario">Crear cuenta gratis</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual" aria-hidden="false">
+                    <p class="ayuda" style="margin-top:0;">Esta semana en LevelUp</p>
+                    <ul class="lista-especificaciones">
+                        <li><span>Juegos disponibles</span><strong id="statTotalJuegos">12</strong></li>
+                        <li><span>Plataformas</span><strong>PS5 &amp; PC</strong></li>
+                        <li><span>Entrega digital</span><strong>Inmediata</strong></li>
+                        <li><span>Soporte</span><strong>Lun–Sáb 9:00–20:00</strong></li>
+                    </ul>
+                    <a href="catalogo.html" class="btn btn-primario btn-ancho">Explorar ofertas</a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             POR QUÉ ELEGIRNOS (uso de <article> dentro de <section>)
+             ===================================================== -->
+        <section class="seccion" aria-labelledby="tituloBeneficios">
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2 id="tituloBeneficios">¿Por qué comprar en LevelUp Store?</h2>
+                </div>
+
+                <div class="grilla-juegos" style="grid-template-columns: repeat(auto-fill, minmax(220px,1fr));">
+
+                    <article class="tarjeta-juego">
+                        <div class="cuerpo">
+                            <img src="assets/img/icono-envio.svg" width="56" height="56" alt="Ícono de camión de reparto representando envío rápido">
+                            <h3>Envío rápido</h3>
+                            <p class="genero">Despacho a todo Chile y entrega digital inmediata para tus juegos en formato código.</p>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="cuerpo">
+                            <img src="assets/img/icono-seguridad.svg" width="56" height="56" alt="Ícono de escudo representando compra segura">
+                            <h3>Compra segura</h3>
+                            <p class="genero">Todos los juegos son 100% originales y con licencia, protegiendo tu cuenta y tus datos.</p>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="cuerpo">
+                            <img src="assets/img/icono-soporte.svg" width="56" height="56" alt="Ícono de auriculares representando soporte al cliente">
+                            <h3>Soporte gamer</h3>
+                            <p class="genero">Nuestro asistente con inteligencia artificial te ayuda a elegir tu próximo juego.</p>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="cuerpo">
+                            <img src="assets/img/icono-controller.svg" width="56" height="56" alt="Ícono de control de videojuegos">
+                            <h3>Multiplataforma</h3>
+                            <p class="genero">Encuentra el mismo título para PS5 o para PC y compara precios fácilmente.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             JUEGOS DESTACADOS
+             ===================================================== -->
+        <section class="seccion franja-alterna" aria-labelledby="tituloDestacados">
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2 id="tituloDestacados">Juegos destacados</h2>
+                    <p><a href="catalogo.html">Ver catálogo completo →</a></p>
+                </div>
+
+                <div class="grilla-juegos">
+
+                    <article class="tarjeta-juego">
+                        <div class="portada tema-accion">
+                            <div class="etiquetas"><span class="badge badge-ps5">PS5</span></div>
+                            <span class="icono">⚔️</span>
+                        </div>
+                        <div class="cuerpo">
+                            <h3>God of War Ragnarök</h3>
+                            <p class="genero">Acción / Aventura</p>
+                            <div class="precio">
+                                <span class="actual">$44.990</span>
+                                <span class="anterior">$54.990</span>
+                            </div>
+                            <div class="acciones">
+                                <a href="producto.html?id=gow-ragnarok" class="btn btn-secundario">Ver detalle</a>
+                                <button type="button" class="btn btn-primario" data-agregar="gow-ragnarok">Agregar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="portada tema-accion">
+                            <div class="etiquetas"><span class="badge badge-ps5">PS5</span></div>
+                            <span class="icono">🕸️</span>
+                        </div>
+                        <div class="cuerpo">
+                            <h3>Marvel's Spider-Man 2</h3>
+                            <p class="genero">Acción / Mundo abierto</p>
+                            <div class="precio"><span class="actual">$42.990</span></div>
+                            <div class="acciones">
+                                <a href="producto.html?id=spiderman-2" class="btn btn-secundario">Ver detalle</a>
+                                <button type="button" class="btn btn-primario" data-agregar="spiderman-2">Agregar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="portada tema-rol">
+                            <div class="etiquetas"><span class="badge badge-ps5">PS5</span><span class="badge badge-pc">PC</span></div>
+                            <span class="icono">🌆</span>
+                        </div>
+                        <div class="cuerpo">
+                            <h3>Cyberpunk 2077: Edición Definitiva</h3>
+                            <p class="genero">Rol / Mundo abierto</p>
+                            <div class="precio">
+                                <span class="actual">$29.990</span>
+                                <span class="anterior">$39.990</span>
+                            </div>
+                            <div class="acciones">
+                                <a href="producto.html?id=cyberpunk" class="btn btn-secundario">Ver detalle</a>
+                                <button type="button" class="btn btn-primario" data-agregar="cyberpunk">Agregar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="tarjeta-juego">
+                        <div class="portada tema-deporte">
+                            <div class="etiquetas"><span class="badge badge-ps5">PS5</span><span class="badge badge-pc">PC</span></div>
+                            <span class="icono">⚽</span>
+                        </div>
+                        <div class="cuerpo">
+                            <h3>EA Sports FC 25</h3>
+                            <p class="genero">Deportes</p>
+                            <div class="precio"><span class="actual">$39.990</span></div>
+                            <div class="acciones">
+                                <a href="producto.html?id=eafc25" class="btn btn-secundario">Ver detalle</a>
+                                <button type="button" class="btn btn-primario" data-agregar="eafc25">Agregar</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             VIDEO EMBEBIDO (tráiler)
+             ===================================================== -->
+        <section class="seccion" aria-labelledby="tituloTrailer">
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2 id="tituloTrailer">Tráiler de la semana</h2>
+                    <p>Mira el adelanto directamente desde la tienda, sin salir de la página.</p>
+                </div>
+
+                <div class="video-envoltura">
+                    <video
+                        controls
+                        preload="metadata"
+                        poster="assets/img/poster-trailer.svg"
+                        aria-label="Tráiler de videojuego de ejemplo">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4">
+                        Tu navegador no soporta la reproducción de video incrustado.
+                        <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+                            Descarga el video aquí
+                        </a>.
+                    </video>
+                </div>
+                <p class="ayuda">
+                    * Video de demostración (contenido libre de derechos, cortesía de MDN Web Docs).
+                    En la versión final se reemplaza por el tráiler oficial de cada juego.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- =====================================================
+             LLAMADO A LA ACCIÓN FINAL
+             ===================================================== -->
+        <section class="seccion franja-alterna" aria-labelledby="tituloCta">
+            <div class="contenedor" style="text-align:center;">
+                <h2 id="tituloCta">Únete a la comunidad LevelUp</h2>
+                <p class="subtitulo" style="margin:0 auto 24px;">
+                    Crea tu cuenta gratis y recibe descuentos exclusivos, recomendaciones
+                    personalizadas y acceso anticipado a nuevos lanzamientos.
+                </p>
+                <a href="registro.html" class="btn btn-primario">Crear mi cuenta</a>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER (presente en todas las páginas)
+         ===================================================== -->
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+
+            <div class="footer-marca">
+                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
+                <div class="footer-social" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="X (Twitter)">X</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+
+            <div>
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="catalogo.html">Catálogo completo</a></li>
+                    <li><a href="carrito.html">Mi carrito</a></li>
+                    <li><a href="producto.html?id=gow-ragnarok">Juego destacado</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Mi cuenta</h4>
+                <ul>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
+                    <li><a href="contacto.html">Formulario de contacto</a></li>
+                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li>Lunes a sábado, 9:00–20:00</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="contenedor footer-legal">
+            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
+            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+        </div>
+    </footer>
+
+
+    <script src="assets/js/datos-juegos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Conecta los botones "Agregar" de esta página con el carrito global.
+        document.querySelectorAll("[data-agregar]").forEach(function (boton) {
+            boton.addEventListener("click", function () {
+                const juego = buscarJuegoPorId(boton.dataset.agregar);
+                if (juego) {
+                    agregarAlCarrito(juego);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

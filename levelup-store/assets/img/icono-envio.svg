@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Ícono de envío rápido">
+  <rect x="4" y="24" width="34" height="20" rx="3" fill="#22d3ee"/>
+  <path d="M38 30 H52 L58 38 V44 H38 Z" fill="#8b5cf6"/>
+  <circle cx="18" cy="48" r="6" fill="#0f0f1a" stroke="#eef0ff" stroke-width="2"/>
+  <circle cx="48" cy="48" r="6" fill="#0f0f1a" stroke="#eef0ff" stroke-width="2"/>
+  <path d="M6 30 H14" stroke="#0f0f1a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M6 36 H12" stroke="#0f0f1a" stroke-width="2" stroke-linecap="round"/>
+</svg>

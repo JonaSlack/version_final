@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta | LevelUp Store</title>
+    <meta name="description" content="Crea tu cuenta gratuita en LevelUp Store para comprar videojuegos de PS5 y PC con descuentos exclusivos.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header">
+        <div class="contenedor navbar">
+            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+
+            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+
+            <ul id="navLinks" class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="registro.html">Crear cuenta</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <div class="nav-acciones">
+                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
+                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <main id="contenido">
+        <section class="seccion">
+            <div class="contenedor form-ancho-medio">
+
+                <p class="migas"><a href="index.html">Inicio</a> / Crear cuenta</p>
+
+                <div class="tarjeta-form">
+
+                    <h1 style="font-size:1.6rem;">🎮 Crea tu cuenta gamer</h1>
+                    <p class="subtitulo" style="margin-bottom:26px;">
+                        Regístrate para guardar tu lista de deseos, recibir recomendaciones
+                        y aprovechar descuentos exclusivos para miembros.
+                    </p>
+
+                    <!-- novalidate: desactivamos la validación nativa del navegador
+                         porque la validación la controla nuestro propio JavaScript,
+                         como pide el punto 2 de la evaluación. -->
+                    <form id="formRegistro" novalidate autocomplete="on">
+
+                        <!-- Nombre -->
+                        <div class="grupo-campo">
+                            <label for="nombre">Nombre completo <span class="requerido">*</span></label>
+                            <input
+                                type="text"
+                                id="nombre"
+                                name="nombre"
+                                autocomplete="name"
+                                placeholder="Ej: Camila Torres"
+                                aria-describedby="errorNombre"
+                                aria-required="true">
+                            <p id="errorNombre" class="mensaje-error" aria-live="polite"></p>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="grupo-campo">
+                            <label for="email">Correo electrónico <span class="requerido">*</span></label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="tucorreo@ejemplo.com"
+                                aria-describedby="errorEmail"
+                                aria-required="true">
+                            <p id="errorEmail" class="mensaje-error" aria-live="polite"></p>
+                        </div>
+
+                        <div class="form-fila">
+
+                            <!-- Edad -->
+                            <div class="grupo-campo">
+                                <label for="edad">Edad <span class="requerido">*</span></label>
+                                <input
+                                    type="number"
+                                    id="edad"
+                                    name="edad"
+                                    min="13"
+                                    max="99"
+                                    autocomplete="off"
+                                    aria-describedby="errorEdad"
+                                    aria-required="true">
+                                <p id="errorEdad" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <!-- Plataforma preferida -->
+                            <div class="grupo-campo">
+                                <label for="plataforma">Plataforma preferida <span class="requerido">*</span></label>
+                                <select id="plataforma" name="plataforma" aria-describedby="errorPlataforma" aria-required="true">
+                                    <option value="">Seleccione una plataforma</option>
+                                    <option value="ps5">PlayStation 5</option>
+                                    <option value="pc">PC</option>
+                                    <option value="ambas">Ambas</option>
+                                </select>
+                                <p id="errorPlataforma" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+                        </div>
+
+                        <div class="form-fila">
+
+                            <!-- Género favorito -->
+                            <div class="grupo-campo">
+                                <label for="genero">Género favorito <span class="requerido">*</span></label>
+                                <select id="genero" name="genero" aria-describedby="errorGenero" aria-required="true">
+                                    <option value="">Seleccione un género</option>
+                                    <option value="accion">Acción / Aventura</option>
+                                    <option value="rol">Rol (RPG)</option>
+                                    <option value="deporte">Deportes</option>
+                                    <option value="carreras">Carreras</option>
+                                    <option value="sandbox">Sandbox / Mundo abierto</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <p id="errorGenero" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+
+                            <!-- Nivel de experiencia -->
+                            <div class="grupo-campo">
+                                <label for="nivel">Nivel de experiencia <span class="requerido">*</span></label>
+                                <select id="nivel" name="nivel" aria-describedby="errorNivel" aria-required="true">
+                                    <option value="">Seleccione nivel</option>
+                                    <option value="principiante">Principiante</option>
+                                    <option value="intermedio">Intermedio</option>
+                                    <option value="avanzado">Avanzado</option>
+                                    <option value="pro">Pro / Competitivo</option>
+                                </select>
+                                <p id="errorNivel" class="mensaje-error" aria-live="polite"></p>
+                            </div>
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="grupo-campo">
+                            <label for="password">Contraseña <span class="requerido">*</span></label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                autocomplete="new-password"
+                                aria-describedby="errorPassword"
+                                aria-required="true">
+                            <div class="medidor-fuerza"><span id="barraFuerza"></span></div>
+                            <p id="errorPassword" class="mensaje-error" aria-live="polite">Mínimo 8 caracteres.</p>
+                        </div>
+
+                        <!-- Confirmar contraseña -->
+                        <div class="grupo-campo">
+                            <label for="confirmarPassword">Confirmar contraseña <span class="requerido">*</span></label>
+                            <input
+                                type="password"
+                                id="confirmarPassword"
+                                name="confirmarPassword"
+                                autocomplete="new-password"
+                                aria-describedby="errorConfirmar"
+                                aria-required="true">
+                            <p id="errorConfirmar" class="mensaje-error" aria-live="polite"></p>
+                        </div>
+
+                        <!-- Términos -->
+                        <div class="grupo-campo check-linea">
+                            <input type="checkbox" id="terminos" name="terminos" aria-describedby="errorTerminos" aria-required="true">
+                            <label for="terminos">
+                                Acepto los <a href="#" target="_blank">Términos y condiciones</a> y la
+                                <a href="#" target="_blank">Política de privacidad</a>.
+                            </label>
+                        </div>
+                        <p id="errorTerminos" class="mensaje-error" aria-live="polite"></p>
+
+                        <!-- Newsletter (opcional, no se valida) -->
+                        <div class="grupo-campo check-linea">
+                            <input type="checkbox" id="newsletter" name="newsletter">
+                            <label for="newsletter">Quiero recibir ofertas y novedades por correo (opcional).</label>
+                        </div>
+
+                        <div class="hero-acciones" style="margin-top:10px;">
+                            <button type="submit" class="btn btn-primario btn-ancho">Crear cuenta</button>
+                            <button type="reset" id="btnLimpiarRegistro" class="btn btn-secundario btn-ancho">Limpiar</button>
+                        </div>
+
+                        <div id="resultadoRegistro" class="mensaje-resultado" role="alert"></div>
+
+                    </form>
+
+                    <p class="ayuda" style="text-align:center; margin-top:18px;">
+                        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>.
+                    </p>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <footer class="site-footer">
+        <div class="contenedor footer-grid">
+            <div class="footer-marca">
+                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
+                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
+                <div class="footer-social" aria-label="Redes sociales">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="X (Twitter)">X</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                </div>
+            </div>
+            <div>
+                <h4>Tienda</h4>
+                <ul>
+                    <li><a href="catalogo.html">Catálogo completo</a></li>
+                    <li><a href="carrito.html">Mi carrito</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Mi cuenta</h4>
+                <ul>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contacto</h4>
+                <ul>
+                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
+                    <li><a href="contacto.html">Formulario de contacto</a></li>
+                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
+                    <li>Lunes a sábado, 9:00–20:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="contenedor footer-legal">
+            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
+            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+        </div>
+    </footer>
+
+    <script src="assets/js/datos-juegos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/registro.js"></script>
+
+</body>
+</html>
