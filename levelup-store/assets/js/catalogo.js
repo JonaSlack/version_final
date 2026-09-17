@@ -1,163 +1,653 @@
 /* =========================================================================
-   catalogo.js
-   Lógica de la página catalogo.html:
-     - Renderiza las tarjetas de juego (<article>) a partir de datos-juegos.js
-     - Filtra por plataforma mediante botones (evento "click")
-     - Busca por título con sugerencias nativas (<datalist>)
+   CATALOGO.JS
+   =========================================================================
+
+   Este archivo:
+
+   1. Carga los juegos desde datos-juegos.js
+   2. Genera las tarjetas del catálogo
+   3. Muestra las imágenes de cada juego
+   4. Permite filtrar por plataforma
+   5. Permite buscar juegos
+   6. Permite agregar juegos al carrito
+
    ========================================================================= */
 
+
+/* -------------------------------------------------------------------------
+   VARIABLES
+   ------------------------------------------------------------------------- */
+
 let filtroActivo = "todos";
+
 let terminoBusqueda = "";
 
-document.addEventListener("DOMContentLoaded", function () {
 
-    llenarSugerencias();
-    renderizarJuegos();
+/* -------------------------------------------------------------------------
+   CUANDO CARGA LA PÁGINA
+   ------------------------------------------------------------------------- */
 
-    // -----------------------------------------------------------
-    // FILTROS POR PLATAFORMA / OFERTA
-    // -----------------------------------------------------------
-    const botonesFiltro = document.querySelectorAll(".filtro-btn");
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    botonesFiltro.forEach(function (boton) {
-        boton.addEventListener("click", function () {
+        llenarSugerencias();
 
-            botonesFiltro.forEach(function (b) {
-                b.setAttribute("aria-pressed", "false");
-            });
+        renderizarJuegos();
 
-            boton.setAttribute("aria-pressed", "true");
-            filtroActivo = boton.dataset.filtro;
 
-            renderizarJuegos();
-        });
-    });
+        /* =============================================================
+           FILTROS
+           ============================================================= */
 
-    // -----------------------------------------------------------
-    // BUSCADOR CON SUGERENCIAS
-    // -----------------------------------------------------------
-    const inputBuscar = document.getElementById("buscadorJuegos");
-    const btnLimpiar = document.getElementById("btnLimpiarBusqueda");
+        const botonesFiltro =
+            document.querySelectorAll(".filtro-btn");
 
-    if (inputBuscar) {
-        inputBuscar.addEventListener("input", function () {
-            terminoBusqueda = inputBuscar.value.trim().toLowerCase();
-            renderizarJuegos();
-        });
-    }
 
-    if (btnLimpiar) {
-        btnLimpiar.addEventListener("click", function () {
-            inputBuscar.value = "";
-            terminoBusqueda = "";
-            renderizarJuegos();
-        });
-    }
+        botonesFiltro.forEach(
+            function (boton) {
 
-});
+                boton.addEventListener(
+                    "click",
+                    function () {
 
-/**
- * Llena el <datalist> con todos los títulos del catálogo para que el
- * navegador ofrezca sugerencias de autocompletado mientras el usuario
- * escribe en el buscador (requisito: "autocompletar, sugerencias").
- */
-function llenarSugerencias() {
-    const datalist = document.getElementById("sugerenciasJuegos");
-    if (!datalist) return;
 
-    datalist.innerHTML = CATALOGO_JUEGOS.map(function (juego) {
-        return '<option value="' + juego.titulo + '"></option>';
-    }).join("");
-}
+                        /* Quitamos selección de todos */
 
-/**
- * Aplica el filtro de plataforma/oferta y el término de búsqueda actual
- * sobre el catálogo completo y devuelve el resultado.
- */
-function obtenerJuegosFiltrados() {
-    return CATALOGO_JUEGOS.filter(function (juego) {
+                        botonesFiltro.forEach(
+                            function (b) {
 
-        let cumplePlataforma = true;
+                                b.setAttribute(
+                                    "aria-pressed",
+                                    "false"
+                                );
 
-        if (filtroActivo === "ps5") {
-            cumplePlataforma = juego.plataforma === "ps5" || juego.plataforma === "ambas";
-        } else if (filtroActivo === "pc") {
-            cumplePlataforma = juego.plataforma === "pc" || juego.plataforma === "ambas";
-        } else if (filtroActivo === "oferta") {
-            cumplePlataforma = Boolean(juego.precioAnterior);
+                            }
+                        );
+
+
+                        /* Activamos el botón seleccionado */
+
+                        boton.setAttribute(
+                            "aria-pressed",
+                            "true"
+                        );
+
+
+                        /* Guardamos el filtro */
+
+                        filtroActivo =
+                            boton.dataset.filtro;
+
+
+                        /* Volvemos a dibujar */
+
+                        renderizarJuegos();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =============================================================
+           BUSCADOR
+           ============================================================= */
+
+        const inputBuscar =
+            document.getElementById(
+                "buscadorJuegos"
+            );
+
+
+        const btnLimpiar =
+            document.getElementById(
+                "btnLimpiarBusqueda"
+            );
+
+
+        if (inputBuscar) {
+
+            inputBuscar.addEventListener(
+                "input",
+                function () {
+
+                    terminoBusqueda =
+                        inputBuscar.value
+                            .trim()
+                            .toLowerCase();
+
+                    renderizarJuegos();
+
+                }
+            );
+
         }
 
-        const cumpleBusqueda =
-            terminoBusqueda === "" ||
-            juego.titulo.toLowerCase().includes(terminoBusqueda);
 
-        return cumplePlataforma && cumpleBusqueda;
-    });
-}
+        /* =============================================================
+           LIMPIAR BUSCADOR
+           ============================================================= */
 
-/**
- * Dibuja las tarjetas de juego dentro de #grillaJuegos según el filtro
- * y la búsqueda activos. Cada tarjeta es un <article> semántico.
- */
-function renderizarJuegos() {
-    const contenedor = document.getElementById("grillaJuegos");
-    const mensajeVacio = document.getElementById("sinResultados");
-    const contador = document.getElementById("contadorResultados");
+        if (btnLimpiar) {
 
-    if (!contenedor) return;
+            btnLimpiar.addEventListener(
+                "click",
+                function () {
 
-    const resultados = obtenerJuegosFiltrados();
+                    inputBuscar.value = "";
 
-    contador.textContent = resultados.length + " juego(s) encontrado(s).";
-    mensajeVacio.style.display = resultados.length === 0 ? "block" : "none";
+                    terminoBusqueda = "";
 
-    contenedor.innerHTML = resultados.map(function (juego) {
+                    renderizarJuegos();
 
-        const etiquetaPlataforma =
-            juego.plataforma === "ambas"
-                ? '<span class="badge badge-ps5">PS5</span><span class="badge badge-pc">PC</span>'
-                : juego.plataforma === "ps5"
-                    ? '<span class="badge badge-ps5">PS5</span>'
-                    : '<span class="badge badge-pc">PC</span>';
+                    inputBuscar.focus();
 
-        const precioAnterior = juego.precioAnterior
-            ? '<span class="anterior">' + formatearCLP(juego.precioAnterior) + '</span>'
-            : "";
+                }
+            );
 
-        return (
-            '<article class="tarjeta-juego">' +
-                '<div class="portada ' + juego.tema + '">' +
-                    '<div class="etiquetas">' + etiquetaPlataforma + '</div>' +
-                    '<span class="icono">' + juego.icono + '</span>' +
-                '</div>' +
-                '<div class="cuerpo">' +
-                    '<h3>' + juego.titulo + '</h3>' +
-                    '<p class="genero">' + capitalizar(juego.genero) + '</p>' +
-                    '<div class="precio">' +
-                        '<span class="actual">' + formatearCLP(juego.precio) + '</span>' +
-                        precioAnterior +
-                    '</div>' +
-                    '<div class="acciones">' +
-                        '<a href="producto.html?id=' + juego.id + '" class="btn btn-secundario">Ver detalle</a>' +
-                        '<button type="button" class="btn btn-primario" data-agregar="' + juego.id + '">Agregar</button>' +
-                    '</div>' +
-                '</div>' +
-            '</article>'
+        }
+
+    }
+);
+
+
+/* =========================================================================
+   SUGERENCIAS DEL BUSCADOR
+   ========================================================================= */
+
+function llenarSugerencias() {
+
+    const datalist =
+        document.getElementById(
+            "sugerenciasJuegos"
         );
-    }).join("");
 
-    // Vuelve a conectar los botones "Agregar" recién creados con el carrito
-    contenedor.querySelectorAll("[data-agregar]").forEach(function (boton) {
-        boton.addEventListener("click", function () {
-            const juego = buscarJuegoPorId(boton.dataset.agregar);
-            if (juego) {
-                agregarAlCarrito(juego);
-            }
-        });
-    });
+
+    if (!datalist) {
+
+        return;
+
+    }
+
+
+    datalist.innerHTML =
+        CATALOGO_JUEGOS
+            .map(
+                function (juego) {
+
+                    return (
+                        '<option value="' +
+                        juego.titulo +
+                        '"></option>'
+                    );
+
+                }
+            )
+            .join("");
+
 }
+
+
+/* =========================================================================
+   FILTRAR LOS JUEGOS
+   ========================================================================= */
+
+function obtenerJuegosFiltrados() {
+
+    return CATALOGO_JUEGOS.filter(
+        function (juego) {
+
+
+            /* ---------------------------------------------------------
+               FILTRO DE PLATAFORMA
+               --------------------------------------------------------- */
+
+            let cumplePlataforma = true;
+
+
+            if (filtroActivo === "ps5") {
+
+                cumplePlataforma =
+
+                    juego.plataforma === "ps5" ||
+
+                    juego.plataforma === "ambas";
+
+            }
+
+
+            else if (filtroActivo === "pc") {
+
+                cumplePlataforma =
+
+                    juego.plataforma === "pc" ||
+
+                    juego.plataforma === "ambas";
+
+            }
+
+
+            else if (filtroActivo === "oferta") {
+
+                cumplePlataforma =
+                    Boolean(
+                        juego.precioAnterior
+                    );
+
+            }
+
+
+            /* ---------------------------------------------------------
+               BUSCADOR
+               --------------------------------------------------------- */
+
+            const cumpleBusqueda =
+
+                terminoBusqueda === "" ||
+
+                juego.titulo
+                    .toLowerCase()
+                    .includes(
+                        terminoBusqueda
+                    );
+
+
+            return (
+
+                cumplePlataforma &&
+
+                cumpleBusqueda
+
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================================
+   MOSTRAR LOS JUEGOS
+   ========================================================================= */
+
+function renderizarJuegos() {
+
+
+    const contenedor =
+        document.getElementById(
+            "grillaJuegos"
+        );
+
+
+    const mensajeVacio =
+        document.getElementById(
+            "sinResultados"
+        );
+
+
+    const contador =
+        document.getElementById(
+            "contadorResultados"
+        );
+
+
+    if (!contenedor) {
+
+        return;
+
+    }
+
+
+    const resultados =
+        obtenerJuegosFiltrados();
+
+
+    /* -----------------------------------------------------------------
+       CONTADOR
+       ----------------------------------------------------------------- */
+
+    if (contador) {
+
+        contador.textContent =
+
+            resultados.length +
+
+            " juego(s) encontrado(s).";
+
+    }
+
+
+    /* -----------------------------------------------------------------
+       MENSAJE SIN RESULTADOS
+       ----------------------------------------------------------------- */
+
+    if (mensajeVacio) {
+
+        mensajeVacio.style.display =
+
+            resultados.length === 0
+
+                ? "block"
+
+                : "none";
+
+    }
+
+
+    /* -----------------------------------------------------------------
+       CREAR TODAS LAS TARJETAS
+       ----------------------------------------------------------------- */
+
+    contenedor.innerHTML =
+
+        resultados
+            .map(
+                function (juego) {
+
+
+                    /* =================================================
+                       BADGES DE PLATAFORMA
+                       ================================================= */
+
+                    let etiquetaPlataforma = "";
+
+
+                    if (
+                        juego.plataforma === "ambas"
+                    ) {
+
+                        etiquetaPlataforma =
+
+                            '<span class="badge badge-ps5">' +
+                            'PS5' +
+                            '</span>' +
+
+                            '<span class="badge badge-pc">' +
+                            'PC' +
+                            '</span>';
+
+                    }
+
+
+                    else if (
+                        juego.plataforma === "ps5"
+                    ) {
+
+                        etiquetaPlataforma =
+
+                            '<span class="badge badge-ps5">' +
+                            'PS5' +
+                            '</span>';
+
+                    }
+
+
+                    else {
+
+                        etiquetaPlataforma =
+
+                            '<span class="badge badge-pc">' +
+                            'PC' +
+                            '</span>';
+
+                    }
+
+
+                    /* =================================================
+                       PRECIO ANTERIOR
+                       ================================================= */
+
+                    let precioAnterior = "";
+
+
+                    if (
+                        juego.precioAnterior
+                    ) {
+
+                        precioAnterior =
+
+                            '<span class="anterior">' +
+
+                            formatearCLP(
+                                juego.precioAnterior
+                            ) +
+
+                            '</span>';
+
+                    }
+
+
+                    /* =================================================
+                       IMAGEN
+                       AQUÍ ESTABA EL PROBLEMA
+                       ================================================= */
+
+                    let imagenJuego = "";
+
+
+                    if (juego.imagen) {
+
+                        imagenJuego =
+
+                            '<img ' +
+
+                            'src="' +
+                            juego.imagen +
+                            '" ' +
+
+                            'alt="Portada de ' +
+                            juego.titulo +
+                            '" ' +
+
+                            'loading="lazy" ' +
+
+                            'onerror="this.style.display=\'none\'">' ;
+
+                    }
+
+
+                    /* =================================================
+                       TARJETA DEL JUEGO
+                       ================================================= */
+
+                    return (
+
+                        '<article class="tarjeta-juego">' +
+
+
+                            /* -----------------------------------------
+                               PORTADA
+                               ----------------------------------------- */
+
+                            '<div class="portada ' +
+                            juego.tema +
+                            '">' +
+
+
+                                /* IMAGEN */
+
+                                imagenJuego +
+
+
+                                /* BADGES */
+
+                                '<div class="etiquetas">' +
+
+                                    etiquetaPlataforma +
+
+                                '</div>' +
+
+
+                                /* ICONO DE RESPALDO */
+
+                                '<span class="icono">' +
+
+                                    juego.icono +
+
+                                '</span>' +
+
+
+                            '</div>' +
+
+
+                            /* -----------------------------------------
+                               INFORMACIÓN
+                               ----------------------------------------- */
+
+                            '<div class="cuerpo">' +
+
+
+                                /* TÍTULO */
+
+                                '<h3>' +
+
+                                    juego.titulo +
+
+                                '</h3>' +
+
+
+                                /* GÉNERO */
+
+                                '<p class="genero">' +
+
+                                    capitalizar(
+                                        juego.genero
+                                    ) +
+
+                                '</p>' +
+
+
+                                /* PRECIO */
+
+                                '<div class="precio">' +
+
+
+                                    '<span class="actual">' +
+
+                                        formatearCLP(
+                                            juego.precio
+                                        ) +
+
+                                    '</span>' +
+
+
+                                    precioAnterior +
+
+
+                                '</div>' +
+
+
+                                /* BOTONES */
+
+                                '<div class="acciones">' +
+
+
+                                    '<a ' +
+
+                                        'href="producto.html?id=' +
+                                        juego.id +
+                                        '" ' +
+
+                                        'class="btn btn-secundario">' +
+
+                                        'Ver detalle' +
+
+                                    '</a>' +
+
+
+                                    '<button ' +
+
+                                        'type="button" ' +
+
+                                        'class="btn btn-primario" ' +
+
+                                        'data-agregar="' +
+                                        juego.id +
+                                        '">' +
+
+                                        'Agregar' +
+
+                                    '</button>' +
+
+
+                                '</div>' +
+
+
+                            '</div>' +
+
+
+                        '</article>'
+
+                    );
+
+                }
+            )
+            .join("");
+
+
+    /* =================================================================
+       CONECTAR BOTONES AGREGAR
+       ================================================================= */
+
+    contenedor
+        .querySelectorAll(
+            "[data-agregar]"
+        )
+        .forEach(
+            function (boton) {
+
+                boton.addEventListener(
+                    "click",
+                    function () {
+
+                        const juego =
+                            buscarJuegoPorId(
+                                boton.dataset.agregar
+                            );
+
+
+                        if (juego) {
+
+                            agregarAlCarrito(
+                                juego
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================================================
+   CAPITALIZAR TEXTO
+   ========================================================================= */
 
 function capitalizar(texto) {
-    const palabra = texto.replace("-", " ");
-    return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+
+    const palabra =
+        texto.replace(
+            "-",
+            " "
+        );
+
+
+    return (
+
+        palabra
+            .charAt(0)
+            .toUpperCase()
+
+        +
+
+        palabra.slice(1)
+
+    );
+
 }
