@@ -55,6 +55,12 @@ const btnCerrarSesion =
 const adminBienvenida =
     document.getElementById("adminBienvenida");
 
+const seccionUsuarios =
+    document.getElementById("usuarios");
+
+const tarjetaUsuarios =
+    document.getElementById("tarjetaUsuarios");
+
 
 function obtenerSesion() {
 
@@ -70,6 +76,18 @@ function obtenerSesion() {
 
         return null;
     }
+}
+
+
+function esAdministrador() {
+
+    const sesion =
+        obtenerSesion();
+
+    return (
+        sesion &&
+        sesion.rol === "administrador"
+    );
 }
 
 
@@ -107,7 +125,50 @@ function verificarAcceso() {
             ").";
     }
 
+    configurarPermisos(
+        sesion
+    );
+
     return true;
+}
+
+
+function configurarPermisos(sesion) {
+
+    if (!sesion) {
+        return;
+    }
+
+    if (
+        sesion.rol === "vendedor"
+    ) {
+
+        if (seccionUsuarios) {
+
+            seccionUsuarios.style.display =
+                "none";
+        }
+
+        if (tarjetaUsuarios) {
+
+            tarjetaUsuarios.style.display =
+                "none";
+        }
+
+    } else {
+
+        if (seccionUsuarios) {
+
+            seccionUsuarios.style.display =
+                "";
+        }
+
+        if (tarjetaUsuarios) {
+
+            tarjetaUsuarios.style.display =
+                "";
+        }
+    }
 }
 
 
@@ -166,10 +227,16 @@ function obtenerUsuarios() {
 
 function guardarUsuarios(usuarios) {
 
+    if (!esAdministrador()) {
+        return false;
+    }
+
     localStorage.setItem(
         "levelupUsuarios",
         JSON.stringify(usuarios)
     );
+
+    return true;
 }
 
 
@@ -1043,6 +1110,14 @@ function mostrarUsuarios() {
         return;
     }
 
+    if (!esAdministrador()) {
+
+        tablaUsuarios.innerHTML =
+            "";
+
+        return;
+    }
+
     const usuarios =
         obtenerUsuarios();
 
@@ -1148,6 +1223,15 @@ function mostrarUsuarios() {
 
 
 function eliminarUsuario(indice) {
+
+    if (!esAdministrador()) {
+
+        window.alert(
+            "No tienes permisos para eliminar usuarios."
+        );
+
+        return;
+    }
 
     const usuarios =
         obtenerUsuarios();
@@ -1306,5 +1390,9 @@ if (btnCerrarSesion) {
 if (verificarAcceso()) {
 
     mostrarProductos();
-    mostrarUsuarios();
+
+    if (esAdministrador()) {
+
+        mostrarUsuarios();
+    }
 }
