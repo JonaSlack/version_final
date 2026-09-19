@@ -2,31 +2,56 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contacto | LevelUp Store</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Blog | LevelUp Store
+    </title>
 
     <meta
         name="description"
-        content="Contáctanos para consultas, ayuda y soporte en LevelUp Store.">
+        content="Noticias, datos curiosos y recomendaciones de videojuegos en LevelUp Store.">
 
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link
+        rel="stylesheet"
+        href="assets/css/styles.css">
+
+    <link
+        rel="stylesheet"
+        href="assets/css/rubrica.css">
+
 </head>
 
 <body>
 
-    <a class="skip-link" href="#contenido">
+    <a
+        class="skip-link"
+        href="#contenido">
+
         Saltar al contenido principal
+
     </a>
+
+
+    <!-- HEADER -->
 
     <header class="site-header">
 
         <div class="contenedor navbar">
 
-            <a href="index.html" class="logo">
+            <a
+                href="index.html"
+                class="logo">
+
                 🎮 Level<span class="acento">Up</span> Store
+
             </a>
+
 
             <button
                 id="botonMenu"
@@ -34,10 +59,15 @@
                 aria-label="Abrir menú de navegación"
                 aria-expanded="false"
                 aria-controls="navLinks">
+
                 ☰
+
             </button>
 
-            <ul id="navLinks" class="nav-links">
+
+            <ul
+                id="navLinks"
+                class="nav-links">
 
                 <li>
                     <a href="index.html">
@@ -58,7 +88,9 @@
                 </li>
 
                 <li>
-                    <a href="blog.html">
+                    <a
+                        href="blog.html"
+                        class="activo">
                         Blog
                     </a>
                 </li>
@@ -82,7 +114,7 @@
                 </li>
 
                 <li>
-                    <a href="contacto.html" class="activo">
+                    <a href="contacto.html">
                         Contacto
                     </a>
                 </li>
@@ -94,6 +126,7 @@
                 </li>
 
             </ul>
+
 
             <div class="nav-acciones">
 
@@ -108,7 +141,9 @@
                         id="carritoContador"
                         class="carrito-badge"
                         style="display:none;">
+
                         0
+
                     </span>
 
                 </a>
@@ -119,6 +154,9 @@
 
     </header>
 
+
+    <!-- CONTENIDO -->
+
     <main id="contenido">
 
         <section class="page-hero">
@@ -126,141 +164,128 @@
             <div class="contenedor">
 
                 <p class="migas">
+
                     <a href="index.html">
                         Inicio
                     </a>
-                    / Contacto
+
+                    / Blog
+
                 </p>
 
                 <h1>
-                    Contacto
+                    Blog LevelUp
                 </h1>
 
                 <p>
-                    ¿Tienes alguna consulta? Envíanos un mensaje
-                    y te responderemos lo antes posible.
+                    Noticias, datos curiosos y recomendaciones
+                    relacionadas con el mundo de los videojuegos.
                 </p>
 
             </div>
 
         </section>
 
+
+        <!-- NOTICIAS -->
+
         <section class="seccion">
 
-            <div
-                class="contenedor"
-                style="max-width: 760px;">
+            <div class="contenedor">
 
-                <div class="tarjeta-form">
+                <div class="seccion-titulo">
 
-                    <div class="seccion-titulo">
+                    <h2>
+                        Noticias importantes
+                    </h2>
 
-                        <h2>
-                            Envíanos un mensaje
-                        </h2>
+                    <p>
+                        Conoce algunos datos y recomendaciones
+                        del mundo gamer.
+                    </p>
 
-                        <p>
-                            Completa el siguiente formulario.
-                        </p>
+                </div>
 
-                    </div>
 
-                    <form
-                        id="formContacto"
-                        novalidate>
+                <div class="grilla-blog">
 
-                        <div class="campo">
 
-                            <label for="nombre">
-                                Nombre
-                            </label>
+                    <!-- ARTÍCULO 1 -->
 
-                            <input
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                maxlength="100"
-                                autocomplete="name"
-                                placeholder="Ingresa tu nombre">
+                    <article class="blog-card">
 
-                            <small
-                                id="errorNombre"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
+                        <img
+                            src="assets/img/juegos/gow-ragnarok.jpg"
+                            alt="Portada de God of War Ragnarök">
 
-                        </div>
 
-                        <div class="campo">
+                        <div class="cuerpo">
 
-                            <label for="correo">
-                                Correo electrónico
-                            </label>
+                            <span class="badge badge-ps5">
+                                Dato curioso
+                            </span>
 
-                            <input
-                                type="email"
-                                id="correo"
-                                name="correo"
-                                maxlength="100"
-                                autocomplete="email"
-                                placeholder="ejemplo@duoc.cl">
+                            <h2>
+                                ¿Por qué las historias mitológicas
+                                siguen funcionando en videojuegos?
+                            </h2>
 
-                            <small
-                                id="errorCorreo"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
-
-                            <p class="ayuda">
-                                Se permiten correos
-                                @duoc.cl,
-                                @profesor.duoc.cl
-                                y @gmail.com.
+                            <p>
+                                Los videojuegos modernos combinan
+                                mitología, exploración y narrativa
+                                para construir mundos memorables.
                             </p>
 
+                            <a
+                                class="btn btn-primario"
+                                href="blog-detalle-1.html">
+
+                                Leer artículo
+
+                            </a>
+
                         </div>
 
-                        <div class="campo">
+                    </article>
 
-                            <label for="comentario">
-                                Comentario
-                            </label>
 
-                            <textarea
-                                id="comentario"
-                                name="comentario"
-                                maxlength="500"
-                                rows="7"
-                                placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <!-- ARTÍCULO 2 -->
 
-                            <small
-                                id="errorComentario"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
+                    <article class="blog-card">
 
-                            <p class="ayuda">
-                                Máximo 500 caracteres.
-                                <span id="contadorCaracteres">0</span>/500
+                        <img
+                            src="assets/img/juegos/cyberpunk.jpg"
+                            alt="Portada de Cyberpunk 2077">
+
+
+                        <div class="cuerpo">
+
+                            <span class="badge badge-pc">
+                                Tecnología
+                            </span>
+
+                            <h2>
+                                PC o consola:
+                                ¿qué plataforma elegir?
+                            </h2>
+
+                            <p>
+                                Revisamos las principales
+                                diferencias entre jugar en PC
+                                y en consola.
                             </p>
 
+                            <a
+                                class="btn btn-primario"
+                                href="blog-detalle-2.html">
+
+                                Leer artículo
+
+                            </a>
+
                         </div>
 
-                        <div
-                            id="mensajeContacto"
-                            aria-live="polite"
-                            style="margin-bottom:16px;">
-                        </div>
-
-                        <button
-                            type="submit"
-                            class="btn btn-primario btn-ancho">
-
-                            Enviar mensaje
-
-                        </button>
-
-                    </form>
+                    </article>
 
                 </div>
 
@@ -270,14 +295,21 @@
 
     </main>
 
+
+    <!-- FOOTER -->
+
     <footer class="site-footer">
 
         <div class="contenedor footer-grid">
 
             <div class="footer-marca">
 
-                <a href="index.html" class="logo">
+                <a
+                    href="index.html"
+                    class="logo">
+
                     🎮 Level<span class="acento">Up</span> Store
+
                 </a>
 
                 <p>
@@ -286,6 +318,7 @@
                 </p>
 
             </div>
+
 
             <div>
 
@@ -317,6 +350,7 @@
 
             </div>
 
+
             <div>
 
                 <h4>
@@ -341,10 +375,11 @@
 
             </div>
 
+
             <div>
 
                 <h4>
-                    Mi cuenta
+                    Cuenta
                 </h4>
 
                 <ul>
@@ -367,24 +402,27 @@
 
         </div>
 
+
         <div class="contenedor footer-legal">
 
             <span>
-                © <span id="anioActual">2026</span>
-                LevelUp Store.
-                Proyecto académico DSY1104.
+                ©
+                <span id="anioActual">
+                    2026
+                </span>
+                LevelUp Store — DSY1104.
             </span>
 
             <span>
-                Desarrollo Fullstack II.
+                Proyecto académico.
             </span>
 
         </div>
 
     </footer>
 
+
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/contacto.js"></script>
 
 </body>
 

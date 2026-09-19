@@ -1,248 +1,727 @@
-/* =========================================================================
-   registro.js
-   Validación completa del formulario "Crear cuenta" (registro.html).
-   Cumple los requerimientos del documento RequerimientosFormulario.txt:
-     1. El select "Plataforma preferida" no puede quedar en la opción por
-        defecto ("Seleccione una plataforma").
-     2. El select "Nivel de experiencia" no puede quedar en la opción por
-        defecto ("Seleccione nivel").
-     3. La contraseña debe tener mínimo 8 caracteres.
-     4. La confirmación de contraseña debe coincidir con la contraseña.
-   Además valida nombre, correo, edad y aceptación de términos, mostrando
-   siempre un mensaje de error específico junto al campo correspondiente.
-   ========================================================================= */
+const formRegistro = document.getElementById("formRegistro");
 
-document.addEventListener("DOMContentLoaded", function () {
+const inputRun = document.getElementById("run");
+const inputNombre = document.getElementById("nombre");
+const inputApellidos = document.getElementById("apellidos");
+const inputCorreoRegistro = document.getElementById("correo");
+const inputFecha = document.getElementById("fechaNacimiento");
+const selectRegion = document.getElementById("region");
+const selectComuna = document.getElementById("comuna");
+const inputDireccion = document.getElementById("direccion");
+const inputContrasenaRegistro = document.getElementById("contrasena");
+const inputConfirmar = document.getElementById("confirmarContrasena");
 
-    const formulario = document.getElementById("formRegistro");
-    if (!formulario) return;
+const mensajeRegistro = document.getElementById("mensajeRegistro");
 
-    const nombre = document.getElementById("nombre");
-    const email = document.getElementById("email");
-    const edad = document.getElementById("edad");
-    const plataforma = document.getElementById("plataforma");
-    const genero = document.getElementById("genero");
-    const nivel = document.getElementById("nivel");
-    const password = document.getElementById("password");
-    const confirmarPassword = document.getElementById("confirmarPassword");
-    const terminos = document.getElementById("terminos");
-    const resultado = document.getElementById("resultadoRegistro");
-    const barraFuerza = document.getElementById("barraFuerza");
+const errorRun = document.getElementById("errorRun");
+const errorNombre = document.getElementById("errorNombre");
+const errorApellidos = document.getElementById("errorApellidos");
+const errorCorreoRegistro = document.getElementById("errorCorreo");
+const errorRegion = document.getElementById("errorRegion");
+const errorComuna = document.getElementById("errorComuna");
+const errorDireccion = document.getElementById("errorDireccion");
+const errorContrasenaRegistro = document.getElementById("errorContrasena");
+const errorConfirmar = document.getElementById("errorConfirmar");
 
-    // -----------------------------------------------------------
-    // FUNCIONES AUXILIARES DE UI
-    // -----------------------------------------------------------
+const DOMINIOS_PERMITIDOS_REGISTRO = [
+    "@duoc.cl",
+    "@profesor.duoc.cl",
+    "@gmail.com"
+];
 
-    function mostrarError(campo, idError, mensaje) {
-        campo.classList.add("campo-invalido");
-        campo.classList.remove("campo-valido");
-        document.getElementById(idError).textContent = mensaje;
+function mostrarErrorRegistro(input, elemento, mensaje) {
+    elemento.textContent = mensaje;
+    elemento.style.display = "block";
+
+    input.classList.add("campo-invalido");
+    input.classList.remove("campo-valido");
+
+    input.setAttribute("aria-invalid", "true");
+}
+
+function limpiarErrorRegistro(input, elemento) {
+    elemento.textContent = "";
+    elemento.style.display = "none";
+
+    input.classList.remove("campo-invalido");
+    input.classList.add("campo-valido");
+
+    input.removeAttribute("aria-invalid");
+}
+
+function runValido(run) {
+    run = run
+        .toUpperCase()
+        .replace(/\./g, "")
+        .replace(/-/g, "");
+
+    if (!/^[0-9]{6,8}[0-9K]$/.test(run)) {
         return false;
     }
 
-    function mostrarCorrecto(campo, idError) {
-        campo.classList.remove("campo-invalido");
-        campo.classList.add("campo-valido");
-        document.getElementById(idError).textContent = "";
-        return true;
+    const cuerpo = run.slice(0, -1);
+    const dvIngresado = run.slice(-1);
+
+    let suma = 0;
+    let multiplicador = 2;
+
+    for (let i = cuerpo.length - 1; i >= 0; i--) {
+        suma += Number(cuerpo[i]) * multiplicador;
+
+        multiplicador++;
+
+        if (multiplicador > 7) {
+            multiplicador = 2;
+        }
     }
 
-    // -----------------------------------------------------------
-    // VALIDACIONES INDIVIDUALES
-    // -----------------------------------------------------------
+    const resto = 11 - (suma % 11);
 
-    function validarNombre() {
-        const valor = nombre.value.trim();
+    let dvCalculado;
 
-        if (valor === "") {
-            return mostrarError(nombre, "errorNombre", "Debes ingresar tu nombre completo.");
-        }
-        if (valor.length < 3) {
-            return mostrarError(nombre, "errorNombre", "El nombre debe tener al menos 3 caracteres.");
-        }
-        return mostrarCorrecto(nombre, "errorNombre");
+    if (resto === 11) {
+        dvCalculado = "0";
+    } else if (resto === 10) {
+        dvCalculado = "K";
+    } else {
+        dvCalculado = String(resto);
     }
 
-    function validarEmail() {
-        const valor = email.value.trim();
+    return dvIngresado === dvCalculado;
+}
 
-        if (valor === "") {
-            return mostrarError(email, "errorEmail", "Debes ingresar tu correo electrónico.");
-        }
-        if (!valor.includes("@") || !valor.includes(".")) {
-            return mostrarError(email, "errorEmail", "Ingresa un correo válido (ejemplo: nombre@dominio.com).");
-        }
-        return mostrarCorrecto(email, "errorEmail");
+function validarRun() {
+    const run = inputRun.value
+        .trim()
+        .toUpperCase();
+
+    if (run === "") {
+        mostrarErrorRegistro(
+            inputRun,
+            errorRun,
+            "El RUN es obligatorio."
+        );
+
+        return false;
     }
 
-    function validarEdad() {
-        const valor = edad.value;
+    if (run.includes(".") || run.includes("-")) {
+        mostrarErrorRegistro(
+            inputRun,
+            errorRun,
+            "Ingresa el RUN sin puntos ni guion."
+        );
 
-        if (valor === "") {
-            return mostrarError(edad, "errorEdad", "Debes ingresar tu edad.");
-        }
-        if (Number(valor) < 13) {
-            return mostrarError(edad, "errorEdad", "Debes tener al menos 13 años para crear una cuenta.");
-        }
-        if (Number(valor) > 99) {
-            return mostrarError(edad, "errorEdad", "Ingresa una edad válida.");
-        }
-        return mostrarCorrecto(edad, "errorEdad");
+        return false;
     }
 
-    // Requerimiento 1: el <select> de plataforma no puede quedar vacío.
-    function validarPlataforma() {
-        if (plataforma.value === "") {
-            return mostrarError(plataforma, "errorPlataforma", "Selecciona tu plataforma preferida.");
-        }
-        return mostrarCorrecto(plataforma, "errorPlataforma");
+    if (run.length < 7 || run.length > 9) {
+        mostrarErrorRegistro(
+            inputRun,
+            errorRun,
+            "El RUN debe tener entre 7 y 9 caracteres."
+        );
+
+        return false;
     }
 
-    function validarGenero() {
-        if (genero.value === "") {
-            return mostrarError(genero, "errorGenero", "Selecciona tu género favorito.");
-        }
-        return mostrarCorrecto(genero, "errorGenero");
+    if (!runValido(run)) {
+        mostrarErrorRegistro(
+            inputRun,
+            errorRun,
+            "El RUN ingresado no es válido."
+        );
+
+        return false;
     }
 
-    // Requerimiento 2: el <select> de nivel no puede quedar vacío.
-    function validarNivel() {
-        if (nivel.value === "") {
-            return mostrarError(nivel, "errorNivel", "Selecciona tu nivel de experiencia.");
-        }
-        return mostrarCorrecto(nivel, "errorNivel");
+    limpiarErrorRegistro(
+        inputRun,
+        errorRun
+    );
+
+    return true;
+}
+
+function validarNombre() {
+    const nombre = inputNombre.value.trim();
+
+    if (nombre === "") {
+        mostrarErrorRegistro(
+            inputNombre,
+            errorNombre,
+            "El nombre es obligatorio."
+        );
+
+        return false;
     }
 
-    // Requerimiento 3: contraseña de al menos 8 caracteres.
-    function validarPassword() {
-        const valor = password.value;
+    if (nombre.length > 50) {
+        mostrarErrorRegistro(
+            inputNombre,
+            errorNombre,
+            "El nombre no puede superar los 50 caracteres."
+        );
 
-        actualizarMedidorFuerza(valor);
-
-        if (valor === "") {
-            return mostrarError(password, "errorPassword", "Debes ingresar una contraseña.");
-        }
-        if (valor.length < 8) {
-            return mostrarError(password, "errorPassword", "La contraseña debe tener mínimo 8 caracteres.");
-        }
-        return mostrarCorrecto(password, "errorPassword");
+        return false;
     }
 
-    // Requerimiento 4: ambas contraseñas deben coincidir.
-    function validarConfirmacion() {
-        if (confirmarPassword.value === "") {
-            return mostrarError(confirmarPassword, "errorConfirmar", "Debes confirmar tu contraseña.");
-        }
-        if (confirmarPassword.value !== password.value) {
-            return mostrarError(confirmarPassword, "errorConfirmar", "Las contraseñas no coinciden.");
-        }
-        return mostrarCorrecto(confirmarPassword, "errorConfirmar");
+    limpiarErrorRegistro(
+        inputNombre,
+        errorNombre
+    );
+
+    return true;
+}
+
+function validarApellidos() {
+    const apellidos = inputApellidos.value.trim();
+
+    if (apellidos === "") {
+        mostrarErrorRegistro(
+            inputApellidos,
+            errorApellidos,
+            "Los apellidos son obligatorios."
+        );
+
+        return false;
     }
 
-    function validarTerminos() {
-        const errorTerminos = document.getElementById("errorTerminos");
+    if (apellidos.length > 100) {
+        mostrarErrorRegistro(
+            inputApellidos,
+            errorApellidos,
+            "Los apellidos no pueden superar los 100 caracteres."
+        );
 
-        if (!terminos.checked) {
-            terminos.classList.add("campo-invalido");
-            errorTerminos.textContent = "Debes aceptar los términos y la política de privacidad.";
-            return false;
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        inputApellidos,
+        errorApellidos
+    );
+
+    return true;
+}
+
+function validarCorreoRegistro() {
+    const correo = inputCorreoRegistro.value
+        .trim()
+        .toLowerCase();
+
+    if (correo === "") {
+        mostrarErrorRegistro(
+            inputCorreoRegistro,
+            errorCorreoRegistro,
+            "El correo es obligatorio."
+        );
+
+        return false;
+    }
+
+    if (correo.length > 100) {
+        mostrarErrorRegistro(
+            inputCorreoRegistro,
+            errorCorreoRegistro,
+            "El correo no puede superar los 100 caracteres."
+        );
+
+        return false;
+    }
+
+    const expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!expresion.test(correo)) {
+        mostrarErrorRegistro(
+            inputCorreoRegistro,
+            errorCorreoRegistro,
+            "Ingresa un correo electrónico válido."
+        );
+
+        return false;
+    }
+
+    const dominioValido =
+        DOMINIOS_PERMITIDOS_REGISTRO.some(
+            function (dominio) {
+                return correo.endsWith(dominio);
+            }
+        );
+
+    if (!dominioValido) {
+        mostrarErrorRegistro(
+            inputCorreoRegistro,
+            errorCorreoRegistro,
+            "Solo se permiten correos @duoc.cl, @profesor.duoc.cl o @gmail.com."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        inputCorreoRegistro,
+        errorCorreoRegistro
+    );
+
+    return true;
+}
+
+function validarRegion() {
+    if (selectRegion.value === "") {
+        mostrarErrorRegistro(
+            selectRegion,
+            errorRegion,
+            "Selecciona una región."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        selectRegion,
+        errorRegion
+    );
+
+    return true;
+}
+
+function validarComuna() {
+    if (selectComuna.value === "") {
+        mostrarErrorRegistro(
+            selectComuna,
+            errorComuna,
+            "Selecciona una comuna."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        selectComuna,
+        errorComuna
+    );
+
+    return true;
+}
+
+function validarDireccion() {
+    const direccion = inputDireccion.value.trim();
+
+    if (direccion === "") {
+        mostrarErrorRegistro(
+            inputDireccion,
+            errorDireccion,
+            "La dirección es obligatoria."
+        );
+
+        return false;
+    }
+
+    if (direccion.length > 300) {
+        mostrarErrorRegistro(
+            inputDireccion,
+            errorDireccion,
+            "La dirección no puede superar los 300 caracteres."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        inputDireccion,
+        errorDireccion
+    );
+
+    return true;
+}
+
+function validarContrasenaRegistro() {
+    const contrasena = inputContrasenaRegistro.value;
+
+    if (contrasena === "") {
+        mostrarErrorRegistro(
+            inputContrasenaRegistro,
+            errorContrasenaRegistro,
+            "La contraseña es obligatoria."
+        );
+
+        return false;
+    }
+
+    if (
+        contrasena.length < 4 ||
+        contrasena.length > 10
+    ) {
+        mostrarErrorRegistro(
+            inputContrasenaRegistro,
+            errorContrasenaRegistro,
+            "La contraseña debe tener entre 4 y 10 caracteres."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        inputContrasenaRegistro,
+        errorContrasenaRegistro
+    );
+
+    return true;
+}
+
+function validarConfirmacion() {
+    if (inputConfirmar.value === "") {
+        mostrarErrorRegistro(
+            inputConfirmar,
+            errorConfirmar,
+            "Debes confirmar la contraseña."
+        );
+
+        return false;
+    }
+
+    if (
+        inputConfirmar.value !==
+        inputContrasenaRegistro.value
+    ) {
+        mostrarErrorRegistro(
+            inputConfirmar,
+            errorConfirmar,
+            "Las contraseñas no coinciden."
+        );
+
+        return false;
+    }
+
+    limpiarErrorRegistro(
+        inputConfirmar,
+        errorConfirmar
+    );
+
+    return true;
+}
+
+function cargarRegiones() {
+    REGIONES_COMUNAS.forEach(
+        function (item, indice) {
+            const option =
+                document.createElement("option");
+
+            option.value = indice;
+            option.textContent = item.region;
+
+            selectRegion.appendChild(option);
         }
-        terminos.classList.remove("campo-invalido");
-        errorTerminos.textContent = "";
-        return true;
+    );
+}
+
+function cargarComunas() {
+    selectComuna.innerHTML =
+        '<option value="">Selecciona una comuna</option>';
+
+    if (selectRegion.value === "") {
+        selectComuna.disabled = true;
+        return;
     }
 
-    // Medidor visual de fortaleza de contraseña (mejora de experiencia,
-    // no es parte estricta del requerimiento pero refuerza IE1.2.1/IE1.2.2).
-    function actualizarMedidorFuerza(valor) {
-        let puntaje = 0;
-        if (valor.length >= 8) puntaje++;
-        if (/[A-Z]/.test(valor)) puntaje++;
-        if (/[0-9]/.test(valor)) puntaje++;
-        if (/[^A-Za-z0-9]/.test(valor)) puntaje++;
+    const indice =
+        Number(selectRegion.value);
 
-        const porcentajes = [0, 25, 55, 80, 100];
-        const colores = ["#f43f5e", "#f43f5e", "#f59e0b", "#22d3ee", "#22c55e"];
+    const region =
+        REGIONES_COMUNAS[indice];
 
-        barraFuerza.style.width = porcentajes[puntaje] + "%";
-        barraFuerza.style.background = colores[puntaje];
+    region.comunas.forEach(
+        function (comuna) {
+            const option =
+                document.createElement("option");
+
+            option.value = comuna;
+            option.textContent = comuna;
+
+            selectComuna.appendChild(option);
+        }
+    );
+
+    selectComuna.disabled = false;
+}
+
+function obtenerUsuariosRegistro() {
+    const datos =
+        localStorage.getItem("levelupUsuarios");
+
+    if (!datos) {
+        return [];
     }
 
-    // -----------------------------------------------------------
-    // EVENTOS EN TIEMPO REAL (input / change)
-    // -----------------------------------------------------------
-    nombre.addEventListener("input", validarNombre);
-    email.addEventListener("input", validarEmail);
-    edad.addEventListener("input", validarEdad);
-    password.addEventListener("input", validarPassword);
-    confirmarPassword.addEventListener("input", validarConfirmacion);
+    try {
+        return JSON.parse(datos);
+    } catch (error) {
+        return [];
+    }
+}
 
-    plataforma.addEventListener("change", validarPlataforma);
-    genero.addEventListener("change", validarGenero);
-    nivel.addEventListener("change", validarNivel);
-    terminos.addEventListener("change", validarTerminos);
+function correoYaRegistrado(correo) {
+    const usuarios =
+        obtenerUsuariosRegistro();
 
-    // -----------------------------------------------------------
-    // EVENTO SUBMIT: valida todo antes de "enviar"
-    // -----------------------------------------------------------
-    formulario.addEventListener("submit", function (evento) {
+    return usuarios.some(
+        function (usuario) {
+            return (
+                usuario.correo.toLowerCase() ===
+                correo.toLowerCase()
+            );
+        }
+    );
+}
+
+function runYaRegistrado(run) {
+    const usuarios =
+        obtenerUsuariosRegistro();
+
+    return usuarios.some(
+        function (usuario) {
+            return usuario.run === run;
+        }
+    );
+}
+
+function guardarUsuario() {
+    const usuarios =
+        obtenerUsuariosRegistro();
+
+    const indiceRegion =
+        Number(selectRegion.value);
+
+    const usuario = {
+        run:
+            inputRun.value
+                .trim()
+                .toUpperCase(),
+
+        nombre:
+            inputNombre.value.trim(),
+
+        apellidos:
+            inputApellidos.value.trim(),
+
+        correo:
+            inputCorreoRegistro.value
+                .trim()
+                .toLowerCase(),
+
+        fechaNacimiento:
+            inputFecha.value,
+
+        region:
+            REGIONES_COMUNAS[indiceRegion].region,
+
+        comuna:
+            selectComuna.value,
+
+        direccion:
+            inputDireccion.value.trim(),
+
+        contrasena:
+            inputContrasenaRegistro.value,
+
+        rol:
+            "cliente"
+    };
+
+    usuarios.push(usuario);
+
+    localStorage.setItem(
+        "levelupUsuarios",
+        JSON.stringify(usuarios)
+    );
+}
+
+function mostrarMensajeRegistro(mensaje, tipo) {
+    mensajeRegistro.textContent = mensaje;
+
+    mensajeRegistro.style.padding = "12px";
+    mensajeRegistro.style.borderRadius = "8px";
+
+    if (tipo === "correcto") {
+        mensajeRegistro.style.color = "#2ecc71";
+        mensajeRegistro.style.border = "1px solid #2ecc71";
+        mensajeRegistro.style.background = "rgba(46,204,113,.12)";
+    } else {
+        mensajeRegistro.style.color = "#ff5252";
+        mensajeRegistro.style.border = "1px solid #ff5252";
+        mensajeRegistro.style.background = "rgba(255,82,82,.12)";
+    }
+}
+
+inputRun.addEventListener(
+    "input",
+    validarRun
+);
+
+inputNombre.addEventListener(
+    "input",
+    validarNombre
+);
+
+inputApellidos.addEventListener(
+    "input",
+    validarApellidos
+);
+
+inputCorreoRegistro.addEventListener(
+    "input",
+    validarCorreoRegistro
+);
+
+inputDireccion.addEventListener(
+    "input",
+    validarDireccion
+);
+
+inputContrasenaRegistro.addEventListener(
+    "input",
+    function () {
+        validarContrasenaRegistro();
+
+        if (inputConfirmar.value !== "") {
+            validarConfirmacion();
+        }
+    }
+);
+
+inputConfirmar.addEventListener(
+    "input",
+    validarConfirmacion
+);
+
+selectRegion.addEventListener(
+    "change",
+    function () {
+        cargarComunas();
+        validarRegion();
+    }
+);
+
+selectComuna.addEventListener(
+    "change",
+    validarComuna
+);
+
+cargarRegiones();
+
+formRegistro.addEventListener(
+    "submit",
+    function (evento) {
         evento.preventDefault();
 
-        const todoValido = [
-            validarNombre(),
-            validarEmail(),
-            validarEdad(),
-            validarPlataforma(),
-            validarGenero(),
-            validarNivel(),
-            validarPassword(),
-            validarConfirmacion(),
-            validarTerminos()
-        ].every(Boolean);
+        const runCorrecto =
+            validarRun();
 
-        resultado.classList.remove("exito", "error");
+        const nombreCorrecto =
+            validarNombre();
 
-        if (todoValido) {
-            resultado.classList.add("exito");
-            resultado.textContent = "✔ ¡Cuenta creada correctamente! Bienvenido/a a LevelUp Store, " + nombre.value.trim() + ".";
-            resultado.style.display = "block";
+        const apellidosCorrectos =
+            validarApellidos();
 
-            console.log("Nuevo registro:", {
-                nombre: nombre.value.trim(),
-                email: email.value.trim(),
-                edad: edad.value,
-                plataforma: plataforma.value,
-                genero: genero.value,
-                nivel: nivel.value
-            });
+        const correoCorrecto =
+            validarCorreoRegistro();
 
-            formulario.reset();
-            document.querySelectorAll("#formRegistro input, #formRegistro select").forEach(function (campo) {
-                campo.classList.remove("campo-valido", "campo-invalido");
-            });
-            barraFuerza.style.width = "0%";
+        const regionCorrecta =
+            validarRegion();
 
-        } else {
-            resultado.classList.add("error");
-            resultado.textContent = "❌ Revisa los campos marcados en rojo antes de continuar.";
-            resultado.style.display = "block";
+        const comunaCorrecta =
+            validarComuna();
+
+        const direccionCorrecta =
+            validarDireccion();
+
+        const contrasenaCorrecta =
+            validarContrasenaRegistro();
+
+        const confirmacionCorrecta =
+            validarConfirmacion();
+
+        if (
+            !runCorrecto ||
+            !nombreCorrecto ||
+            !apellidosCorrectos ||
+            !correoCorrecto ||
+            !regionCorrecta ||
+            !comunaCorrecta ||
+            !direccionCorrecta ||
+            !contrasenaCorrecta ||
+            !confirmacionCorrecta
+        ) {
+            mostrarMensajeRegistro(
+                "Revisa los campos marcados antes de continuar.",
+                "error"
+            );
+
+            return;
         }
-    });
 
-    // -----------------------------------------------------------
-    // BOTÓN LIMPIAR
-    // -----------------------------------------------------------
-    document.getElementById("btnLimpiarRegistro").addEventListener("click", function () {
-        setTimeout(function () {
-            document.querySelectorAll("#formRegistro input, #formRegistro select").forEach(function (campo) {
-                campo.classList.remove("campo-valido", "campo-invalido");
-            });
-            document.querySelectorAll("#formRegistro .mensaje-error").forEach(function (p) {
-                p.textContent = "";
-            });
-            resultado.style.display = "none";
-            barraFuerza.style.width = "0%";
-        }, 0);
-    });
+        const correo =
+            inputCorreoRegistro.value
+                .trim()
+                .toLowerCase();
 
-});
+        const run =
+            inputRun.value
+                .trim()
+                .toUpperCase();
+
+        if (correoYaRegistrado(correo)) {
+            mostrarErrorRegistro(
+                inputCorreoRegistro,
+                errorCorreoRegistro,
+                "Este correo ya se encuentra registrado."
+            );
+
+            return;
+        }
+
+        if (runYaRegistrado(run)) {
+            mostrarErrorRegistro(
+                inputRun,
+                errorRun,
+                "Este RUN ya se encuentra registrado."
+            );
+
+            return;
+        }
+
+        guardarUsuario();
+
+        mostrarMensajeRegistro(
+            "Cuenta creada correctamente. Ahora puedes iniciar sesión.",
+            "correcto"
+        );
+
+        formRegistro.reset();
+
+        document
+            .querySelectorAll("#formRegistro input, #formRegistro select")
+            .forEach(
+                function (campo) {
+                    campo.classList.remove(
+                        "campo-valido",
+                        "campo-invalido"
+                    );
+                }
+            );
+
+        selectComuna.innerHTML =
+            '<option value="">Primero selecciona una región</option>';
+
+        selectComuna.disabled = true;
+
+        setTimeout(
+            function () {
+                window.location.href =
+                    "login.html";
+            },
+            1500
+        );
+    }
+);

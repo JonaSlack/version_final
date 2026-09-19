@@ -1,155 +1,402 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Iniciar sesión | LevelUp Store</title>
-    <meta name="description" content="Inicia sesión en tu cuenta de LevelUp Store para revisar tus pedidos y beneficios.">
+
+    <meta
+        name="description"
+        content="Inicia sesión en LevelUp Store para acceder a tu cuenta.">
+
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+    <a class="skip-link" href="#contenido">
+        Saltar al contenido principal
+    </a>
 
+
+    
     <header class="site-header">
-        <div class="contenedor navbar">
-            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
 
-            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+        <div class="contenedor navbar">
+
+            <a href="index.html" class="logo">
+                🎮 Level<span class="acento">Up</span> Store
+            </a>
+
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
 
             <ul id="navLinks" class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="registro.html">Crear cuenta</a></li>
-                <li><a href="login.html">Iniciar sesión</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="catalogo.html">
+                        Catálogo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="carrito.html">
+                        Carrito
+                    </a>
+                </li>
+
+                <li>
+                    <a href="registro.html">
+                        Crear cuenta
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html" class="activo">
+                        Iniciar sesión
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="asistente.html">
+                        Asistente IA
+                    </a>
+                </li>
+
             </ul>
 
             <div class="nav-acciones">
-                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
-                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+
+                <a
+                    href="carrito.html"
+                    class="carrito-link"
+                    aria-label="Ver carrito de compras">
+
+                    🛒
+
+                    <span
+                        id="carritoContador"
+                        class="carrito-badge"
+                        style="display:none;">
+                        0
+                    </span>
+
                 </a>
+
             </div>
+
         </div>
+
     </header>
 
 
+    
     <main id="contenido">
-        <section class="seccion">
-            <div class="contenedor form-ancho-medio">
 
-                <p class="migas"><a href="index.html">Inicio</a> / Iniciar sesión</p>
+        <section class="page-hero">
+
+            <div class="contenedor">
+
+                <p class="migas">
+
+                    <a href="index.html">
+                        Inicio
+                    </a>
+
+                    / Iniciar sesión
+
+                </p>
+
+                <h1>
+                    Iniciar sesión
+                </h1>
+
+                <p>
+                    Ingresa tus datos para acceder a LevelUp Store.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        
+        <section class="seccion">
+
+            <div
+                class="contenedor"
+                style="max-width: 620px;">
 
                 <div class="tarjeta-form">
 
-                    <h1 style="font-size:1.6rem;">Iniciar sesión</h1>
-                    <p class="subtitulo" style="margin-bottom:26px;">
-                        Ingresa con tu correo y contraseña. ¿No tienes cuenta?
-                        <a href="registro.html">Regístrate aquí</a>.
-                    </p>
+                    <div class="seccion-titulo">
 
-                    <!-- Esta página valida con un botón "onclick" en vez del
-                         evento "submit" del formulario, para demostrar ambas
-                         técnicas de manejo de eventos dentro del proyecto. -->
-                    <div id="formLogin">
+                        <h2>
+                            Acceso de usuario
+                        </h2>
 
-                        <div class="grupo-campo">
-                            <label for="correoLogin">Correo electrónico <span class="requerido">*</span></label>
-                            <input
-                                type="email"
-                                id="correoLogin"
-                                name="correo"
-                                autocomplete="email"
-                                placeholder="tucorreo@ejemplo.com"
-                                aria-describedby="errorCorreoLogin">
-                            <p id="errorCorreoLogin" class="mensaje-error" aria-live="polite"></p>
-                        </div>
-
-                        <div class="grupo-campo">
-                            <label for="claveLogin">Contraseña <span class="requerido">*</span></label>
-                            <input
-                                type="password"
-                                id="claveLogin"
-                                name="clave"
-                                autocomplete="current-password"
-                                aria-describedby="errorClaveLogin">
-                            <p id="errorClaveLogin" class="mensaje-error" aria-live="polite"></p>
-                        </div>
-
-                        <div class="grupo-campo check-linea">
-                            <input type="checkbox" id="mostrarClave">
-                            <label for="mostrarClave">Mostrar contraseña</label>
-                        </div>
-
-                        <div class="grupo-campo check-linea">
-                            <input type="checkbox" id="recordarSesion" checked>
-                            <label for="recordarSesion">Recordar mi sesión en este equipo</label>
-                        </div>
-
-                        <button type="button" id="btnIniciarSesion" class="btn btn-primario btn-ancho">
-                            Iniciar sesión
-                        </button>
-
-                        <div id="resultadoLogin" class="mensaje-resultado" role="alert"></div>
-
-                        <p class="ayuda" style="text-align:center; margin-top:16px;">
-                            Cuenta de demostración: <strong>demo@levelupstore.cl</strong> / <strong>Gamer2026!</strong>
+                        <p>
+                            Completa tu correo electrónico y contraseña.
                         </p>
+
                     </div>
 
+
+                    <form
+                        id="formLogin"
+                        novalidate>
+
+
+                    
+                        <div class="campo">
+
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo"
+                                name="correo"
+                                maxlength="100"
+                                autocomplete="email"
+                                placeholder="ejemplo@duoc.cl">
+
+                            <small
+                                id="errorCorreo"
+                                class="mensaje-error"
+                                aria-live="polite">
+                            </small>
+
+                            <p class="ayuda">
+                                Se permiten correos
+                                @duoc.cl,
+                                @profesor.duoc.cl
+                                y @gmail.com.
+                            </p>
+
+                        </div>
+
+
+                        
+                        <div class="campo">
+
+                            <label for="contrasena">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="contrasena"
+                                name="contrasena"
+                                minlength="4"
+                                maxlength="10"
+                                autocomplete="current-password"
+                                placeholder="Entre 4 y 10 caracteres">
+
+                            <small
+                                id="errorContrasena"
+                                class="mensaje-error"
+                                aria-live="polite">
+                            </small>
+
+                        </div>
+
+
+                        
+                        <div
+                            id="mensajeLogin"
+                            aria-live="polite"
+                            style="margin-bottom: 16px;">
+                        </div>
+
+
+                
+                        <button
+                            type="submit"
+                            class="btn btn-primario btn-ancho">
+
+                            Iniciar sesión
+
+                        </button>
+
+
+                        <p
+                            class="ayuda"
+                            style="text-align:center; margin-top:20px;">
+
+                            ¿No tienes una cuenta?
+
+                            <a href="registro.html">
+                                Crear cuenta
+                            </a>
+
+                        </p>
+
+                    </form>
+
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
-
     <footer class="site-footer">
+
         <div class="contenedor footer-grid">
+
             <div class="footer-marca">
-                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
-                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
-                <div class="footer-social" aria-label="Redes sociales">
-                    <a href="#" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="X (Twitter)">X</a>
-                    <a href="#" aria-label="YouTube">YT</a>
-                </div>
+
+                <a href="index.html" class="logo">
+                    🎮 Level<span class="acento">Up</span> Store
+                </a>
+
+                <p>
+                    Tu tienda especializada en videojuegos
+                    para PS5 y PC.
+                </p>
+
             </div>
+
+
             <div>
-                <h4>Tienda</h4>
+
+                <h4>
+                    Tienda
+                </h4>
+
                 <ul>
-                    <li><a href="catalogo.html">Catálogo completo</a></li>
-                    <li><a href="carrito.html">Mi carrito</a></li>
+
+                    <li>
+                        <a href="catalogo.html">
+                            Catálogo
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="carrito.html">
+                            Carrito
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="nosotros.html">
+                            Nosotros
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
+
             <div>
-                <h4>Mi cuenta</h4>
+
+                <h4>
+                    Información
+                </h4>
+
                 <ul>
-                    <li><a href="registro.html">Crear cuenta</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+
+                    <li>
+                        <a href="blog.html">
+                            Blog
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
+
             <div>
-                <h4>Contacto</h4>
+
+                <h4>
+                    Mi cuenta
+                </h4>
+
                 <ul>
-                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
-                    <li><a href="contacto.html">Formulario de contacto</a></li>
-                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
-                    <li>Lunes a sábado, 9:00–20:00</li>
+
+                    <li>
+                        <a href="registro.html">
+                            Crear cuenta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            Iniciar sesión
+                        </a>
+                    </li>
+
                 </ul>
+
             </div>
+
         </div>
+
+
         <div class="contenedor footer-legal">
-            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
-            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+
+            <span>
+                ©
+                <span id="anioActual">2026</span>
+                LevelUp Store.
+                Proyecto académico DSY1104.
+            </span>
+
+            <span>
+                Desarrollo Fullstack II.
+            </span>
+
         </div>
+
     </footer>
 
-    <script src="assets/js/datos-juegos.js"></script>
+
     <script src="assets/js/main.js"></script>
     <script src="assets/js/login.js"></script>
 
 </body>
+
 </html>

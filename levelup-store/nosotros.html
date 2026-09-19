@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Contacto | LevelUp Store</title>
+    <title>Nosotros | LevelUp Store</title>
 
     <meta
         name="description"
-        content="Contáctanos para consultas, ayuda y soporte en LevelUp Store.">
+        content="Información sobre LevelUp Store y su equipo de desarrollo.">
 
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/rubrica.css">
 </head>
 
 <body>
@@ -19,6 +20,8 @@
     <a class="skip-link" href="#contenido">
         Saltar al contenido principal
     </a>
+
+    <!-- HEADER -->
 
     <header class="site-header">
 
@@ -52,7 +55,7 @@
                 </li>
 
                 <li>
-                    <a href="nosotros.html">
+                    <a href="nosotros.html" class="activo">
                         Nosotros
                     </a>
                 </li>
@@ -82,7 +85,7 @@
                 </li>
 
                 <li>
-                    <a href="contacto.html" class="activo">
+                    <a href="contacto.html">
                         Contacto
                     </a>
                 </li>
@@ -119,6 +122,9 @@
 
     </header>
 
+
+    <!-- CONTENIDO -->
+
     <main id="contenido">
 
         <section class="page-hero">
@@ -129,138 +135,185 @@
                     <a href="index.html">
                         Inicio
                     </a>
-                    / Contacto
+                    / Nosotros
                 </p>
 
                 <h1>
-                    Contacto
+                    Nosotros
                 </h1>
 
                 <p>
-                    ¿Tienes alguna consulta? Envíanos un mensaje
-                    y te responderemos lo antes posible.
+                    Conoce LevelUp Store y al equipo que
+                    desarrolló este proyecto académico.
                 </p>
 
             </div>
 
         </section>
 
+
+        <!-- EMPRESA -->
+
         <section class="seccion">
 
-            <div
-                class="contenedor"
-                style="max-width: 760px;">
+            <div class="contenedor grilla-dos">
 
-                <div class="tarjeta-form">
+                <article class="tarjeta-form">
 
-                    <div class="seccion-titulo">
+                    <h2>
+                        ¿Qué es LevelUp Store?
+                    </h2>
 
-                        <h2>
-                            Envíanos un mensaje
-                        </h2>
+                    <p>
+                        LevelUp Store es una tienda online
+                        especializada en videojuegos para
+                        PlayStation 5 y PC.
+                    </p>
 
-                        <p>
-                            Completa el siguiente formulario.
-                        </p>
+                    <p>
+                        Nuestro objetivo es ofrecer una experiencia
+                        sencilla para explorar videojuegos,
+                        consultar sus características, revisar
+                        precios y agregarlos al carrito de compras.
+                    </p>
 
-                    </div>
+                    <p>
+                        Este proyecto fue desarrollado como parte
+                        de la asignatura Desarrollo Fullstack II,
+                        aplicando HTML, CSS, JavaScript,
+                        LocalStorage y control de versiones
+                        mediante GitHub.
+                    </p>
 
-                    <form
-                        id="formContacto"
-                        novalidate>
+                </article>
 
-                        <div class="campo">
 
-                            <label for="nombre">
-                                Nombre
-                            </label>
+                <article class="tarjeta-form">
 
-                            <input
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                maxlength="100"
-                                autocomplete="name"
-                                placeholder="Ingresa tu nombre">
+                    <h2>
+                        Nuestra propuesta
+                    </h2>
 
-                            <small
-                                id="errorNombre"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
+                    <ul class="lista-especificaciones">
 
-                        </div>
+                        <li>
+                            <span>Catálogo</span>
+                            <strong>PS5 y PC</strong>
+                        </li>
 
-                        <div class="campo">
+                        <li>
+                            <span>Carrito</span>
+                            <strong>Persistente</strong>
+                        </li>
 
-                            <label for="correo">
-                                Correo electrónico
-                            </label>
+                        <li>
+                            <span>Diseño</span>
+                            <strong>Responsivo</strong>
+                        </li>
 
-                            <input
-                                type="email"
-                                id="correo"
-                                name="correo"
-                                maxlength="100"
-                                autocomplete="email"
-                                placeholder="ejemplo@duoc.cl">
+                        <li>
+                            <span>Soporte</span>
+                            <strong>Contacto e IA</strong>
+                        </li>
 
-                            <small
-                                id="errorCorreo"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
+                    </ul>
 
-                            <p class="ayuda">
-                                Se permiten correos
-                                @duoc.cl,
-                                @profesor.duoc.cl
-                                y @gmail.com.
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- EQUIPO -->
+
+        <section class="seccion franja-alterna">
+
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+
+                    <h2>
+                        Equipo de desarrollo
+                    </h2>
+
+                    <p>
+                        Integrantes responsables del desarrollo
+                        del proyecto LevelUp Store.
+                    </p>
+
+                </div>
+
+
+                <div class="grilla-juegos">
+
+                    <article class="tarjeta-juego">
+
+                        <div class="cuerpo">
+
+                            <h3>
+                                Diego Alejandro Gonzalez
+                            </h3>
+
+                            <p class="genero">
+                                Desarrollo Frontend
+                            </p>
+
+                            <p>
+                                Participación en inicio,
+                                catálogo, productos y
+                                contenido visual.
                             </p>
 
                         </div>
 
-                        <div class="campo">
+                    </article>
 
-                            <label for="comentario">
-                                Comentario
-                            </label>
 
-                            <textarea
-                                id="comentario"
-                                name="comentario"
-                                maxlength="500"
-                                rows="7"
-                                placeholder="Escribe tu mensaje aquí..."></textarea>
+                    <article class="tarjeta-juego">
 
-                            <small
-                                id="errorComentario"
-                                class="mensaje-error"
-                                aria-live="polite">
-                            </small>
+                        <div class="cuerpo">
 
-                            <p class="ayuda">
-                                Máximo 500 caracteres.
-                                <span id="contadorCaracteres">0</span>/500
+                            <h3>
+                                Stefani Verdugo
+                            </h3>
+
+                            <p class="genero">
+                                Desarrollo Frontend
+                            </p>
+
+                            <p>
+                                Participación en formularios,
+                                usuarios, contacto y
+                                experiencia visual.
                             </p>
 
                         </div>
 
-                        <div
-                            id="mensajeContacto"
-                            aria-live="polite"
-                            style="margin-bottom:16px;">
+                    </article>
+
+
+                    <article class="tarjeta-juego">
+
+                        <div class="cuerpo">
+
+                            <h3>
+                                Jonathan Aliaga
+                            </h3>
+
+                            <p class="genero">
+                                Desarrollo Frontend
+                            </p>
+
+                            <p>
+                                Participación en carrito,
+                                funcionalidades generales
+                                y asistente IA.
+                            </p>
+
                         </div>
 
-                        <button
-                            type="submit"
-                            class="btn btn-primario btn-ancho">
-
-                            Enviar mensaje
-
-                        </button>
-
-                    </form>
+                    </article>
 
                 </div>
 
@@ -269,6 +322,9 @@
         </section>
 
     </main>
+
+
+    <!-- FOOTER -->
 
     <footer class="site-footer">
 
@@ -287,14 +343,12 @@
 
             </div>
 
+
             <div>
 
-                <h4>
-                    Tienda
-                </h4>
+                <h4>Tienda</h4>
 
                 <ul>
-
                     <li>
                         <a href="catalogo.html">
                             Catálogo
@@ -312,19 +366,16 @@
                             Nosotros
                         </a>
                     </li>
-
                 </ul>
 
             </div>
 
+
             <div>
 
-                <h4>
-                    Información
-                </h4>
+                <h4>Información</h4>
 
                 <ul>
-
                     <li>
                         <a href="blog.html">
                             Blog
@@ -336,19 +387,16 @@
                             Contacto
                         </a>
                     </li>
-
                 </ul>
 
             </div>
 
+
             <div>
 
-                <h4>
-                    Mi cuenta
-                </h4>
+                <h4>Cuenta</h4>
 
                 <ul>
-
                     <li>
                         <a href="registro.html">
                             Crear cuenta
@@ -360,23 +408,23 @@
                             Iniciar sesión
                         </a>
                     </li>
-
                 </ul>
 
             </div>
 
         </div>
 
+
         <div class="contenedor footer-legal">
 
             <span>
-                © <span id="anioActual">2026</span>
-                LevelUp Store.
-                Proyecto académico DSY1104.
+                ©
+                <span id="anioActual">2026</span>
+                LevelUp Store — DSY1104.
             </span>
 
             <span>
-                Desarrollo Fullstack II.
+                Proyecto académico.
             </span>
 
         </div>
@@ -384,7 +432,6 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/contacto.js"></script>
 
 </body>
 

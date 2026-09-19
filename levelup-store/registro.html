@@ -1,256 +1,601 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Crear cuenta | LevelUp Store</title>
-    <meta name="description" content="Crea tu cuenta gratuita en LevelUp Store para comprar videojuegos de PS5 y PC con descuentos exclusivos.">
+
+    <meta
+        name="description"
+        content="Crea tu cuenta en LevelUp Store.">
+
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+    <a class="skip-link" href="#contenido">
+        Saltar al contenido principal
+    </a>
 
+   
     <header class="site-header">
-        <div class="contenedor navbar">
-            <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
 
-            <button id="botonMenu" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false" aria-controls="navLinks">☰</button>
+        <div class="contenedor navbar">
+
+            <a href="index.html" class="logo">
+                🎮 Level<span class="acento">Up</span> Store
+            </a>
+
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
 
             <ul id="navLinks" class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="catalogo.html">Catálogo</a></li>
-                <li><a href="carrito.html">Carrito</a></li>
-                <li><a href="registro.html">Crear cuenta</a></li>
-                <li><a href="login.html">Iniciar sesión</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+
+                <li>
+                    <a href="index.html">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="catalogo.html">
+                        Catálogo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="carrito.html">
+                        Carrito
+                    </a>
+                </li>
+
+                <li>
+                    <a href="registro.html" class="activo">
+                        Crear cuenta
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Iniciar sesión
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto
+                    </a>
+                </li>
+
+                <li>
+                    <a href="asistente.html">
+                        Asistente IA
+                    </a>
+                </li>
+
             </ul>
 
             <div class="nav-acciones">
-                <a href="carrito.html" class="carrito-link" aria-label="Ver carrito de compras">
-                    🛒 <span id="carritoContador" class="carrito-badge" style="display:none;">0</span>
+
+                <a
+                    href="carrito.html"
+                    class="carrito-link"
+                    aria-label="Ver carrito">
+
+                    🛒
+
+                    <span
+                        id="carritoContador"
+                        class="carrito-badge"
+                        style="display:none;">
+                        0
+                    </span>
+
                 </a>
+
             </div>
+
         </div>
+
     </header>
 
 
+    
     <main id="contenido">
-        <section class="seccion">
-            <div class="contenedor form-ancho-medio">
 
-                <p class="migas"><a href="index.html">Inicio</a> / Crear cuenta</p>
+        <section class="page-hero">
+
+            <div class="contenedor">
+
+                <p class="migas">
+
+                    <a href="index.html">
+                        Inicio
+                    </a>
+
+                    / Crear cuenta
+
+                </p>
+
+                <h1>
+                    Crear cuenta
+                </h1>
+
+                <p>
+                    Regístrate para acceder a LevelUp Store.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="seccion">
+
+            <div
+                class="contenedor"
+                style="max-width: 760px;">
 
                 <div class="tarjeta-form">
 
-                    <h1 style="font-size:1.6rem;">🎮 Crea tu cuenta gamer</h1>
-                    <p class="subtitulo" style="margin-bottom:26px;">
-                        Regístrate para guardar tu lista de deseos, recibir recomendaciones
-                        y aprovechar descuentos exclusivos para miembros.
-                    </p>
+                    <div class="seccion-titulo">
 
-                    <!-- novalidate: desactivamos la validación nativa del navegador
-                         porque la validación la controla nuestro propio JavaScript,
-                         como pide el punto 2 de la evaluación. -->
-                    <form id="formRegistro" novalidate autocomplete="on">
+                        <h2>
+                            Registro de usuario
+                        </h2>
 
-                        <!-- Nombre -->
-                        <div class="grupo-campo">
-                            <label for="nombre">Nombre completo <span class="requerido">*</span></label>
+                        <p>
+                            Completa tus datos personales.
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        id="formRegistro"
+                        novalidate>
+
+
+                        
+
+                        <div class="campo">
+
+                            <label for="run">
+                                RUN
+                            </label>
+
+                            <input
+                                type="text"
+                                id="run"
+                                name="run"
+                                minlength="7"
+                                maxlength="9"
+                                placeholder="12345678-K"
+                                autocomplete="off">
+
+                            <small
+                                id="errorRun"
+                                class="mensaje-error">
+                            </small>
+
+                            <p class="ayuda">
+                                Ingresa el RUN sin puntos ni guion.
+                                Ejemplo: 19011022K
+                            </p>
+
+                        </div>
+
+
+                       
+
+                        <div class="campo">
+
+                            <label for="nombre">
+                                Nombre
+                            </label>
+
                             <input
                                 type="text"
                                 id="nombre"
                                 name="nombre"
-                                autocomplete="name"
-                                placeholder="Ej: Camila Torres"
-                                aria-describedby="errorNombre"
-                                aria-required="true">
-                            <p id="errorNombre" class="mensaje-error" aria-live="polite"></p>
+                                maxlength="50"
+                                autocomplete="given-name"
+                                placeholder="Alejandro">
+
+                            <small
+                                id="errorNombre"
+                                class="mensaje-error">
+                            </small>
+
                         </div>
 
-                        <!-- Email -->
-                        <div class="grupo-campo">
-                            <label for="email">Correo electrónico <span class="requerido">*</span></label>
+
+                        
+
+                        <div class="campo">
+
+                            <label for="apellidos">
+                                Apellidos
+                            </label>
+
+                            <input
+                                type="text"
+                                id="apellidos"
+                                name="apellidos"
+                                maxlength="100"
+                                autocomplete="family-name"
+                                placeholder="González">
+
+                            <small
+                                id="errorApellidos"
+                                class="mensaje-error">
+                            </small>
+
+                        </div>
+
+
+                        
+
+                        <div class="campo">
+
+                            <label for="correo">
+                                Correo electrónico
+                            </label>
+
                             <input
                                 type="email"
-                                id="email"
-                                name="email"
+                                id="correo"
+                                name="correo"
+                                maxlength="100"
                                 autocomplete="email"
-                                placeholder="tucorreo@ejemplo.com"
-                                aria-describedby="errorEmail"
-                                aria-required="true">
-                            <p id="errorEmail" class="mensaje-error" aria-live="polite"></p>
+                                placeholder="ejemplo@gmail.com">
+
+                            <small
+                                id="errorCorreo"
+                                class="mensaje-error">
+                            </small>
+
+                            <p class="ayuda">
+                                Se permiten correos
+                                @duoc.cl,
+                                @profesor.duoc.cl,
+                                @Hotmail.com
+                                y @gmail.com.
+                            </p>
+
                         </div>
 
-                        <div class="form-fila">
 
-                            <!-- Edad -->
-                            <div class="grupo-campo">
-                                <label for="edad">Edad <span class="requerido">*</span></label>
-                                <input
-                                    type="number"
-                                    id="edad"
-                                    name="edad"
-                                    min="13"
-                                    max="99"
-                                    autocomplete="off"
-                                    aria-describedby="errorEdad"
-                                    aria-required="true">
-                                <p id="errorEdad" class="mensaje-error" aria-live="polite"></p>
-                            </div>
+                        
 
-                            <!-- Plataforma preferida -->
-                            <div class="grupo-campo">
-                                <label for="plataforma">Plataforma preferida <span class="requerido">*</span></label>
-                                <select id="plataforma" name="plataforma" aria-describedby="errorPlataforma" aria-required="true">
-                                    <option value="">Seleccione una plataforma</option>
-                                    <option value="ps5">PlayStation 5</option>
-                                    <option value="pc">PC</option>
-                                    <option value="ambas">Ambas</option>
-                                </select>
-                                <p id="errorPlataforma" class="mensaje-error" aria-live="polite"></p>
-                            </div>
-                        </div>
+                        <div class="campo">
 
-                        <div class="form-fila">
-
-                            <!-- Género favorito -->
-                            <div class="grupo-campo">
-                                <label for="genero">Género favorito <span class="requerido">*</span></label>
-                                <select id="genero" name="genero" aria-describedby="errorGenero" aria-required="true">
-                                    <option value="">Seleccione un género</option>
-                                    <option value="accion">Acción / Aventura</option>
-                                    <option value="rol">Rol (RPG)</option>
-                                    <option value="deporte">Deportes</option>
-                                    <option value="carreras">Carreras</option>
-                                    <option value="sandbox">Sandbox / Mundo abierto</option>
-                                    <option value="otro">Otro</option>
-                                </select>
-                                <p id="errorGenero" class="mensaje-error" aria-live="polite"></p>
-                            </div>
-
-                            <!-- Nivel de experiencia -->
-                            <div class="grupo-campo">
-                                <label for="nivel">Nivel de experiencia <span class="requerido">*</span></label>
-                                <select id="nivel" name="nivel" aria-describedby="errorNivel" aria-required="true">
-                                    <option value="">Seleccione nivel</option>
-                                    <option value="principiante">Principiante</option>
-                                    <option value="intermedio">Intermedio</option>
-                                    <option value="avanzado">Avanzado</option>
-                                    <option value="pro">Pro / Competitivo</option>
-                                </select>
-                                <p id="errorNivel" class="mensaje-error" aria-live="polite"></p>
-                            </div>
-                        </div>
-
-                        <!-- Contraseña -->
-                        <div class="grupo-campo">
-                            <label for="password">Contraseña <span class="requerido">*</span></label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                autocomplete="new-password"
-                                aria-describedby="errorPassword"
-                                aria-required="true">
-                            <div class="medidor-fuerza"><span id="barraFuerza"></span></div>
-                            <p id="errorPassword" class="mensaje-error" aria-live="polite">Mínimo 8 caracteres.</p>
-                        </div>
-
-                        <!-- Confirmar contraseña -->
-                        <div class="grupo-campo">
-                            <label for="confirmarPassword">Confirmar contraseña <span class="requerido">*</span></label>
-                            <input
-                                type="password"
-                                id="confirmarPassword"
-                                name="confirmarPassword"
-                                autocomplete="new-password"
-                                aria-describedby="errorConfirmar"
-                                aria-required="true">
-                            <p id="errorConfirmar" class="mensaje-error" aria-live="polite"></p>
-                        </div>
-
-                        <!-- Términos -->
-                        <div class="grupo-campo check-linea">
-                            <input type="checkbox" id="terminos" name="terminos" aria-describedby="errorTerminos" aria-required="true">
-                            <label for="terminos">
-                                Acepto los <a href="#" target="_blank">Términos y condiciones</a> y la
-                                <a href="#" target="_blank">Política de privacidad</a>.
+                            <label for="fechaNacimiento">
+                                Fecha de nacimiento
                             </label>
-                        </div>
-                        <p id="errorTerminos" class="mensaje-error" aria-live="polite"></p>
 
-                        <!-- Newsletter (opcional, no se valida) -->
-                        <div class="grupo-campo check-linea">
-                            <input type="checkbox" id="newsletter" name="newsletter">
-                            <label for="newsletter">Quiero recibir ofertas y novedades por correo (opcional).</label>
+                            <input
+                                type="date"
+                                id="fechaNacimiento"
+                                name="fechaNacimiento">
+
+                            <small
+                                id="errorFecha"
+                                class="mensaje-error">
+                            </small>
+
+                            <p class="ayuda">
+                                Campo opcional.
+                            </p>
+
                         </div>
 
-                        <div class="hero-acciones" style="margin-top:10px;">
-                            <button type="submit" class="btn btn-primario btn-ancho">Crear cuenta</button>
-                            <button type="reset" id="btnLimpiarRegistro" class="btn btn-secundario btn-ancho">Limpiar</button>
+
+                        
+
+                        <div class="campo">
+
+                            <label for="region">
+                                Región
+                            </label>
+
+                            <select
+                                id="region"
+                                name="region">
+
+                                <option value="">
+                                    Selecciona una región
+                                </option>
+
+                            </select>
+
+                            <small
+                                id="errorRegion"
+                                class="mensaje-error">
+                            </small>
+
                         </div>
 
-                        <div id="resultadoRegistro" class="mensaje-resultado" role="alert"></div>
+
+                        
+
+                        <div class="campo">
+
+                            <label for="comuna">
+                                Comuna
+                            </label>
+
+                            <select
+                                id="comuna"
+                                name="comuna"
+                                disabled>
+
+                                <option value="">
+                                    Primero selecciona una región
+                                </option>
+
+                            </select>
+
+                            <small
+                                id="errorComuna"
+                                class="mensaje-error">
+                            </small>
+
+                        </div>
+
+
+                        
+
+                        <div class="campo">
+
+                            <label for="direccion">
+                                Dirección
+                            </label>
+
+                            <input
+                                type="text"
+                                id="direccion"
+                                name="direccion"
+                                maxlength="300"
+                                autocomplete="street-address"
+                                placeholder="Ej: Avenida Principal 123">
+
+                            <small
+                                id="errorDireccion"
+                                class="mensaje-error">
+                            </small>
+
+                        </div>
+
+
+                        
+
+                        <div class="campo">
+
+                            <label for="contrasena">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="contrasena"
+                                name="contrasena"
+                                minlength="4"
+                                maxlength="10"
+                                autocomplete="new-password"
+                                placeholder="Entre 4 y 10 caracteres">
+
+                            <small
+                                id="errorContrasena"
+                                class="mensaje-error">
+                            </small>
+
+                        </div>
+
+
+                        
+
+                        <div class="campo">
+
+                            <label for="confirmarContrasena">
+                                Confirmar contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmarContrasena"
+                                name="confirmarContrasena"
+                                minlength="4"
+                                maxlength="10"
+                                autocomplete="new-password"
+                                placeholder="Repite tu contraseña">
+
+                            <small
+                                id="errorConfirmar"
+                                class="mensaje-error">
+                            </small>
+
+                        </div>
+
+
+                        
+
+                        <div
+                            id="mensajeRegistro"
+                            aria-live="polite"
+                            style="margin-bottom:16px;">
+                        </div>
+
+
+                    
+
+                        <button
+                            type="submit"
+                            class="btn btn-primario btn-ancho">
+
+                            Crear cuenta
+
+                        </button>
+
+
+                        <p
+                            class="ayuda"
+                            style="text-align:center; margin-top:20px;">
+
+                            ¿Ya tienes cuenta?
+
+                            <a href="login.html">
+                                Iniciar sesión
+                            </a>
+
+                        </p>
 
                     </form>
 
-                    <p class="ayuda" style="text-align:center; margin-top:18px;">
-                        ¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a>.
-                    </p>
-
                 </div>
+
             </div>
+
         </section>
+
     </main>
 
 
     <footer class="site-footer">
+
         <div class="contenedor footer-grid">
+
             <div class="footer-marca">
-                <a href="index.html" class="logo">🎮 Level<span class="acento">Up</span> Store</a>
-                <p>Tu tienda especializada en videojuegos para PS5 y PC. Envíos a todo Chile y códigos digitales al instante.</p>
-                <div class="footer-social" aria-label="Redes sociales">
-                    <a href="#" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="X (Twitter)">X</a>
-                    <a href="#" aria-label="YouTube">YT</a>
-                </div>
+
+                <a href="index.html" class="logo">
+                    🎮 Level<span class="acento">Up</span> Store
+                </a>
+
+                <p>
+                    Tu tienda especializada en videojuegos
+                    para PS5 y PC.
+                </p>
+
             </div>
+
+
             <div>
+
                 <h4>Tienda</h4>
+
                 <ul>
-                    <li><a href="catalogo.html">Catálogo completo</a></li>
-                    <li><a href="carrito.html">Mi carrito</a></li>
+                    <li>
+                        <a href="catalogo.html">
+                            Catálogo
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="carrito.html">
+                            Carrito
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="nosotros.html">
+                            Nosotros
+                        </a>
+                    </li>
                 </ul>
+
             </div>
+
+
             <div>
+
+                <h4>Información</h4>
+
+                <ul>
+                    <li>
+                        <a href="blog.html">
+                            Blog
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div>
+
                 <h4>Mi cuenta</h4>
+
                 <ul>
-                    <li><a href="registro.html">Crear cuenta</a></li>
-                    <li><a href="login.html">Iniciar sesión</a></li>
-                    <li><a href="contacto.html">Ayuda y soporte</a></li>
+                    <li>
+                        <a href="registro.html">
+                            Crear cuenta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            Iniciar sesión
+                        </a>
+                    </li>
                 </ul>
+
             </div>
-            <div>
-                <h4>Contacto</h4>
-                <ul>
-                    <li><a href="mailto:contacto@levelupstore.cl">contacto@levelupstore.cl</a></li>
-                    <li><a href="contacto.html">Formulario de contacto</a></li>
-                    <li><a href="https://wa.me/56900000000" target="_blank" rel="noopener">WhatsApp</a></li>
-                    <li>Lunes a sábado, 9:00–20:00</li>
-                </ul>
-            </div>
+
         </div>
+
+
         <div class="contenedor footer-legal">
-            <span>© <span id="anioActual">2026</span> LevelUp Store. Proyecto académico DSY1104 — Desarrollo Fullstack II.</span>
-            <span>Todas las marcas de consolas y videojuegos son propiedad de sus respectivos dueños.</span>
+
+            <span>
+                © <span id="anioActual">2026</span>
+                LevelUp Store.
+                Proyecto académico DSY1104.
+            </span>
+
+            <span>
+                Desarrollo Fullstack II.
+            </span>
+
         </div>
+
     </footer>
 
-    <script src="assets/js/datos-juegos.js"></script>
+
+   
     <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/regiones-comunas.js"></script>
+
     <script src="assets/js/registro.js"></script>
 
 </body>
+
 </html>
