@@ -1,14 +1,9 @@
 /* =========================================================================
-   LEVELUP STORE — HOJA DE ESTILOS EXTERNA PERSONALIZADA
-   Se enlaza desde TODAS las páginas HTML del sitio para garantizar una
-   apariencia visual consistente (Requisito 1.d de la Evaluación Parcial 1).
-   No depende de ningún framework externo (Bootstrap, Tailwind, etc.):
-   100% CSS propio, para que el sitio funcione también sin conexión a
-   internet durante la presentación.
+   LEVELUP STORE — HOJA DE ESTILOS PRINCIPAL
    ========================================================================= */
 
 /* -------------------------------------------------------------------------
-   1. VARIABLES GLOBALES (Design Tokens)
+   1. VARIABLES GLOBALES
    ------------------------------------------------------------------------- */
 :root {
     --bg: #0f0f1a;
@@ -56,7 +51,9 @@ body {
     line-height: 1.55;
 }
 
-img, svg, video {
+img,
+svg,
+video {
     max-width: 100%;
     display: block;
 }
@@ -70,7 +67,10 @@ a:hover {
     text-decoration: underline;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     line-height: 1.25;
     margin-top: 0;
 }
@@ -106,7 +106,7 @@ h1, h2, h3, h4 {
 }
 
 /* -------------------------------------------------------------------------
-   3. ENCABEZADO / NAVEGACIÓN (header + nav, en todas las páginas)
+   3. ENCABEZADO Y NAVEGACIÓN
    ------------------------------------------------------------------------- */
 .site-header {
     position: sticky;
@@ -243,7 +243,9 @@ h1, h2, h3, h4 {
     font-weight: 700;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: transform var(--transicion), box-shadow var(--transicion), background var(--transicion);
+    transition: transform var(--transicion),
+                box-shadow var(--transicion),
+                background var(--transicion);
     text-decoration: none;
 }
 
@@ -252,7 +254,11 @@ h1, h2, h3, h4 {
 }
 
 .btn-primario {
-    background: linear-gradient(135deg, var(--primario), var(--primario-oscuro));
+    background: linear-gradient(
+        135deg,
+        var(--primario),
+        var(--primario-oscuro)
+    );
     color: white;
     box-shadow: 0 6px 18px rgba(139, 92, 246, 0.35);
 }
@@ -319,12 +325,21 @@ h1, h2, h3, h4 {
 }
 
 /* -------------------------------------------------------------------------
-   5. HERO / SECCIONES DE INTRODUCCIÓN
+   5. HERO Y SECCIONES DE INTRODUCCIÓN
    ------------------------------------------------------------------------- */
 .hero {
     padding: 70px 0 50px;
-    background: radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25), transparent 45%),
-                radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.18), transparent 40%);
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(139, 92, 246, 0.25),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(34, 211, 238, 0.18),
+            transparent 40%
+        );
     border-bottom: 1px solid var(--borde);
 }
 
@@ -370,7 +385,11 @@ h1, h2, h3, h4 {
 .page-hero {
     padding: 46px 0;
     border-bottom: 1px solid var(--borde);
-    background: linear-gradient(180deg, rgba(139, 92, 246, 0.12), transparent);
+    background: linear-gradient(
+        180deg,
+        rgba(139, 92, 246, 0.12),
+        transparent
+    );
 }
 
 .page-hero p {
@@ -410,7 +429,7 @@ h1, h2, h3, h4 {
 }
 
 /* -------------------------------------------------------------------------
-   7. GRILLA DE PRODUCTOS (articles de juegos)
+   7. GRILLA DE PRODUCTOS
    ------------------------------------------------------------------------- */
 .grilla-juegos {
     display: grid;
@@ -425,7 +444,8 @@ h1, h2, h3, h4 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transicion), border-color var(--transicion);
+    transition: transform var(--transicion),
+                border-color var(--transicion);
 }
 
 .tarjeta-juego:hover {
@@ -441,23 +461,22 @@ h1, h2, h3, h4 {
     font-size: 2.4rem;
     color: rgba(255, 255, 255, 0.85);
     position: relative;
-    overflow: hidden; /* recorta cualquier cosa que se salga del cuadro (incluida la imagen) */
+    overflow: hidden;
 }
 
-/* Imagen de portada del juego: llena todo el cuadro sin deformarse */
 .portada img {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* recorta lo que sobra, en vez de estirar la imagen */
+    object-fit: cover;
     z-index: 0;
 }
 
 .portada span.icono {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
     position: relative;
-    z-index: 1; /* queda por encima de la imagen, como respaldo si no hay foto */
+    z-index: 1;
 }
 
 .portada .etiquetas {
@@ -466,7 +485,7 @@ h1, h2, h3, h4 {
     left: 10px;
     display: flex;
     gap: 6px;
-    z-index: 2; /* los badges PS5/PC siempre quedan visibles sobre la imagen */
+    z-index: 2;
 }
 
 .tarjeta-juego .cuerpo {
@@ -518,15 +537,33 @@ h1, h2, h3, h4 {
     font-size: 0.85rem;
 }
 
-/* Gradientes distintos por género para diferenciar portadas sin usar
-   imágenes con derechos de autor de terceros */
-.tema-accion   { background: linear-gradient(135deg, #7c3aed, #312e81); }
-.tema-mundo    { background: linear-gradient(135deg, #0891b2, #164e63); }
-.tema-carreras { background: linear-gradient(135deg, #ea580c, #7c2d12); }
-.tema-rol      { background: linear-gradient(135deg, #dc2626, #450a0a); }
-.tema-deporte  { background: linear-gradient(135deg, #16a34a, #052e16); }
-.tema-mundo2   { background: linear-gradient(135deg, #4338ca, #1e1b4b); }
-.tema-sandbox  { background: linear-gradient(135deg, #ca8a04, #422006); }
+.tema-accion {
+    background: linear-gradient(135deg, #7c3aed, #312e81);
+}
+
+.tema-mundo {
+    background: linear-gradient(135deg, #0891b2, #164e63);
+}
+
+.tema-carreras {
+    background: linear-gradient(135deg, #ea580c, #7c2d12);
+}
+
+.tema-rol {
+    background: linear-gradient(135deg, #dc2626, #450a0a);
+}
+
+.tema-deporte {
+    background: linear-gradient(135deg, #16a34a, #052e16);
+}
+
+.tema-mundo2 {
+    background: linear-gradient(135deg, #4338ca, #1e1b4b);
+}
+
+.tema-sandbox {
+    background: linear-gradient(135deg, #ca8a04, #422006);
+}
 
 /* -------------------------------------------------------------------------
    8. FILTROS DE CATÁLOGO
@@ -656,7 +693,6 @@ input[type="color"] {
     padding: 4px;
 }
 
-/* Estados de validación (equivalentes propios a is-valid / is-invalid) */
 .campo-invalido {
     border-color: var(--peligro) !important;
     box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.15) !important;
@@ -717,7 +753,8 @@ input[type="color"] {
     height: 100%;
     width: 0%;
     background: var(--peligro);
-    transition: width var(--transicion), background var(--transicion);
+    transition: width var(--transicion),
+                background var(--transicion);
 }
 
 .form-fila {
@@ -755,7 +792,7 @@ input[type="color"] {
 }
 
 /* -------------------------------------------------------------------------
-   10. PRODUCTO / VIDEO EMBEBIDO
+   10. PRODUCTO Y VIDEO
    ------------------------------------------------------------------------- */
 .detalle-producto {
     display: grid;
@@ -801,7 +838,7 @@ input[type="color"] {
 }
 
 /* -------------------------------------------------------------------------
-   11. ASISTENTE IA Y WHATSAPP (contacto.html)
+   11. ASISTENTE IA Y WHATSAPP
    ------------------------------------------------------------------------- */
 .panel-ia {
     background: var(--bg-card);
@@ -842,7 +879,7 @@ input[type="color"] {
 }
 
 /* -------------------------------------------------------------------------
-   12. PIE DE PÁGINA (footer, en todas las páginas)
+   12. PIE DE PÁGINA
    ------------------------------------------------------------------------- */
 .site-footer {
     background: var(--bg-alt);
@@ -929,7 +966,7 @@ input[type="color"] {
 }
 
 /* -------------------------------------------------------------------------
-   13. MIGAS DE PAN / UTILIDADES
+   13. MIGAS DE PAN Y UTILIDADES
    ------------------------------------------------------------------------- */
 .migas {
     color: var(--texto-muted);
@@ -1003,4 +1040,119 @@ input[type="color"] {
     border-top: 1px solid var(--borde);
     padding-top: 12px;
     margin-top: 12px;
+}
+
+/* -------------------------------------------------------------------------
+   14. NOSOTROS
+   ------------------------------------------------------------------------- */
+.grilla-dos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+@media (max-width: 760px) {
+    .grilla-dos {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   15. BLOG
+   ------------------------------------------------------------------------- */
+.grilla-blog {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--borde);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: transform var(--transicion),
+                border-color var(--transicion);
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--secundario);
+}
+
+.blog-card .cuerpo {
+    padding: 22px;
+}
+
+.blog-card h3 {
+    margin: 12px 0;
+}
+
+.blog-card p {
+    color: var(--texto-muted);
+    line-height: 1.7;
+}
+
+.blog-card .btn {
+    margin-top: 12px;
+}
+
+@media (max-width: 760px) {
+    .grilla-blog {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   16. DETALLE DE ARTÍCULOS DEL BLOG
+   ------------------------------------------------------------------------- */
+.articulo-blog {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--borde);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--sombra);
+}
+
+.articulo-blog h2,
+.articulo-blog h3 {
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.articulo-blog p {
+    color: var(--texto-muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.articulo-blog ul,
+.articulo-blog ol {
+    color: var(--texto-muted);
+    line-height: 1.8;
+    padding-left: 24px;
+    margin-bottom: 18px;
+}
+
+.blog-imagen-principal {
+    width: 100%;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: var(--radius);
+    margin-bottom: 26px;
+    display: block;
+}
+
+.articulo-blog .btn {
+    margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+    .articulo-blog {
+        padding: 22px 18px;
+    }
 }
