@@ -34,30 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
         "index.html";
 
     document
-        .querySelectorAll(
-            ".nav-links a"
-        )
-        .forEach(
-            function (enlace) {
+        .querySelectorAll(".nav-links a")
+        .forEach(function (enlace) {
 
-                const destino =
-                    enlace.getAttribute(
-                        "href"
-                    );
+            const destino =
+                enlace.getAttribute("href");
 
-                if (destino === pagina) {
+            if (destino === pagina) {
 
-                    enlace.classList.add(
-                        "activo"
-                    );
+                enlace.classList.add(
+                    "activo"
+                );
 
-                    enlace.setAttribute(
-                        "aria-current",
-                        "page"
-                    );
-                }
+                enlace.setAttribute(
+                    "aria-current",
+                    "page"
+                );
             }
-        );
+        });
 
     actualizarContadorCarrito();
 
@@ -88,10 +82,7 @@ function actualizarContadorCarrito() {
 
     const totalItems =
         carrito.reduce(
-            function (
-                acumulado,
-                item
-            ) {
+            function (acumulado, item) {
 
                 return (
                     acumulado +
@@ -151,7 +142,10 @@ function guardarCarrito(carrito) {
     actualizarContadorCarrito();
 }
 
-function agregarAlCarrito(producto) {
+function agregarAlCarrito(
+    producto,
+    sinNotificacion
+) {
 
     if (!producto) {
         return false;
@@ -186,10 +180,12 @@ function agregarAlCarrito(producto) {
         producto.stock <= 0
     ) {
 
-        mostrarToast(
-            producto.titulo +
-            " está sin stock."
-        );
+        if (!sinNotificacion) {
+            mostrarToast(
+                producto.titulo +
+                " está sin stock."
+            );
+        }
 
         return false;
     }
@@ -200,22 +196,26 @@ function agregarAlCarrito(producto) {
             producto.stock
     ) {
 
-        mostrarToast(
-            "Solo hay " +
-            producto.stock +
-            " unidad(es) disponibles de " +
-            producto.titulo +
-            "."
-        );
+        if (!sinNotificacion) {
+            mostrarToast(
+                "Solo hay " +
+                producto.stock +
+                " unidad(es) disponibles de " +
+                producto.titulo +
+                "."
+            );
+        }
 
         return false;
     }
 
     if (cantidadActual >= 10) {
 
-        mostrarToast(
-            "Puedes agregar un máximo de 10 unidades por producto."
-        );
+        if (!sinNotificacion) {
+            mostrarToast(
+                "Puedes agregar un máximo de 10 unidades por producto."
+            );
+        }
 
         return false;
     }
@@ -225,9 +225,7 @@ function agregarAlCarrito(producto) {
         existente.cantidad =
             cantidadActual + 1;
 
-        if (
-            tieneStockControlado
-        ) {
+        if (tieneStockControlado) {
             existente.stock =
                 producto.stock;
         }
@@ -235,6 +233,7 @@ function agregarAlCarrito(producto) {
     } else {
 
         const nuevoItem = {
+
             id:
                 producto.id,
 
@@ -252,9 +251,7 @@ function agregarAlCarrito(producto) {
             cantidad: 1
         };
 
-        if (
-            tieneStockControlado
-        ) {
+        if (tieneStockControlado) {
             nuevoItem.stock =
                 producto.stock;
         }
@@ -268,10 +265,13 @@ function agregarAlCarrito(producto) {
         carrito
     );
 
-    mostrarToast(
-        producto.titulo +
-        " se agregó al carrito 🛒"
-    );
+    if (!sinNotificacion) {
+
+        mostrarToast(
+            producto.titulo +
+            " se agregó al carrito 🛒"
+        );
+    }
 
     return true;
 }
@@ -340,9 +340,7 @@ function formatearCLP(valor) {
     const numero =
         Number(valor);
 
-    if (
-        !Number.isFinite(numero)
-    ) {
+    if (!Number.isFinite(numero)) {
         return "$0";
     }
 
