@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración | LevelUp Store</title>
+    <meta
+        name="description"
+        content="Panel de administración de LevelUp Store.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+
+    <a class="skip-link" href="#contenido">
+        Saltar al contenido principal
+    </a>
+
+    <header class="site-header">
+        <div class="contenedor navbar">
+
+            <a href="index.html" class="logo">
+                🎮 Level<span class="acento">Up</span> Store
+            </a>
+
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+                ☰
+            </button>
+
+            <ul id="navLinks" class="nav-links">
+                <li>
+                    <a href="index.html">Inicio</a>
+                </li>
+
+                <li>
+                    <a href="catalogo.html">Catálogo</a>
+                </li>
+
+                <li>
+                    <a href="carrito.html">Carrito</a>
+                </li>
+
+                <li>
+                    <a href="admin.html" class="activo">
+                        Administración
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-acciones">
+                <button
+                    id="btnCerrarSesion"
+                    class="btn btn-secundario"
+                    type="button">
+                    Cerrar sesión
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <main id="contenido">
+
+        <section class="page-hero">
+            <div class="contenedor">
+
+                <p class="migas">
+                    <a href="index.html">Inicio</a>
+                    / Administración
+                </p>
+
+                <h1>Panel de administración</h1>
+
+                <p>
+                    Gestiona los productos y usuarios de LevelUp Store.
+                </p>
+
+            </div>
+        </section>
+
+        <section class="seccion">
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2>Bienvenido</h2>
+
+                    <p id="adminBienvenida">
+                        Panel de gestión de LevelUp Store.
+                    </p>
+                </div>
+
+                <div class="beneficios-grid">
+
+                    <article class="beneficio">
+                        <div class="beneficio-icono">
+                            🎮
+                        </div>
+
+                        <h3>Productos</h3>
+
+                        <p>
+                            Crear, modificar, consultar y eliminar
+                            productos de la tienda.
+                        </p>
+
+                        <a
+                            href="#productos"
+                            class="btn btn-primario">
+                            Gestionar productos
+                        </a>
+                    </article>
+
+                    <article class="beneficio">
+                        <div class="beneficio-icono">
+                            👤
+                        </div>
+
+                        <h3>Usuarios</h3>
+
+                        <p>
+                            Consultar y administrar los usuarios
+                            registrados.
+                        </p>
+
+                        <a
+                            href="#usuarios"
+                            class="btn btn-secundario">
+                            Gestionar usuarios
+                        </a>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section
+            id="productos"
+            class="seccion">
+
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2>Administración de productos</h2>
+
+                    <p>
+                        Agrega, modifica o elimina productos.
+                    </p>
+                </div>
+
+                <div class="tarjeta-form">
+
+                    <form
+                        id="formProducto"
+                        novalidate>
+
+                        <input
+                            type="hidden"
+                            id="productoIndice">
+
+                        <div class="campo">
+                            <label for="productoCodigo">
+                                Código
+                            </label>
+
+                            <input
+                                type="text"
+                                id="productoCodigo"
+                                maxlength="20"
+                                placeholder="Ej: PS5-001">
+
+                            <small
+                                id="errorProductoCodigo"
+                                class="mensaje-error">
+                            </small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="productoNombre">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="productoNombre"
+                                maxlength="100"
+                                placeholder="Nombre del producto">
+
+                            <small
+                                id="errorProductoNombre"
+                                class="mensaje-error">
+                            </small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="productoDescripcion">
+                                Descripción
+                            </label>
+
+                            <textarea
+                                id="productoDescripcion"
+                                maxlength="500"
+                                rows="4"
+                                placeholder="Descripción del producto"></textarea>
+                        </div>
+
+                        <div class="campo">
+                            <label for="productoPrecio">
+                                Precio
+                            </label>
+
+                            <input
+                                type="number"
+                                id="productoPrecio"
+                                min="0"
+                                step="1"
+                                placeholder="59990">
+
+                            <small
+                                id="errorProductoPrecio"
+                                class="mensaje-error">
+                            </small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="productoStock">
+                                Stock
+                            </label>
+
+                            <input
+                                type="number"
+                                id="productoStock"
+                                min="0"
+                                step="1"
+                                placeholder="10">
+
+                            <small
+                                id="errorProductoStock"
+                                class="mensaje-error">
+                            </small>
+                        </div>
+
+                        <div class="campo">
+                            <label for="productoCategoria">
+                                Categoría
+                            </label>
+
+                            <select id="productoCategoria">
+                                <option value="">
+                                    Selecciona una categoría
+                                </option>
+
+                                <option value="PS5">
+                                    PS5
+                                </option>
+
+                                <option value="PC">
+                                    PC
+                                </option>
+
+                                <option value="Accesorios">
+                                    Accesorios
+                                </option>
+                            </select>
+                        </div>
+
+                        <div
+                            id="mensajeProducto"
+                            aria-live="polite">
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primario">
+                            Guardar producto
+                        </button>
+
+                        <button
+                            type="button"
+                            id="btnCancelarProducto"
+                            class="btn btn-secundario"
+                            style="display:none;">
+                            Cancelar edición
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <div
+                    style="overflow-x:auto; margin-top:30px;">
+
+                    <table
+                        style="width:100%; border-collapse:collapse;">
+
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Categoría</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaProductos">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section
+            id="usuarios"
+            class="seccion">
+
+            <div class="contenedor">
+
+                <div class="seccion-titulo">
+                    <h2>Usuarios registrados</h2>
+
+                    <p>
+                        Consulta los usuarios creados en LevelUp Store.
+                    </p>
+                </div>
+
+                <div style="overflow-x:auto;">
+
+                    <table
+                        style="width:100%; border-collapse:collapse;">
+
+                        <thead>
+                            <tr>
+                                <th>RUN</th>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Región</th>
+                                <th>Comuna</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tablaUsuarios">
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="contenedor footer-legal">
+
+            <span>
+                © <span id="anioActual">2026</span>
+                LevelUp Store.
+                Proyecto académico DSY1104.
+            </span>
+
+            <span>
+                Panel de administración.
+            </span>
+
+        </div>
+
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+
+</body>
+
+</html>
