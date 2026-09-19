@@ -1,12 +1,3 @@
-/* =========================================================================
-   datos-juegos.js
-   Catálogo de productos de la tienda. En una versión con backend real,
-   este arreglo sería reemplazado por datos obtenidos desde una API o
-   base de datos. Para esta entrega (front-end estático) se utiliza un
-   arreglo de JavaScript como fuente de datos única, consumida por
-   index.html, catalogo.html y producto.html.
-   ========================================================================= */
-
 const CATALOGO_JUEGOS = [
     {
         id: "gow-ragnarok",
@@ -232,11 +223,88 @@ const CATALOGO_JUEGOS = [
     }
 ];
 
-/**
- * Devuelve un producto del catálogo a partir de su id, o null si no existe.
- */
+function obtenerProductosAdministracion() {
+    try {
+        const datos = localStorage.getItem("levelupProductos");
+
+        const productos = datos
+            ? JSON.parse(datos)
+            : [];
+
+        if (!Array.isArray(productos)) {
+            return [];
+        }
+
+        return productos.map(function (producto, indice) {
+
+            let plataforma = "producto";
+
+            if (producto.categoria === "PS5") {
+                plataforma = "ps5";
+            } else if (producto.categoria === "PC") {
+                plataforma = "pc";
+            }
+
+            return {
+                id: "admin-" + producto.codigo,
+
+                imagen: producto.imagen || "",
+
+                titulo: producto.nombre,
+
+                plataforma: plataforma,
+
+                genero:
+                    producto.categoria === "Accesorios"
+                        ? "accesorios"
+                        : "videojuego",
+
+                tema: "tema-accion",
+
+                icono: "🎮",
+
+                precio: Number(producto.precio),
+
+                stock: Number(producto.stock),
+
+                descripcion:
+                    producto.descripcion ||
+                    "Producto disponible en LevelUp Store.",
+
+                administracion: true,
+
+                indiceAdministracion: indice,
+
+                especificaciones: {
+                    "Código": producto.codigo,
+                    "Categoría": producto.categoria,
+                    "Stock": String(producto.stock),
+                    "Formato": "Producto LevelUp Store"
+                }
+            };
+        });
+
+    } catch (error) {
+
+        console.warn(
+            "No fue posible cargar los productos de administración:",
+            error
+        );
+
+        return [];
+    }
+}
+
+function obtenerCatalogoCompleto() {
+    return CATALOGO_JUEGOS.concat(
+        obtenerProductosAdministracion()
+    );
+}
+
 function buscarJuegoPorId(id) {
-    return CATALOGO_JUEGOS.find(function (juego) {
-        return juego.id === id;
-    }) || null;
+    return obtenerCatalogoCompleto().find(
+        function (juego) {
+            return juego.id === id;
+        }
+    ) || null;
 }
