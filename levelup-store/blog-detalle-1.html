@@ -13,6 +13,10 @@
         Mitología en videojuegos | LevelUp Store
     </title>
 
+    <meta
+        name="description"
+        content="Descubre por qué las historias mitológicas siguen siendo importantes en los videojuegos modernos.">
+
     <link
         rel="stylesheet"
         href="assets/css/styles.css">
@@ -24,6 +28,12 @@
 </head>
 
 <body>
+
+    <a
+        class="skip-link"
+        href="#contenido">
+        Saltar al contenido principal
+    </a>
 
     <header class="site-header">
 
@@ -37,7 +47,20 @@
 
             </a>
 
-            <ul class="nav-links">
+            <button
+                id="botonMenu"
+                class="menu-toggle"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                ☰
+
+            </button>
+
+            <ul
+                id="navLinks"
+                class="nav-links">
 
                 <li>
                     <a href="index.html">
@@ -58,8 +81,28 @@
                 </li>
 
                 <li>
-                    <a href="blog.html">
+                    <a
+                        href="blog.html"
+                        class="activo">
                         Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="carrito.html">
+                        Carrito
+                    </a>
+                </li>
+
+                <li>
+                    <a href="registro.html">
+                        Crear cuenta
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Iniciar sesión
                     </a>
                 </li>
 
@@ -69,14 +112,39 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="asistente.html">
+                        Asistente IA
+                    </a>
+                </li>
+
             </ul>
+
+            <div class="nav-acciones">
+
+                <a
+                    href="carrito.html"
+                    class="carrito-link"
+                    aria-label="Ver carrito">
+
+                    🛒
+
+                    <span
+                        id="carritoContador"
+                        class="carrito-badge"
+                        style="display:none;">
+                        0
+                    </span>
+
+                </a>
+
+            </div>
 
         </div>
 
     </header>
 
-
-    <main>
+    <main id="contenido">
 
         <section class="page-hero">
 
@@ -107,7 +175,6 @@
 
         </section>
 
-
         <section class="seccion">
 
             <article class="contenedor articulo-blog">
@@ -117,7 +184,6 @@
                     src="assets/img/juegos/gow-ragnarok.jpg"
                     alt="God of War Ragnarök">
 
-
                 <p>
                     La mitología ha sido utilizada durante
                     siglos para contar historias sobre héroes,
@@ -126,14 +192,12 @@
                     historias una gran fuente de inspiración.
                 </p>
 
-
                 <p>
                     Juegos como God of War Ragnarök permiten
                     que el jugador no solamente observe una
                     historia basada en la mitología, sino que
                     pueda participar directamente en ella.
                 </p>
-
 
                 <h2>
                     Una historia que el jugador puede explorar
@@ -152,7 +216,6 @@
                     mitológicas.
                 </p>
 
-
                 <h2>
                     Mitología y videojuegos modernos
                 </h2>
@@ -163,7 +226,6 @@
                     creando nuevas interpretaciones de los
                     personajes y acontecimientos originales.
                 </p>
-
 
                 <a
                     href="blog.html"
@@ -179,6 +241,122 @@
 
     </main>
 
+    <footer class="site-footer">
+
+        <div class="contenedor footer-grid">
+
+            <div class="footer-marca">
+
+                <a
+                    href="index.html"
+                    class="logo">
+
+                    🎮 Level<span class="acento">Up</span> Store
+
+                </a>
+
+                <p>
+                    Tu tienda especializada en videojuegos
+                    para PS5 y PC.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    Tienda
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="catalogo.html">
+                            Catálogo
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="carrito.html">
+                            Carrito
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="nosotros.html">
+                            Nosotros
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    Información
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="blog.html">
+                            Blog
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div>
+
+                <h4>
+                    Cuenta
+                </h4>
+
+                <ul>
+
+                    <li>
+                        <a href="registro.html">
+                            Crear cuenta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="login.html">
+                            Iniciar sesión
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="contenedor footer-legal">
+
+            <span>
+                ©
+                <span id="anioActual">2026</span>
+                LevelUp Store — DSY1104.
+            </span>
+
+            <span>
+                Proyecto académico.
+            </span>
+
+        </div>
+
+    </footer>
 
     <script src="assets/js/main.js"></script>
 
