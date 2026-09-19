@@ -20,6 +20,7 @@
         Saltar al contenido principal
     </a>
 
+    <!-- HEADER -->
     <header class="site-header">
 
         <div class="contenedor navbar">
@@ -48,7 +49,15 @@
                 </li>
 
                 <li>
-                    <a href="carrito.html">Carrito</a>
+                    <a href="nosotros.html">Nosotros</a>
+                </li>
+
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+
+                <li>
+                    <a href="carrito.html" class="activo">Carrito</a>
                 </li>
 
                 <li>
@@ -93,6 +102,8 @@
 
     </header>
 
+
+    <!-- CONTENIDO -->
     <main id="contenido">
 
         <section class="page-hero">
@@ -115,10 +126,13 @@
 
         </section>
 
+
         <section class="seccion">
 
             <div class="contenedor">
 
+
+                <!-- CARRITO VACÍO -->
                 <article
                     id="bloqueCarritoVacio"
                     style="display:none; text-align:center; padding:40px 0;">
@@ -147,6 +161,8 @@
 
                 </article>
 
+
+                <!-- CARRITO CON PRODUCTOS -->
                 <div
                     id="bloqueCarritoConProductos"
                     style="
@@ -157,6 +173,8 @@
 
                     <div>
 
+
+                        <!-- PRODUCTOS -->
                         <article class="tarjeta-form">
 
                             <h2 style="font-size:1.2rem;">
@@ -223,6 +241,8 @@
 
                         </article>
 
+
+                        <!-- CHECKOUT -->
                         <article
                             class="tarjeta-form"
                             style="margin-top:24px;">
@@ -235,12 +255,15 @@
                                 id="formCheckout"
                                 novalidate>
 
+
                                 <input
                                     type="hidden"
                                     id="idPedido"
                                     name="idPedido"
                                     value="">
 
+
+                                <!-- NOMBRE Y CORREO -->
                                 <div class="form-fila">
 
                                     <div class="grupo-campo">
@@ -269,6 +292,7 @@
                                         </p>
 
                                     </div>
+
 
                                     <div class="grupo-campo">
 
@@ -300,6 +324,8 @@
 
                                 </div>
 
+
+                                <!-- TELÉFONO Y FECHA -->
                                 <div class="form-fila">
 
                                     <div class="grupo-campo">
@@ -330,6 +356,7 @@
 
                                     </div>
 
+
                                     <div class="grupo-campo">
 
                                         <label for="fechaEntrega">
@@ -358,6 +385,8 @@
 
                                 </div>
 
+
+                                <!-- DIRECCIÓN -->
                                 <div class="grupo-campo">
 
                                     <label for="direccionCheckout">
@@ -386,6 +415,8 @@
 
                                 </div>
 
+
+                                <!-- COMUNA -->
                                 <div class="grupo-campo">
 
                                     <label for="comunaCheckout">
@@ -441,6 +472,8 @@
 
                                 </div>
 
+
+                                <!-- MÉTODO DE ENVÍO -->
                                 <div class="grupo-campo">
 
                                     <label>
@@ -467,6 +500,7 @@
 
                                         </label>
 
+
                                         <label>
 
                                             <input
@@ -482,6 +516,8 @@
 
                                 </div>
 
+
+                                <!-- MÉTODO DE PAGO -->
                                 <div class="grupo-campo">
 
                                     <label for="pagoCheckout">
@@ -525,6 +561,8 @@
 
                                 </div>
 
+
+                                <!-- COMPROBANTE -->
                                 <div
                                     class="grupo-campo"
                                     id="grupoComprobante"
@@ -545,6 +583,8 @@
 
                                 </div>
 
+
+                                <!-- OPCIONES -->
                                 <div class="form-fila">
 
                                     <div class="grupo-campo">
@@ -560,6 +600,7 @@
                                             value="#8b5cf6">
 
                                     </div>
+
 
                                     <div class="grupo-campo">
 
@@ -586,6 +627,8 @@
 
                                 </div>
 
+
+                                <!-- NOTAS -->
                                 <div class="grupo-campo">
 
                                     <label for="notasCheckout">
@@ -600,6 +643,8 @@
 
                                 </div>
 
+
+                                <!-- TÉRMINOS -->
                                 <div class="grupo-campo check-linea">
 
                                     <input
@@ -620,11 +665,13 @@
 
                                 </div>
 
+
                                 <p
                                     id="errorTerminosCheckout"
                                     class="mensaje-error"
                                     aria-live="polite">
                                 </p>
+
 
                                 <button
                                     type="submit"
@@ -633,6 +680,7 @@
                                     Confirmar pedido
 
                                 </button>
+
 
                                 <div
                                     id="resultadoCheckout"
@@ -646,6 +694,8 @@
 
                     </div>
 
+
+                    <!-- RESUMEN -->
                     <aside
                         class="resumen-pedido"
                         aria-labelledby="tituloResumen">
@@ -657,6 +707,7 @@
                             Resumen del pedido
 
                         </h2>
+
 
                         <dl>
 
@@ -676,6 +727,7 @@
 
                             </div>
 
+
                             <div
                                 style="
                                     display:flex;
@@ -693,6 +745,7 @@
                             </div>
 
                         </dl>
+
 
                         <dl class="total">
 
@@ -715,6 +768,7 @@
 
                         </dl>
 
+
                         <p class="ayuda">
 
                             El envío es gratis en compras sobre $30.000.
@@ -732,9 +786,12 @@
 
     </main>
 
+
+    <!-- FOOTER -->
     <footer class="site-footer">
 
         <div class="contenedor footer-grid">
+
 
             <div class="footer-marca">
 
@@ -767,6 +824,7 @@
 
             </div>
 
+
             <div>
 
                 <h4>Tienda</h4>
@@ -788,6 +846,7 @@
                 </ul>
 
             </div>
+
 
             <div>
 
@@ -822,6 +881,7 @@
                 </ul>
 
             </div>
+
 
             <div>
 
@@ -862,6 +922,7 @@
 
         </div>
 
+
         <div class="contenedor footer-legal">
 
             <span>
@@ -879,6 +940,8 @@
 
     </footer>
 
+
+    <!-- JAVASCRIPT -->
     <script src="assets/js/datos-juegos.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/carrito.js"></script>
