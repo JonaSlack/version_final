@@ -1,149 +1,355 @@
-/* =========================================================================
-   main.js
-   Script compartido por TODAS las páginas del sitio LevelUp Store.
-   Responsabilidades:
-     1. Menú de navegación responsivo (botón hamburguesa).
-     2. Resaltar el enlace de la página activa en la navegación.
-     3. Mantener y mostrar el contador del carrito de compras (localStorage).
-     4. Año dinámico en el footer.
-     5. Función utilitaria mostrarToast() usada por otros scripts.
-   ========================================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
 
-    // -----------------------------------------------------------
-    // 1. MENÚ RESPONSIVO
-    // -----------------------------------------------------------
-    const botonMenu = document.getElementById("botonMenu");
-    const listaNav = document.getElementById("navLinks");
+    const botonMenu =
+        document.getElementById("botonMenu");
+
+    const listaNav =
+        document.getElementById("navLinks");
 
     if (botonMenu && listaNav) {
-        botonMenu.addEventListener("click", function () {
-            const abierto = listaNav.classList.toggle("abierto");
-            botonMenu.setAttribute("aria-expanded", abierto ? "true" : "false");
-        });
+
+        botonMenu.addEventListener(
+            "click",
+            function () {
+
+                const abierto =
+                    listaNav.classList.toggle(
+                        "abierto"
+                    );
+
+                botonMenu.setAttribute(
+                    "aria-expanded",
+                    abierto
+                        ? "true"
+                        : "false"
+                );
+            }
+        );
     }
 
-    // -----------------------------------------------------------
-    // 2. RESALTAR ENLACE ACTIVO SEGÚN LA URL ACTUAL
-    // -----------------------------------------------------------
-    const pagina = window.location.pathname.split("/").pop() || "index.html";
+    const pagina =
+        window.location.pathname
+            .split("/")
+            .pop() ||
+        "index.html";
 
-    document.querySelectorAll(".nav-links a").forEach(function (enlace) {
-        const destino = enlace.getAttribute("href");
-        if (destino === pagina) {
-            enlace.classList.add("activo");
-            enlace.setAttribute("aria-current", "page");
-        }
-    });
+    document
+        .querySelectorAll(
+            ".nav-links a"
+        )
+        .forEach(
+            function (enlace) {
 
-    // -----------------------------------------------------------
-    // 3. CONTADOR DEL CARRITO
-    // -----------------------------------------------------------
+                const destino =
+                    enlace.getAttribute(
+                        "href"
+                    );
+
+                if (destino === pagina) {
+
+                    enlace.classList.add(
+                        "activo"
+                    );
+
+                    enlace.setAttribute(
+                        "aria-current",
+                        "page"
+                    );
+                }
+            }
+        );
+
     actualizarContadorCarrito();
 
-    // -----------------------------------------------------------
-    // 4. AÑO DINÁMICO EN EL FOOTER
-    // -----------------------------------------------------------
-    const spanAnio = document.getElementById("anioActual");
+    const spanAnio =
+        document.getElementById(
+            "anioActual"
+        );
+
     if (spanAnio) {
-        spanAnio.textContent = new Date().getFullYear();
+        spanAnio.textContent =
+            new Date().getFullYear();
     }
 });
 
-/**
- * Lee el carrito guardado en localStorage y actualiza la burbuja
- * numérica que aparece junto al ícono del carrito en la navegación.
- */
 function actualizarContadorCarrito() {
-    const insignia = document.getElementById("carritoContador");
-    if (!insignia) return;
 
-    const carrito = obtenerCarrito();
-    const totalItems = carrito.reduce(function (acumulado, item) {
-        return acumulado + item.cantidad;
-    }, 0);
+    const insignia =
+        document.getElementById(
+            "carritoContador"
+        );
 
-    insignia.textContent = totalItems;
-    insignia.style.display = totalItems > 0 ? "inline-block" : "none";
+    if (!insignia) {
+        return;
+    }
+
+    const carrito =
+        obtenerCarrito();
+
+    const totalItems =
+        carrito.reduce(
+            function (
+                acumulado,
+                item
+            ) {
+
+                return (
+                    acumulado +
+                    Number(
+                        item.cantidad || 0
+                    )
+                );
+            },
+            0
+        );
+
+    insignia.textContent =
+        totalItems;
+
+    insignia.style.display =
+        totalItems > 0
+            ? "inline-block"
+            : "none";
 }
 
-/**
- * Obtiene el arreglo de productos del carrito desde localStorage.
- * Si no existe o está corrupto, devuelve un arreglo vacío.
- */
 function obtenerCarrito() {
+
     try {
-        const datos = localStorage.getItem("levelup_carrito");
-        return datos ? JSON.parse(datos) : [];
+
+        const datos =
+            localStorage.getItem(
+                "levelup_carrito"
+            );
+
+        const carrito =
+            datos
+                ? JSON.parse(datos)
+                : [];
+
+        return Array.isArray(carrito)
+            ? carrito
+            : [];
+
     } catch (error) {
-        console.warn("No fue posible leer el carrito guardado:", error);
+
+        console.warn(
+            "No fue posible leer el carrito guardado:",
+            error
+        );
+
         return [];
     }
 }
 
-/**
- * Guarda el arreglo del carrito en localStorage y refresca el contador.
- */
 function guardarCarrito(carrito) {
-    localStorage.setItem("levelup_carrito", JSON.stringify(carrito));
+
+    localStorage.setItem(
+        "levelup_carrito",
+        JSON.stringify(carrito)
+    );
+
     actualizarContadorCarrito();
 }
 
-/**
- * Agrega un juego al carrito (o incrementa su cantidad si ya existía).
- */
 function agregarAlCarrito(producto) {
-    const carrito = obtenerCarrito();
-    const existente = carrito.find(function (item) {
-        return item.id === producto.id;
-    });
+
+    if (!producto) {
+        return false;
+    }
+
+    const carrito =
+        obtenerCarrito();
+
+    const existente =
+        carrito.find(
+            function (item) {
+                return (
+                    item.id ===
+                    producto.id
+                );
+            }
+        );
+
+    const cantidadActual =
+        existente
+            ? Number(
+                existente.cantidad
+            ) || 0
+            : 0;
+
+    const tieneStockControlado =
+        typeof producto.stock ===
+        "number";
+
+    if (
+        tieneStockControlado &&
+        producto.stock <= 0
+    ) {
+
+        mostrarToast(
+            producto.titulo +
+            " está sin stock."
+        );
+
+        return false;
+    }
+
+    if (
+        tieneStockControlado &&
+        cantidadActual >=
+            producto.stock
+    ) {
+
+        mostrarToast(
+            "Solo hay " +
+            producto.stock +
+            " unidad(es) disponibles de " +
+            producto.titulo +
+            "."
+        );
+
+        return false;
+    }
+
+    if (cantidadActual >= 10) {
+
+        mostrarToast(
+            "Puedes agregar un máximo de 10 unidades por producto."
+        );
+
+        return false;
+    }
 
     if (existente) {
-        existente.cantidad += 1;
+
+        existente.cantidad =
+            cantidadActual + 1;
+
+        if (
+            tieneStockControlado
+        ) {
+            existente.stock =
+                producto.stock;
+        }
+
     } else {
-        carrito.push({
-            id: producto.id,
-            titulo: producto.titulo,
-            precio: producto.precio,
-            plataforma: producto.plataforma,
+
+        const nuevoItem = {
+            id:
+                producto.id,
+
+            titulo:
+                producto.titulo,
+
+            precio:
+                Number(
+                    producto.precio
+                ),
+
+            plataforma:
+                producto.plataforma,
+
             cantidad: 1
-        });
+        };
+
+        if (
+            tieneStockControlado
+        ) {
+            nuevoItem.stock =
+                producto.stock;
+        }
+
+        carrito.push(
+            nuevoItem
+        );
     }
 
-    guardarCarrito(carrito);
-    mostrarToast(producto.titulo + " se agregó al carrito 🛒");
+    guardarCarrito(
+        carrito
+    );
+
+    mostrarToast(
+        producto.titulo +
+        " se agregó al carrito 🛒"
+    );
+
+    return true;
 }
 
-/**
- * Muestra una notificación flotante (toast) breve en la esquina inferior
- * derecha de la pantalla. Se usa como retroalimentación de botones
- * operativos (agregar al carrito, enviar formularios, etc).
- */
 function mostrarToast(texto) {
-    let toast = document.getElementById("toastGlobal");
+
+    let toast =
+        document.getElementById(
+            "toastGlobal"
+        );
 
     if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toastGlobal";
-        toast.className = "toast";
-        toast.setAttribute("role", "status");
-        toast.setAttribute("aria-live", "polite");
-        document.body.appendChild(toast);
+
+        toast =
+            document.createElement(
+                "div"
+            );
+
+        toast.id =
+            "toastGlobal";
+
+        toast.className =
+            "toast";
+
+        toast.setAttribute(
+            "role",
+            "status"
+        );
+
+        toast.setAttribute(
+            "aria-live",
+            "polite"
+        );
+
+        document.body.appendChild(
+            toast
+        );
     }
 
-    toast.textContent = texto;
-    toast.classList.add("visible");
+    toast.textContent =
+        texto;
 
-    clearTimeout(window.__toastTimeout);
-    window.__toastTimeout = setTimeout(function () {
-        toast.classList.remove("visible");
-    }, 2600);
+    toast.classList.add(
+        "visible"
+    );
+
+    clearTimeout(
+        window.__toastTimeout
+    );
+
+    window.__toastTimeout =
+        setTimeout(
+            function () {
+
+                toast.classList.remove(
+                    "visible"
+                );
+
+            },
+            2600
+        );
 }
 
-/**
- * Formatea un número como precio en pesos chilenos (CLP).
- */
 function formatearCLP(valor) {
-    return "$" + Number(valor).toLocaleString("es-CL");
+
+    const numero =
+        Number(valor);
+
+    if (
+        !Number.isFinite(numero)
+    ) {
+        return "$0";
+    }
+
+    return (
+        "$" +
+        numero.toLocaleString(
+            "es-CL"
+        )
+    );
 }
