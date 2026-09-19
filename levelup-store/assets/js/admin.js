@@ -34,6 +34,9 @@ const errorProductoPrecio =
 const errorProductoStock =
     document.getElementById("errorProductoStock");
 
+const errorProductoCategoria =
+    document.getElementById("errorProductoCategoria");
+
 const mensajeProducto =
     document.getElementById("mensajeProducto");
 
@@ -408,24 +411,18 @@ function validarCategoria() {
         productoCategoria.value === ""
     ) {
 
-        mostrarMensajeProducto(
-            "Selecciona una categoría.",
-            "error"
-        );
-
-        productoCategoria.classList.add(
-            "campo-invalido"
+        mostrarError(
+            productoCategoria,
+            errorProductoCategoria,
+            "Selecciona una categoría."
         );
 
         return false;
     }
 
-    productoCategoria.classList.remove(
-        "campo-invalido"
-    );
-
-    productoCategoria.classList.add(
-        "campo-valido"
+    limpiarError(
+        productoCategoria,
+        errorProductoCategoria
     );
 
     return true;
@@ -504,6 +501,9 @@ function limpiarFormularioProducto() {
     productoIndice.value =
         "";
 
+    productoCodigo.disabled =
+        false;
+
     if (btnCancelarProducto) {
 
         btnCancelarProducto.style.display =
@@ -534,12 +534,16 @@ function limpiarFormularioProducto() {
         errorProductoCodigo,
         errorProductoNombre,
         errorProductoPrecio,
-        errorProductoStock
+        errorProductoStock,
+        errorProductoCategoria
     ].forEach(
         function (error) {
 
             if (error) {
-                error.textContent = "";
+
+                error.textContent =
+                    "";
+
                 error.style.display =
                     "none";
             }
@@ -753,6 +757,9 @@ function editarProducto(indice) {
     productoCodigo.value =
         producto.codigo || "";
 
+    productoCodigo.disabled =
+        true;
+
     productoNombre.value =
         producto.nombre || "";
 
@@ -813,6 +820,10 @@ function eliminarProducto(indice) {
         return;
     }
 
+    const idProducto =
+        "admin-" +
+        producto.codigo;
+
     productos.splice(
         indice,
         1
@@ -822,12 +833,74 @@ function eliminarProducto(indice) {
         productos
     );
 
+    eliminarProductoDelCarrito(
+        idProducto
+    );
+
     mostrarProductos();
+
+    limpiarFormularioProducto();
 
     mostrarMensajeProducto(
         "Producto eliminado correctamente.",
         "correcto"
     );
+}
+
+
+function eliminarProductoDelCarrito(
+    idProducto
+) {
+
+    try {
+
+        const datos =
+            localStorage.getItem(
+                "levelup_carrito"
+            );
+
+        const carrito =
+            datos
+                ? JSON.parse(datos)
+                : [];
+
+        if (!Array.isArray(carrito)) {
+            return;
+        }
+
+        const carritoActualizado =
+            carrito.filter(
+                function (item) {
+
+                    return (
+                        item.id !==
+                        idProducto
+                    );
+                }
+            );
+
+        localStorage.setItem(
+            "levelup_carrito",
+            JSON.stringify(
+                carritoActualizado
+            )
+        );
+
+        if (
+            typeof actualizarContadorCarrito ===
+            "function"
+        ) {
+
+            actualizarContadorCarrito();
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "No fue posible actualizar el carrito:",
+            error
+        );
+    }
 }
 
 
