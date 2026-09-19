@@ -1,653 +1,288 @@
-/* =========================================================================
-   CATALOGO.JS
-   =========================================================================
+const CATALOGO_JUEGOS = [
+    {
+        id: "gow-ragnarok",
+        imagen: "assets/img/juegos/gow-ragnarok.jpg",
+        titulo: "God of War Ragnarök",
+        plataforma: "ps5",
+        genero: "accion",
+        tema: "tema-accion",
+        icono: "",
+        precio: 44990,
+        precioAnterior: 54990,
+        destacado: true,
+        descripcion: "Kratos y Atreus enfrentan el Ragnarök en una aventura de acción y mitología nórdica aclamada por la crítica.",
+        especificaciones: {
+            "Plataforma": "PlayStation 5",
+            "Género": "Acción / Aventura",
+            "Clasificación": "18+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "spiderman-2",
+        imagen: "assets/img/juegos/spiderman-2.jpg",
+        titulo: "Marvel's Spider-Man 2",
+        plataforma: "ps5",
+        genero: "accion",
+        tema: "tema-accion",
+        icono: "",
+        precio: 42990,
+        destacado: true,
+        descripcion: "Peter Parker y Miles Morales se unen para proteger Nueva York en esta secuela exclusiva de PS5.",
+        especificaciones: {
+            "Plataforma": "PlayStation 5",
+            "Género": "Acción / Mundo abierto",
+            "Clasificación": "16+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "gt7",
+        imagen: "assets/img/juegos/gt7.jpg",
+        titulo: "Gran Turismo 7",
+        plataforma: "ps5",
+        genero: "carreras",
+        tema: "tema-carreras",
+        icono: "",
+        precio: 34990,
+        descripcion: "El simulador de carreras definitivo con soporte para volante y realismo fotográfico.",
+        especificaciones: {
+            "Plataforma": "PlayStation 5",
+            "Género": "Carreras / Simulación",
+            "Clasificación": "3+",
+            "Idioma": "Español",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "cyberpunk",
+        imagen: "assets/img/juegos/cyberpunk.jpg",
+        titulo: "Cyberpunk 2077: Edición Definitiva",
+        plataforma: "ambas",
+        genero: "rol",
+        tema: "tema-rol",
+        icono: "",
+        precio: 29990,
+        precioAnterior: 39990,
+        destacado: true,
+        descripcion: "Sumérgete en Night City en este RPG de acción en mundo abierto, ahora con todo el contenido y mejoras.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Rol / Mundo abierto",
+            "Clasificación": "18+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Descarga digital"
+        }
+    },
+    {
+        id: "elden-ring",
+        imagen: "assets/img/juegos/elden-ring.jpg",
+        titulo: "Elden Ring",
+        plataforma: "ambas",
+        genero: "rol",
+        tema: "tema-rol",
+        icono: "",
+        precio: 37990,
+        descripcion: "Un vasto mundo de fantasía oscura creado por FromSoftware y George R. R. Martin.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Rol de acción",
+            "Clasificación": "16+",
+            "Idioma": "Español (subtítulos)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "bg3",
+        imagen: "assets/img/juegos/bg3.jpg",
+        titulo: "Baldur's Gate 3",
+        plataforma: "ambas",
+        genero: "rol",
+        tema: "tema-rol",
+        icono: "",
+        precio: 41990,
+        descripcion: "Un RPG por turnos ambientado en el universo de Dungeons & Dragons con decisiones que cambian la historia.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Rol táctico",
+            "Clasificación": "18+",
+            "Idioma": "Español (subtítulos)",
+            "Formato": "Descarga digital"
+        }
+    },
+    {
+        id: "hogwarts",
+        imagen: "assets/img/juegos/hogwarts.jpg",
+        titulo: "Hogwarts Legacy",
+        plataforma: "ambas",
+        genero: "mundo-abierto",
+        tema: "tema-mundo",
+        icono: "",
+        precio: 32990,
+        descripcion: "Vive tu propia historia de magia en un mundo abierto ambientado décadas antes de Harry Potter.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Mundo abierto / RPG",
+            "Clasificación": "12+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "horizon-fw",
+        imagen: "assets/img/juegos/horizon-fw.jpg",
+        titulo: "Horizon Forbidden West",
+        plataforma: "ps5",
+        genero: "mundo-abierto",
+        tema: "tema-mundo",
+        icono: "",
+        precio: 33990,
+        descripcion: "Aloy explora tierras salvajes y peligrosas máquinas en esta exclusiva de mundo abierto.",
+        especificaciones: {
+            "Plataforma": "PlayStation 5",
+            "Género": "Mundo abierto / Acción",
+            "Clasificación": "16+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "eafc25",
+        imagen: "assets/img/juegos/eafc25.jpg",
+        titulo: "EA Sports FC 25",
+        plataforma: "ambas",
+        genero: "deporte",
+        tema: "tema-deporte",
+        icono: "",
+        precio: 39990,
+        destacado: true,
+        descripcion: "El fútbol más realista con licencias oficiales de ligas y equipos de todo el mundo.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Deportes",
+            "Clasificación": "3+",
+            "Idioma": "Español (comentarios en vivo)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "witcher3",
+        imagen: "assets/img/juegos/witcher3.jpg",
+        titulo: "The Witcher 3: Wild Hunt",
+        plataforma: "ambas",
+        genero: "rol",
+        tema: "tema-rol",
+        icono: "",
+        precio: 24990,
+        descripcion: "Geralt de Rivia recorre un mundo de fantasía oscura en busca de su hija adoptiva, Ciri.",
+        especificaciones: {
+            "Plataforma": "PS5 y PC",
+            "Género": "Rol / Mundo abierto",
+            "Clasificación": "18+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    },
+    {
+        id: "minecraft",
+        imagen: "assets/img/juegos/minecraft.jpg",
+        titulo: "Minecraft",
+        plataforma: "pc",
+        genero: "sandbox",
+        tema: "tema-sandbox",
+        icono: "",
+        precio: 19990,
+        descripcion: "Construye, explora y sobrevive en mundos generados de forma procedural, solo o con amigos.",
+        especificaciones: {
+            "Plataforma": "PC",
+            "Género": "Sandbox / Supervivencia",
+            "Clasificación": "7+",
+            "Idioma": "Español",
+            "Formato": "Descarga digital"
+        }
+    },
+    {
+        id: "ratchet",
+        imagen: "assets/img/juegos/ratchet.jpg",
+        titulo: "Ratchet & Clank: Rift Apart",
+        plataforma: "ps5",
+        genero: "accion",
+        tema: "tema-accion",
+        icono: "",
+        precio: 31990,
+        descripcion: "Salta entre dimensiones en esta aventura de plataformas que exprime el hardware de PS5.",
+        especificaciones: {
+            "Plataforma": "PlayStation 5",
+            "Género": "Acción / Plataformas",
+            "Clasificación": "12+",
+            "Idioma": "Español (subtítulos y voces)",
+            "Formato": "Físico o descarga digital"
+        }
+    }
+];
 
-   Este archivo:
+function obtenerProductosAdministracion() {
+    try {
+        const productos = JSON.parse(
+            localStorage.getItem("levelupProductos")
+        ) || [];
 
-   1. Carga los juegos desde datos-juegos.js
-   2. Genera las tarjetas del catálogo
-   3. Muestra las imágenes de cada juego
-   4. Permite filtrar por plataforma
-   5. Permite buscar juegos
-   6. Permite agregar juegos al carrito
+        return productos.map(function (producto, indice) {
+            let plataforma = "ambas";
 
-   ========================================================================= */
-
-
-/* -------------------------------------------------------------------------
-   VARIABLES
-   ------------------------------------------------------------------------- */
-
-let filtroActivo = "todos";
-
-let terminoBusqueda = "";
-
-
-/* -------------------------------------------------------------------------
-   CUANDO CARGA LA PÁGINA
-   ------------------------------------------------------------------------- */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        llenarSugerencias();
-
-        renderizarJuegos();
-
-
-        /* =============================================================
-           FILTROS
-           ============================================================= */
-
-        const botonesFiltro =
-            document.querySelectorAll(".filtro-btn");
-
-
-        botonesFiltro.forEach(
-            function (boton) {
-
-                boton.addEventListener(
-                    "click",
-                    function () {
-
-
-                        /* Quitamos selección de todos */
-
-                        botonesFiltro.forEach(
-                            function (b) {
-
-                                b.setAttribute(
-                                    "aria-pressed",
-                                    "false"
-                                );
-
-                            }
-                        );
-
-
-                        /* Activamos el botón seleccionado */
-
-                        boton.setAttribute(
-                            "aria-pressed",
-                            "true"
-                        );
-
-
-                        /* Guardamos el filtro */
-
-                        filtroActivo =
-                            boton.dataset.filtro;
-
-
-                        /* Volvemos a dibujar */
-
-                        renderizarJuegos();
-
-                    }
-                );
-
+            if (producto.categoria === "PS5") {
+                plataforma = "ps5";
+            } else if (producto.categoria === "PC") {
+                plataforma = "pc";
+            } else if (producto.categoria === "Accesorios") {
+                plataforma = "producto";
             }
-        );
 
-
-        /* =============================================================
-           BUSCADOR
-           ============================================================= */
-
-        const inputBuscar =
-            document.getElementById(
-                "buscadorJuegos"
-            );
-
-
-        const btnLimpiar =
-            document.getElementById(
-                "btnLimpiarBusqueda"
-            );
-
-
-        if (inputBuscar) {
-
-            inputBuscar.addEventListener(
-                "input",
-                function () {
-
-                    terminoBusqueda =
-                        inputBuscar.value
-                            .trim()
-                            .toLowerCase();
-
-                    renderizarJuegos();
-
+            return {
+                id: "admin-" + producto.codigo,
+                imagen: producto.imagen || "",
+                titulo: producto.nombre,
+                plataforma: plataforma,
+                genero:
+                    producto.categoria === "Accesorios"
+                        ? "accesorios"
+                        : "videojuego",
+                tema: "tema-accion",
+                icono: "🎮",
+                precio: Number(producto.precio),
+                stock: Number(producto.stock),
+                descripcion:
+                    producto.descripcion ||
+                    "Producto disponible en LevelUp Store.",
+                administracion: true,
+                indiceAdministracion: indice,
+                especificaciones: {
+                    "Código": producto.codigo,
+                    "Categoría": producto.categoria,
+                    "Stock": String(producto.stock),
+                    "Formato": "Producto LevelUp Store"
                 }
-            );
-
-        }
-
-
-        /* =============================================================
-           LIMPIAR BUSCADOR
-           ============================================================= */
-
-        if (btnLimpiar) {
-
-            btnLimpiar.addEventListener(
-                "click",
-                function () {
-
-                    inputBuscar.value = "";
-
-                    terminoBusqueda = "";
-
-                    renderizarJuegos();
-
-                    inputBuscar.focus();
-
-                }
-            );
-
-        }
-
+            };
+        });
+    } catch (error) {
+        return [];
     }
-);
-
-
-/* =========================================================================
-   SUGERENCIAS DEL BUSCADOR
-   ========================================================================= */
-
-function llenarSugerencias() {
-
-    const datalist =
-        document.getElementById(
-            "sugerenciasJuegos"
-        );
-
-
-    if (!datalist) {
-
-        return;
-
-    }
-
-
-    datalist.innerHTML =
-        CATALOGO_JUEGOS
-            .map(
-                function (juego) {
-
-                    return (
-                        '<option value="' +
-                        juego.titulo +
-                        '"></option>'
-                    );
-
-                }
-            )
-            .join("");
-
 }
 
-
-/* =========================================================================
-   FILTRAR LOS JUEGOS
-   ========================================================================= */
-
-function obtenerJuegosFiltrados() {
-
-    return CATALOGO_JUEGOS.filter(
-        function (juego) {
-
-
-            /* ---------------------------------------------------------
-               FILTRO DE PLATAFORMA
-               --------------------------------------------------------- */
-
-            let cumplePlataforma = true;
-
-
-            if (filtroActivo === "ps5") {
-
-                cumplePlataforma =
-
-                    juego.plataforma === "ps5" ||
-
-                    juego.plataforma === "ambas";
-
-            }
-
-
-            else if (filtroActivo === "pc") {
-
-                cumplePlataforma =
-
-                    juego.plataforma === "pc" ||
-
-                    juego.plataforma === "ambas";
-
-            }
-
-
-            else if (filtroActivo === "oferta") {
-
-                cumplePlataforma =
-                    Boolean(
-                        juego.precioAnterior
-                    );
-
-            }
-
-
-            /* ---------------------------------------------------------
-               BUSCADOR
-               --------------------------------------------------------- */
-
-            const cumpleBusqueda =
-
-                terminoBusqueda === "" ||
-
-                juego.titulo
-                    .toLowerCase()
-                    .includes(
-                        terminoBusqueda
-                    );
-
-
-            return (
-
-                cumplePlataforma &&
-
-                cumpleBusqueda
-
-            );
-
-        }
+function obtenerCatalogoCompleto() {
+    return CATALOGO_JUEGOS.concat(
+        obtenerProductosAdministracion()
     );
-
 }
 
-
-/* =========================================================================
-   MOSTRAR LOS JUEGOS
-   ========================================================================= */
-
-function renderizarJuegos() {
-
-
-    const contenedor =
-        document.getElementById(
-            "grillaJuegos"
-        );
-
-
-    const mensajeVacio =
-        document.getElementById(
-            "sinResultados"
-        );
-
-
-    const contador =
-        document.getElementById(
-            "contadorResultados"
-        );
-
-
-    if (!contenedor) {
-
-        return;
-
-    }
-
-
-    const resultados =
-        obtenerJuegosFiltrados();
-
-
-    /* -----------------------------------------------------------------
-       CONTADOR
-       ----------------------------------------------------------------- */
-
-    if (contador) {
-
-        contador.textContent =
-
-            resultados.length +
-
-            " juego(s) encontrado(s).";
-
-    }
-
-
-    /* -----------------------------------------------------------------
-       MENSAJE SIN RESULTADOS
-       ----------------------------------------------------------------- */
-
-    if (mensajeVacio) {
-
-        mensajeVacio.style.display =
-
-            resultados.length === 0
-
-                ? "block"
-
-                : "none";
-
-    }
-
-
-    /* -----------------------------------------------------------------
-       CREAR TODAS LAS TARJETAS
-       ----------------------------------------------------------------- */
-
-    contenedor.innerHTML =
-
-        resultados
-            .map(
-                function (juego) {
-
-
-                    /* =================================================
-                       BADGES DE PLATAFORMA
-                       ================================================= */
-
-                    let etiquetaPlataforma = "";
-
-
-                    if (
-                        juego.plataforma === "ambas"
-                    ) {
-
-                        etiquetaPlataforma =
-
-                            '<span class="badge badge-ps5">' +
-                            'PS5' +
-                            '</span>' +
-
-                            '<span class="badge badge-pc">' +
-                            'PC' +
-                            '</span>';
-
-                    }
-
-
-                    else if (
-                        juego.plataforma === "ps5"
-                    ) {
-
-                        etiquetaPlataforma =
-
-                            '<span class="badge badge-ps5">' +
-                            'PS5' +
-                            '</span>';
-
-                    }
-
-
-                    else {
-
-                        etiquetaPlataforma =
-
-                            '<span class="badge badge-pc">' +
-                            'PC' +
-                            '</span>';
-
-                    }
-
-
-                    /* =================================================
-                       PRECIO ANTERIOR
-                       ================================================= */
-
-                    let precioAnterior = "";
-
-
-                    if (
-                        juego.precioAnterior
-                    ) {
-
-                        precioAnterior =
-
-                            '<span class="anterior">' +
-
-                            formatearCLP(
-                                juego.precioAnterior
-                            ) +
-
-                            '</span>';
-
-                    }
-
-
-                    /* =================================================
-                       IMAGEN
-                       AQUÍ ESTABA EL PROBLEMA
-                       ================================================= */
-
-                    let imagenJuego = "";
-
-
-                    if (juego.imagen) {
-
-                        imagenJuego =
-
-                            '<img ' +
-
-                            'src="' +
-                            juego.imagen +
-                            '" ' +
-
-                            'alt="Portada de ' +
-                            juego.titulo +
-                            '" ' +
-
-                            'loading="lazy" ' +
-
-                            'onerror="this.style.display=\'none\'">' ;
-
-                    }
-
-
-                    /* =================================================
-                       TARJETA DEL JUEGO
-                       ================================================= */
-
-                    return (
-
-                        '<article class="tarjeta-juego">' +
-
-
-                            /* -----------------------------------------
-                               PORTADA
-                               ----------------------------------------- */
-
-                            '<div class="portada ' +
-                            juego.tema +
-                            '">' +
-
-
-                                /* IMAGEN */
-
-                                imagenJuego +
-
-
-                                /* BADGES */
-
-                                '<div class="etiquetas">' +
-
-                                    etiquetaPlataforma +
-
-                                '</div>' +
-
-
-                                /* ICONO DE RESPALDO */
-
-                                '<span class="icono">' +
-
-                                    juego.icono +
-
-                                '</span>' +
-
-
-                            '</div>' +
-
-
-                            /* -----------------------------------------
-                               INFORMACIÓN
-                               ----------------------------------------- */
-
-                            '<div class="cuerpo">' +
-
-
-                                /* TÍTULO */
-
-                                '<h3>' +
-
-                                    juego.titulo +
-
-                                '</h3>' +
-
-
-                                /* GÉNERO */
-
-                                '<p class="genero">' +
-
-                                    capitalizar(
-                                        juego.genero
-                                    ) +
-
-                                '</p>' +
-
-
-                                /* PRECIO */
-
-                                '<div class="precio">' +
-
-
-                                    '<span class="actual">' +
-
-                                        formatearCLP(
-                                            juego.precio
-                                        ) +
-
-                                    '</span>' +
-
-
-                                    precioAnterior +
-
-
-                                '</div>' +
-
-
-                                /* BOTONES */
-
-                                '<div class="acciones">' +
-
-
-                                    '<a ' +
-
-                                        'href="producto.html?id=' +
-                                        juego.id +
-                                        '" ' +
-
-                                        'class="btn btn-secundario">' +
-
-                                        'Ver detalle' +
-
-                                    '</a>' +
-
-
-                                    '<button ' +
-
-                                        'type="button" ' +
-
-                                        'class="btn btn-primario" ' +
-
-                                        'data-agregar="' +
-                                        juego.id +
-                                        '">' +
-
-                                        'Agregar' +
-
-                                    '</button>' +
-
-
-                                '</div>' +
-
-
-                            '</div>' +
-
-
-                        '</article>'
-
-                    );
-
-                }
-            )
-            .join("");
-
-
-    /* =================================================================
-       CONECTAR BOTONES AGREGAR
-       ================================================================= */
-
-    contenedor
-        .querySelectorAll(
-            "[data-agregar]"
-        )
-        .forEach(
-            function (boton) {
-
-                boton.addEventListener(
-                    "click",
-                    function () {
-
-                        const juego =
-                            buscarJuegoPorId(
-                                boton.dataset.agregar
-                            );
-
-
-                        if (juego) {
-
-                            agregarAlCarrito(
-                                juego
-                            );
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-}
-
-
-/* =========================================================================
-   CAPITALIZAR TEXTO
-   ========================================================================= */
-
-function capitalizar(texto) {
-
-    const palabra =
-        texto.replace(
-            "-",
-            " "
-        );
-
-
+function buscarJuegoPorId(id) {
     return (
-
-        palabra
-            .charAt(0)
-            .toUpperCase()
-
-        +
-
-        palabra.slice(1)
-
+        obtenerCatalogoCompleto().find(
+            function (juego) {
+                return juego.id === id;
+            }
+        ) || null
     );
-
 }
