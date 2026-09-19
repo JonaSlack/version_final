@@ -1,10 +1,18 @@
 # LevelUp Store
 
-LevelUp Store es una tienda web de videojuegos desarrollada como proyecto académico para la asignatura **DSY1104 — Desarrollo Fullstack II** de Duoc UC.
+LevelUp Store es una tienda web de videojuegos desarrollada como proyecto académico para la asignatura Desarrollo Fullstack II.
 
-El proyecto permite explorar un catálogo de videojuegos, consultar productos, registrarse, iniciar sesión, utilizar un carrito de compras, gestionar productos desde un panel administrativo y acceder a distintas secciones informativas.
+El proyecto permite navegar por un catálogo de videojuegos, consultar información de los productos, agregarlos al carrito, registrar usuarios, iniciar sesión y administrar productos y usuarios mediante distintos roles.
 
-Actualmente el proyecto funciona completamente en el **Front-End**, utilizando HTML, CSS, JavaScript y LocalStorage.
+El proyecto está desarrollado principalmente con HTML, CSS y JavaScript, utilizando LocalStorage para almacenar información en el navegador.
+
+---
+
+## Integrantes
+
+- Diego Alejandro Gonzalez
+- Stefani Verdugo
+- Jonathan Aliaga
 
 ---
 
@@ -14,14 +22,12 @@ Actualmente el proyecto funciona completamente en el **Front-End**, utilizando H
 - CSS3
 - JavaScript
 - LocalStorage
-- Git y GitHub
-- Diseño responsivo
-
-No se utiliza actualmente una base de datos ni un servidor Backend. La información dinámica se almacena localmente en el navegador mediante LocalStorage.
+- Git
+- GitHub
 
 ---
 
-## Estructura principal
+## Estructura del proyecto
 
 ```text
 levelup-store/
@@ -44,306 +50,279 @@ levelup-store/
 └── assets/
     │
     ├── css/
-    │   ├── styles.css
-    │   └── rubrica.css
+    │   └── styles.css
     │
-    ├── img/
-    │   └── juegos/
+    ├── js/
+    │   ├── main.js
+    │   ├── datos-juegos.js
+    │   ├── catalogo.js
+    │   ├── producto.js
+    │   ├── carrito.js
+    │   ├── registro.js
+    │   ├── regiones-comunas.js
+    │   ├── login.js
+    │   ├── contacto.js
+    │   ├── admin.js
+    │   └── asistente-ia.js
     │
-    └── js/
-        ├── main.js
-        ├── datos-juegos.js
-        ├── catalogo.js
-        ├── producto.js
-        ├── carrito.js
-        ├── registro.js
-        ├── regiones-comunas.js
-        ├── login.js
-        ├── contacto.js
-        ├── admin.js
-        └── asistente-ia.js
+    └── img/
+        ├── juegos/
+        └── imágenes utilizadas por el sitio
 ```
 
 ---
 
-## Página de inicio
+## Funcionalidades principales
 
-La página principal presenta LevelUp Store y permite acceder a las principales funcionalidades del sitio.
+### Página de inicio
+
+La página principal presenta LevelUp Store y permite acceder a las principales secciones de la tienda.
 
 Incluye:
 
 - Navegación principal.
 - Banner promocional.
-- Acceso al catálogo.
 - Productos destacados.
+- Acceso al catálogo.
 - Acceso al carrito.
-- Registro e inicio de sesión.
-- Blog.
-- Nosotros.
-- Contacto.
-- Asistente IA.
-
-La navegación cuenta además con adaptación para dispositivos móviles.
+- Acceso al registro e inicio de sesión.
+- Acceso a contacto.
+- Acceso a Nosotros y Blog.
+- Acceso al Asistente IA.
 
 ---
 
 ## Catálogo de productos
 
-El catálogo permite visualizar los videojuegos disponibles en la tienda.
-
-Entre sus funcionalidades se encuentran:
-
-- Visualización de productos.
-- Búsqueda de videojuegos.
-- Filtros.
-- Visualización de precio.
-- Visualización de plataforma.
-- Control visual de disponibilidad.
-- Acceso al detalle del producto.
-- Incorporación de productos creados desde Administración.
-
-Los productos creados desde el panel administrativo se integran automáticamente con el catálogo mediante LocalStorage.
-
----
-
-## Detalle de producto
-
-La página de producto permite consultar información más detallada de cada videojuego.
+La página de catálogo permite visualizar los videojuegos disponibles.
 
 Incluye:
 
-- Nombre.
-- Imagen.
+- Listado de productos.
+- Buscador de videojuegos.
+- Filtros.
+- Información de plataforma.
 - Precio.
-- Plataforma.
-- Descripción.
-- Especificaciones.
-- Disponibilidad.
-- Selección de cantidad.
-- Productos relacionados.
-- Botón para agregar al carrito.
+- Acceso al detalle de cada producto.
+- Integración con los productos creados desde administración.
 
-Para los productos administrados por el sistema también se controla el stock disponible antes de agregarlos al carrito.
+Los productos agregados desde el panel de administración también pueden aparecer en el catálogo.
+
+---
+
+## Detalle del producto
+
+Cada producto cuenta con una página de detalle donde se puede consultar información adicional.
+
+Desde esta sección el usuario puede:
+
+- Ver el nombre del producto.
+- Ver su precio.
+- Consultar características.
+- Consultar stock cuando corresponde.
+- Seleccionar una cantidad.
+- Agregar productos al carrito.
+- Ver productos relacionados.
+
+El sistema controla la cantidad disponible para los productos administrados mediante stock.
 
 ---
 
 ## Carrito de compras
 
-El carrito utiliza LocalStorage para mantener los productos seleccionados mientras el usuario navega por el sitio.
+El carrito permite administrar los productos seleccionados antes de realizar una compra.
 
-Permite:
+Entre sus funciones se encuentran:
 
 - Agregar productos.
-- Eliminar productos.
 - Modificar cantidades.
+- Eliminar productos.
+- Vaciar el carrito.
+- Calcular el subtotal.
 - Calcular el total.
-- Mantener el carrito entre páginas.
-- Validar stock disponible.
-- Realizar un proceso de compra simulado.
+- Validar disponibilidad de stock.
+- Completar los datos necesarios para finalizar la compra.
 
-Cuando se completa correctamente una compra de un producto administrado, el sistema descuenta automáticamente la cantidad comprada del stock disponible.
+Cuando se completa correctamente una compra de un producto administrado, su stock se descuenta automáticamente.
 
 ---
 
 ## Registro de usuarios
 
-El formulario de registro permite crear usuarios y almacenarlos localmente en el navegador.
+El formulario de registro permite crear nuevos usuarios.
 
-Se realizan validaciones para:
+Entre las validaciones implementadas se encuentran:
 
 - RUN obligatorio.
-- Validación del dígito verificador del RUN.
-- RUN sin puntos ni guion.
+- Validación de RUN chileno.
+- RUN ingresado sin puntos ni guion.
 - Nombre obligatorio.
 - Apellidos obligatorios.
-- Correo electrónico válido.
+- Validación de correo electrónico.
 - Dominios de correo permitidos.
 - Región.
 - Comuna dependiente de la región seleccionada.
 - Dirección.
 - Contraseña.
 - Confirmación de contraseña.
-- Detección de RUN duplicado.
-- Detección de correo duplicado.
+- Control de usuarios y RUN duplicados.
 
-La fecha de nacimiento es opcional.
-
-### Dominios permitidos
-
-Actualmente se permiten:
-
-- `@duoc.cl`
-- `@profesor.duoc.cl`
-- `@gmail.com`
-
-Los usuarios registrados desde esta página se crean con rol de **cliente**.
+Los usuarios registrados son almacenados mediante LocalStorage.
 
 ---
 
 ## Inicio de sesión
 
-El sistema permite iniciar sesión utilizando cuentas registradas y cuentas de demostración.
+El sistema permite iniciar sesión utilizando las cuentas de prueba o las cuentas creadas desde el formulario de registro.
 
-La sesión se mantiene mediante LocalStorage.
-
-Actualmente existen tres tipos de usuario:
-
-- Administrador
-- Vendedor
-- Cliente
-
-Después de iniciar sesión, el sistema determina el acceso según el rol almacenado.
+Después de iniciar sesión, el comportamiento depende del rol del usuario.
 
 ---
 
 ## Roles del sistema
 
+El proyecto utiliza los siguientes roles:
+
 ### Administrador
 
-El administrador puede acceder al panel administrativo y gestionar:
+Puede acceder al panel de administración y gestionar:
 
 - Productos.
 - Usuarios.
 
 ### Vendedor
 
-El vendedor puede acceder al panel administrativo para gestionar productos.
+Puede acceder al panel de administración para gestionar productos.
 
-La administración de usuarios queda reservada al administrador.
+La sección de administración de usuarios está restringida para este rol.
 
 ### Cliente
 
-El cliente utiliza las funciones normales de la tienda y no tiene acceso al panel administrativo.
+Puede utilizar las funciones normales de la tienda, como:
 
-La separación actual de permisos entre administrador y vendedor corresponde a la implementación realizada en esta versión del proyecto.
+- Navegar por el catálogo.
+- Consultar productos.
+- Agregar productos al carrito.
+- Realizar compras.
+
+No puede acceder al panel administrativo.
 
 ---
 
 ## Administración de productos
 
-El panel administrativo permite mantener los productos utilizados por la tienda.
+El panel de administración permite gestionar los productos de la tienda.
 
-Entre las operaciones disponibles se encuentran:
+Entre sus funciones se encuentran:
 
 - Crear productos.
-- Listar productos.
+- Visualizar productos.
 - Editar productos.
 - Eliminar productos.
+- Definir código.
+- Definir nombre.
+- Definir descripción.
+- Definir precio.
+- Definir stock.
+- Definir categoría.
 
-Cada producto administrado puede contener:
+Los productos se almacenan mediante LocalStorage.
 
-- Código.
-- Nombre.
-- Descripción.
-- Precio.
-- Stock.
-- Categoría.
-
-El sistema valida los datos antes de guardar un producto y evita códigos duplicados.
-
-Durante la edición de un producto, el código se mantiene bloqueado para conservar correctamente su referencia dentro del catálogo y del carrito.
-
----
-
-## Control de stock
-
-Los productos creados mediante Administración poseen control de stock.
-
-El sistema utiliza el stock en distintas partes del flujo:
-
-```text
-Administración
-      ↓
-Catálogo
-      ↓
-Detalle del producto
-      ↓
-Carrito
-      ↓
-Compra
-      ↓
-Actualización del stock
-```
-
-Cuando un producto queda sin unidades disponibles, el catálogo y el carrito pueden identificar que se encuentra sin stock.
+Los cambios realizados desde administración se reflejan en el catálogo de productos.
 
 ---
 
 ## Administración de usuarios
 
-Los usuarios creados desde el formulario de registro se almacenan en LocalStorage.
+El administrador puede consultar y gestionar los usuarios registrados en el sistema.
 
-El administrador puede consultar los usuarios registrados desde el panel administrativo.
+Esta funcionalidad está disponible únicamente para usuarios con rol de administrador.
 
-También puede eliminar usuarios almacenados.
+---
 
-Esta funcionalidad se encuentra restringida al rol **administrador** en la implementación actual.
+## Control de stock
+
+Los productos creados desde administración cuentan con control de stock.
+
+El funcionamiento general es:
+
+```text
+Administración
+      |
+      v
+Catálogo
+      |
+      v
+Detalle del producto
+      |
+      v
+Carrito
+      |
+      v
+Compra
+      |
+      v
+Actualización del stock
+```
+
+El sistema evita agregar cantidades superiores al stock disponible.
+
+Cuando se finaliza correctamente una compra, la cantidad comprada se descuenta del producto correspondiente.
 
 ---
 
 ## Contacto
 
-El sitio cuenta con un formulario de contacto.
+El sitio incluye un formulario de contacto.
 
-Permite ingresar:
+El formulario permite ingresar:
 
 - Nombre.
 - Correo electrónico.
 - Comentario.
 
-El formulario valida:
+También se aplican validaciones antes de almacenar el mensaje.
 
-- Nombre obligatorio.
-- Longitud máxima del nombre.
-- Formato del correo cuando se ingresa.
-- Dominios permitidos.
-- Comentario obligatorio.
-- Máximo de 500 caracteres.
-
-Los mensajes enviados se almacenan localmente mediante LocalStorage.
-
----
-
-## Blog
-
-LevelUp Store incluye una sección de Blog con artículos relacionados con videojuegos.
-
-Actualmente incluye artículos sobre:
-
-- Mitología en los videojuegos.
-- Diferencias entre jugar en PC y consola.
-
-Cada artículo posee su propia página de detalle y mantiene la navegación general del sitio.
+Los mensajes son almacenados mediante LocalStorage.
 
 ---
 
 ## Nosotros
 
-La sección Nosotros presenta información general de LevelUp Store y del equipo responsable del proyecto.
+La página Nosotros presenta información general sobre LevelUp Store y el equipo responsable del proyecto.
 
-También describe algunas de las principales características implementadas en la aplicación.
+Incluye información relacionada con:
+
+- El proyecto.
+- La propuesta de la tienda.
+- Los integrantes del equipo.
+- Las principales áreas desarrolladas.
+
+---
+
+## Blog
+
+El proyecto incluye una sección de Blog con artículos relacionados con videojuegos y tecnología.
+
+Actualmente se incluyen artículos con sus respectivas páginas de detalle.
 
 ---
 
 ## Asistente IA
 
-El proyecto incluye una sección denominada **Asistente IA**.
+El proyecto cuenta con una sección destinada a un Asistente IA.
 
-Esta funcionalidad se encuentra implementada de forma independiente mediante el archivo:
+Esta funcionalidad permite realizar consultas desde la interfaz de LevelUp Store.
 
-```text
-assets/js/asistente-ia.js
-```
-
-Su objetivo es complementar la experiencia del usuario mediante un asistente integrado al sitio.
+La implementación del asistente se encuentra separada del resto de las funcionalidades principales de la tienda.
 
 ---
 
 ## Uso de LocalStorage
 
-Debido a que esta versión no posee Backend ni base de datos, se utiliza LocalStorage para almacenar distintos datos del sistema.
+Debido a que esta versión del proyecto es Front-End y no utiliza una base de datos en un servidor, se utiliza LocalStorage para mantener información dentro del navegador.
 
-Entre ellos:
+Las principales claves utilizadas son:
 
 ```text
 levelupUsuarios
@@ -353,15 +332,31 @@ levelupMensajes
 levelup_carrito
 ```
 
-Esto permite simular distintas funcionalidades de una aplicación web dinámica directamente desde el navegador.
+### levelupUsuarios
 
-LocalStorage pertenece al navegador y dispositivo donde se ejecuta la aplicación. Por esta razón, los productos, usuarios, sesiones y carritos creados en un computador no se transfieren automáticamente a otro dispositivo.
+Almacena los usuarios registrados.
+
+### levelupProductos
+
+Almacena los productos creados desde administración.
+
+### levelupSesion
+
+Mantiene información de la sesión iniciada.
+
+### levelupMensajes
+
+Almacena los mensajes enviados desde el formulario de contacto.
+
+### levelup_carrito
+
+Almacena los productos agregados al carrito.
 
 ---
 
 ## Cuentas de prueba
 
-Para facilitar las pruebas del sistema existen usuarios de demostración.
+El proyecto incluye cuentas predeterminadas para facilitar las pruebas.
 
 ### Administrador
 
@@ -384,84 +379,108 @@ Correo: cliente@gmail.com
 Contraseña: Game123
 ```
 
-Estas cuentas son exclusivamente para pruebas académicas.
-
 ---
 
-## Cómo ejecutar el proyecto
+## Prueba recomendada del sistema
 
-El proyecto no requiere instalación de dependencias.
-
-Se recomienda utilizar **Visual Studio Code** junto con una extensión como **Live Server**.
-
-Pasos:
-
-1. Clonar el repositorio.
-2. Abrir la carpeta del proyecto en Visual Studio Code.
-3. Entrar a la carpeta `levelup-store`.
-4. Abrir `index.html`.
-5. Ejecutar el proyecto con Live Server.
-6. Navegar normalmente entre las diferentes páginas.
-
-También es posible abrir directamente `index.html` en un navegador, aunque para desarrollo se recomienda utilizar un servidor local.
-
----
-
-## Flujo recomendado para probar el sistema
-
-Una prueba completa puede realizarse de la siguiente manera:
+Para comprobar el funcionamiento general del proyecto se puede realizar el siguiente flujo:
 
 1. Iniciar sesión como administrador.
-2. Entrar a Administración.
-3. Crear un producto con stock disponible.
+2. Crear un producto desde administración.
+3. Asignar stock al producto.
 4. Ir al catálogo.
-5. Verificar que aparezca el nuevo producto.
+5. Buscar el producto creado.
 6. Abrir el detalle del producto.
-7. Agregar unidades al carrito.
+7. Agregar una cantidad al carrito.
 8. Abrir el carrito.
-9. Verificar cantidades y precio.
-10. Completar el proceso de compra.
-11. Regresar a Administración.
-12. Comprobar que el stock haya disminuido.
+9. Completar el proceso de compra.
+10. Volver al panel de administración.
+11. Comprobar que el stock haya disminuido.
 
-También se recomienda probar el registro de clientes, inicio de sesión, validación de RUN, regiones y comunas, formulario de contacto, búsqueda y filtros del catálogo, edición y eliminación de productos, permisos de usuario y navegación en dispositivos móviles.
+También se recomienda probar:
 
----
-
-## Control de versiones
-
-El proyecto utiliza Git y GitHub para el trabajo colaborativo.
-
-Se recomienda:
-
-- Realizar commits descriptivos.
-- Mantener actualizado `main`.
-- Revisar los cambios antes de realizar un commit.
-- Evitar sobrescribir el trabajo de otros integrantes.
-- Utilizar ramas cuando se desarrollen funcionalidades importantes.
+- Registro de nuevos usuarios.
+- Validación de RUN.
+- Validación de correo.
+- Inicio de sesión.
+- Roles.
+- Formulario de contacto.
+- Buscador del catálogo.
+- Filtros.
+- Eliminación de productos.
+- Edición de productos.
+- Navegación entre páginas.
 
 ---
 
-## Equipo de desarrollo
+## Diseño responsive
 
-Proyecto desarrollado por:
+El sitio utiliza CSS responsive para adaptarse a diferentes tamaños de pantalla.
 
-- Diego Alejandro Gonzalez
-- Stefani Verdugo
-- Jonathan Aliaga
+Se incluyen ajustes para:
 
-Para la asignatura:
+- Computadores.
+- Tablets.
+- Dispositivos móviles.
 
-**DSY1104 — Desarrollo Fullstack II**
-
-Duoc UC.
+El menú de navegación cambia su comportamiento en pantallas pequeñas.
 
 ---
 
-## Consideraciones
+## Ejecución del proyecto
 
-Este proyecto tiene fines académicos.
+El proyecto no necesita instalación de dependencias.
 
-La versión actual utiliza LocalStorage como mecanismo de persistencia y no debe considerarse una implementación de producción.
+Se puede ejecutar abriendo:
 
-En una aplicación real, funcionalidades como autenticación, usuarios, productos, stock, pedidos y credenciales deberían gestionarse mediante un Backend y una base de datos, aplicando los controles de seguridad correspondientes.
+```text
+index.html
+```
+
+También puede ejecutarse utilizando una extensión como Live Server desde Visual Studio Code.
+
+---
+
+## Limitaciones
+
+Esta versión corresponde a un proyecto académico Front-End.
+
+Por este motivo:
+
+- No utiliza una base de datos real.
+- No utiliza un servidor Backend.
+- La información se almacena en LocalStorage.
+- Los datos dependen del navegador y dispositivo utilizado.
+- Las sesiones son gestionadas desde el cliente.
+- Las contraseñas almacenadas en LocalStorage no representan un sistema de autenticación seguro para producción.
+
+En una aplicación real estas funcionalidades deberían implementarse mediante un Backend, una base de datos y un sistema de autenticación seguro.
+
+---
+
+## Objetivo del proyecto
+
+El objetivo de LevelUp Store es aplicar los conocimientos adquiridos durante el desarrollo de la asignatura, integrando HTML, CSS y JavaScript en una aplicación web funcional.
+
+El proyecto permite trabajar conceptos como:
+
+- Estructura HTML.
+- Diseño mediante CSS.
+- Diseño responsive.
+- Manipulación del DOM.
+- Eventos JavaScript.
+- Validación de formularios.
+- LocalStorage.
+- Manejo de productos.
+- Manejo de usuarios.
+- Carrito de compras.
+- Control de stock.
+- Roles de usuario.
+- Organización de un proyecto web.
+- Control de versiones mediante Git y GitHub.
+
+---
+
+## Estado del proyecto
+
+El proyecto se encuentra en desarrollo académico y continúa siendo revisado y mejorado por el equipo.
