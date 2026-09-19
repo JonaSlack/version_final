@@ -274,6 +274,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         "cantidadProducto"
                     );
 
+                const mensaje =
+                    document.getElementById(
+                        "mensajeAgregado"
+                    );
+
                 let cantidad =
                     Number(
                         inputCantidad.value
@@ -284,21 +289,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cantidad < 1
                 ) {
                     cantidad = 1;
-                }
-
-                if (
-                    tieneStockControlado &&
-                    cantidad > stockDisponible
-                ) {
-                    const mensaje =
-                        document.getElementById(
-                            "mensajeAgregado"
-                        );
-
-                    mensaje.textContent =
-                        "No hay suficiente stock disponible.";
-
-                    return;
+                    inputCantidad.value = 1;
                 }
 
                 const maximo =
@@ -312,27 +303,97 @@ document.addEventListener("DOMContentLoaded", function () {
                         maximo;
                 }
 
+                const carritoActual =
+                    obtenerCarrito();
+
+                const productoExistente =
+                    carritoActual.find(
+                        function (item) {
+                            return (
+                                item.id ===
+                                juego.id
+                            );
+                        }
+                    );
+
+                const cantidadEnCarrito =
+                    productoExistente
+                        ? Number(
+                            productoExistente.cantidad
+                        ) || 0
+                        : 0;
+
+                const limiteDisponible =
+                    tieneStockControlado
+                        ? Math.min(
+                            stockDisponible,
+                            10
+                        )
+                        : 10;
+
+                if (
+                    cantidadEnCarrito +
+                    cantidad >
+                    limiteDisponible
+                ) {
+
+                    const disponibles =
+                        limiteDisponible -
+                        cantidadEnCarrito;
+
+                    if (disponibles <= 0) {
+
+                        mensaje.textContent =
+                            tieneStockControlado
+                                ? "Ya tienes en el carrito todo el stock disponible de este producto."
+                                : "Ya tienes el máximo de 10 unidades de este producto.";
+
+                    } else {
+
+                        mensaje.textContent =
+                            "Solo puedes agregar " +
+                            disponibles +
+                            " unidad(es) más.";
+                    }
+
+                    return;
+                }
+
+                let agregadas = 0;
+
                 for (
                     let i = 0;
                     i < cantidad;
                     i++
                 ) {
-                    agregarAlCarrito(
-                        juego
-                    );
+
+                    const agregado =
+                        agregarAlCarrito(
+                            juego,
+                            true
+                        );
+
+                    if (agregado) {
+                        agregadas++;
+                    }
                 }
 
-                const mensaje =
-                    document.getElementById(
-                        "mensajeAgregado"
-                    );
+                if (agregadas > 0) {
 
-                mensaje.textContent =
-                    "✔ " +
-                    cantidad +
-                    " unidad(es) de " +
-                    juego.titulo +
-                    " agregada(s) al carrito.";
+                    mensaje.textContent =
+                        "✔ " +
+                        agregadas +
+                        " unidad(es) de " +
+                        juego.titulo +
+                        " agregada(s) al carrito.";
+
+                    mostrarToast(
+                        agregadas +
+                        " unidad(es) de " +
+                        juego.titulo +
+                        " agregada(s) al carrito 🛒"
+                    );
+                }
             }
         );
     }
