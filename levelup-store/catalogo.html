@@ -29,10 +29,8 @@
         Saltar al contenido principal
     </a>
 
-    <!-- =====================================================
-         HEADER
-         ===================================================== -->
 
+    <!-- HEADER -->
     <header class="site-header">
 
         <div class="contenedor navbar">
@@ -43,6 +41,7 @@
                 🎮 Level<span class="acento">Up</span> Store
             </a>
 
+
             <button
                 id="botonMenu"
                 class="menu-toggle"
@@ -51,6 +50,7 @@
                 aria-controls="navLinks">
                 ☰
             </button>
+
 
             <ul
                 id="navLinks"
@@ -67,6 +67,18 @@
                         href="catalogo.html"
                         class="activo">
                         Catálogo
+                    </a>
+                </li>
+
+                <li>
+                    <a href="nosotros.html">
+                        Nosotros
+                    </a>
+                </li>
+
+                <li>
+                    <a href="blog.html">
+                        Blog
                     </a>
                 </li>
 
@@ -94,7 +106,14 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="asistente.html">
+                        Asistente IA
+                    </a>
+                </li>
+
             </ul>
+
 
             <div class="nav-acciones">
 
@@ -121,29 +140,32 @@
     </header>
 
 
-    <!-- =====================================================
-         CONTENIDO
-         ===================================================== -->
-
+    <!-- CONTENIDO -->
     <main id="contenido">
 
-        <!-- TÍTULO -->
 
+        <!-- TÍTULO -->
         <section class="page-hero">
 
             <div class="contenedor">
 
                 <p class="migas">
+
                     <a href="index.html">
                         Inicio
                     </a>
+
                     /
+
                     Catálogo
+
                 </p>
+
 
                 <h1>
                     Catálogo de videojuegos
                 </h1>
+
 
                 <p>
                     Filtra por plataforma o busca directamente
@@ -155,21 +177,18 @@
         </section>
 
 
-        <!-- =====================================================
-             CATÁLOGO
-             ===================================================== -->
-
+        <!-- CATÁLOGO -->
         <section class="seccion">
 
             <div class="contenedor">
 
 
                 <!-- BUSCADOR -->
-
                 <form
                     class="buscador"
                     role="search"
                     onsubmit="return false;">
+
 
                     <label
                         for="buscadorJuegos"
@@ -179,6 +198,7 @@
 
                     </label>
 
+
                     <input
                         type="search"
                         id="buscadorJuegos"
@@ -187,8 +207,10 @@
                         list="sugerenciasJuegos"
                         autocomplete="off">
 
+
                     <datalist id="sugerenciasJuegos">
                     </datalist>
+
 
                     <button
                         type="button"
@@ -203,11 +225,11 @@
 
 
                 <!-- FILTROS -->
-
                 <div
                     class="filtros"
                     role="group"
                     aria-label="Filtrar por plataforma">
+
 
                     <button
                         type="button"
@@ -219,6 +241,7 @@
 
                     </button>
 
+
                     <button
                         type="button"
                         class="filtro-btn"
@@ -229,6 +252,7 @@
 
                     </button>
 
+
                     <button
                         type="button"
                         class="filtro-btn"
@@ -238,6 +262,7 @@
                         PC
 
                     </button>
+
 
                     <button
                         type="button"
@@ -252,8 +277,7 @@
                 </div>
 
 
-                <!-- CONTADOR -->
-
+                <!-- CONTADOR DE RESULTADOS -->
                 <p
                     id="contadorResultados"
                     class="ayuda"
@@ -261,10 +285,10 @@
                 </p>
 
 
-                <!-- =================================================
-                     AQUÍ JAVASCRIPT INSERTA LOS JUEGOS
-                     ================================================= -->
-
+                <!--
+                    JAVASCRIPT INSERTA AQUÍ
+                    LOS PRODUCTOS DEL CATÁLOGO
+                -->
                 <div
                     id="grillaJuegos"
                     class="grilla-juegos"
@@ -273,7 +297,6 @@
 
 
                 <!-- SIN RESULTADOS -->
-
                 <p
                     id="sinResultados"
                     class="sin-resultados">
@@ -292,15 +315,13 @@
     </main>
 
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
+    <!-- FOOTER -->
     <footer class="site-footer">
 
         <div class="contenedor footer-grid">
 
 
+            <!-- MARCA -->
             <div class="footer-marca">
 
                 <a
@@ -311,15 +332,18 @@
 
                 </a>
 
+
                 <p>
                     Tu tienda especializada en videojuegos para
                     PS5 y PC. Envíos a todo Chile y códigos
                     digitales al instante.
                 </p>
 
+
                 <div
                     class="footer-social"
                     aria-label="Redes sociales">
+
 
                     <a
                         href="#"
@@ -327,11 +351,13 @@
                         IG
                     </a>
 
+
                     <a
                         href="#"
                         aria-label="X Twitter">
                         X
                     </a>
+
 
                     <a
                         href="#"
@@ -344,11 +370,13 @@
             </div>
 
 
+            <!-- TIENDA -->
             <div>
 
                 <h4>
                     Tienda
                 </h4>
+
 
                 <ul>
 
@@ -369,11 +397,13 @@
             </div>
 
 
+            <!-- CUENTA -->
             <div>
 
                 <h4>
                     Mi cuenta
                 </h4>
+
 
                 <ul>
 
@@ -400,27 +430,40 @@
             </div>
 
 
+            <!-- CONTACTO -->
             <div>
 
                 <h4>
                     Contacto
                 </h4>
 
+
                 <ul>
 
                     <li>
+
                         <a href="mailto:contacto@levelupstore.cl">
+
                             contacto@levelupstore.cl
+
                         </a>
+
                     </li>
 
+
                     <li>
+
                         <a href="contacto.html">
+
                             Formulario de contacto
+
                         </a>
+
                     </li>
 
+
                     <li>
+
                         <a
                             href="https://wa.me/56900000000"
                             target="_blank"
@@ -429,7 +472,9 @@
                             WhatsApp
 
                         </a>
+
                     </li>
+
 
                     <li>
                         Lunes a sábado, 9:00–20:00
@@ -442,10 +487,13 @@
         </div>
 
 
+        <!-- PIE LEGAL -->
         <div class="contenedor footer-legal">
 
             <span>
+
                 ©
+
                 <span id="anioActual">
                     2026
                 </span>
@@ -453,11 +501,15 @@
                 LevelUp Store.
                 Proyecto académico DSY1104 —
                 Desarrollo Fullstack II.
+
             </span>
 
+
             <span>
+
                 Todas las marcas de consolas y videojuegos
                 son propiedad de sus respectivos dueños.
+
             </span>
 
         </div>
@@ -465,15 +517,15 @@
     </footer>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-         IMPORTANTE: ESTE ORDEN SE DEBE MANTENER
-         ===================================================== -->
+    <!-- JAVASCRIPT -->
 
+    <!-- Datos de los juegos -->
     <script src="assets/js/datos-juegos.js"></script>
 
+    <!-- Funciones generales y carrito -->
     <script src="assets/js/main.js"></script>
 
+    <!-- Funciones del catálogo -->
     <script src="assets/js/catalogo.js"></script>
 
 
