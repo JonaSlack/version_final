@@ -325,7 +325,9 @@
                                 <span class="requerido">*</span>
                             </label>
 
-                            <select id="productoCategoria">
+                            <select
+                                id="productoCategoria"
+                                aria-describedby="errorProductoCategoria">
 
                                 <option value="">
                                     Selecciona una categoría
@@ -344,6 +346,12 @@
                                 </option>
 
                             </select>
+
+                            <small
+                                id="errorProductoCategoria"
+                                class="mensaje-error"
+                                aria-live="polite">
+                            </small>
 
                         </div>
 
@@ -389,6 +397,7 @@
                         <thead>
 
                             <tr>
+
                                 <th scope="col">
                                     Código
                                 </th>
@@ -412,6 +421,7 @@
                                 <th scope="col">
                                     Acciones
                                 </th>
+
                             </tr>
 
                         </thead>
